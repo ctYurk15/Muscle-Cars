@@ -1,2 +1,2 @@
 # Musle-Cars
-Online shop of muslecars collection figures
+Online shop of classic muslecars 
