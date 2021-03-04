@@ -1,10 +1,29 @@
-.main-image
+/*.main-image
 {
     width: 60%;
 }
 
 .main-center
 {
-    /*width: 80%;*/
     border: 1px solid black;
+}*/
+
+/*Header*/
+.header-table
+{
+    text-align: center;
+    font-size: 25px;
+    color: dimgray;
+    height: 100vh;
+}
+
+/*Body*/
+.main-image
+{
+    width: 60%;
+}
+
+body
+{
+    //background-color: orange;
 }
