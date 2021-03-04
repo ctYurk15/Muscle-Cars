@@ -1,2 +1,2 @@
 # Musle-Cars
-Online shop of classic musclecars 
+Online shop of classic muscle cars 
