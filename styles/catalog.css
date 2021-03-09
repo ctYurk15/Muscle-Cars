@@ -10,17 +10,38 @@
     vertical-align: middle;
 }
 
-.catalog-side-bar 
+.catalog-car-info 
 {
     border: 1px solid lightgray;
     border-radius: 2px;
+    color: dimgray;
     background-color: white;
     width: 30%;
     height: 80%;
-    position: absolute;
-    right: 0%;
-    top: 12.2%;
+    position: fixed;
+    right: 35%;
+    top: 10%;
     transition: 1s ease;
+    text-align: center;
+}
+
+.catalog-car-info img
+{
+    width: 80%;
+    position: relative;
+    transition: 0.2s ease;
+    top: 1%;
+}
+
+.catalog-car-info button
+{
+    width: 55%;
+    height: 15%;
+    font-size: 20px;
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    background-color: white;
+    color: dimgray;
 }
 
 .car-container img
@@ -45,10 +66,12 @@
     bottom: -20%;
 }
 
-.car-container button:hover
+.car-container button:hover, .catalog-car-info button:hover
 {
     background-color: lightgray;
 }
+
+
 
 .car-container img:hover
 {
