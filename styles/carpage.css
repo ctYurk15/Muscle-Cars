@@ -1,0 +1,13 @@
+.mainImg
+{
+    width: 70%;
+    margin: 20px;
+}
+
+.descriptionDiv
+{
+    color: dimgray;
+    font-size: 30px;
+    text-align: left;
+    margin: 20px;
+}
