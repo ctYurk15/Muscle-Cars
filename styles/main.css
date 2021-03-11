@@ -12,6 +12,17 @@
     height: 100vh;
 }
 
+.header-table a
+{
+    color: dimgray;
+    text-decoration: none;
+}
+
+.header-table a:hover
+{
+    font-size: 1.25em;
+}
+
 /*Body*/
 .main-image
 {
