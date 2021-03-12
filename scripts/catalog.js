@@ -20,6 +20,7 @@ $(document).ready(function(){
     });
     
     $("#carInfoBlock button").on("click", function(){
-        window.location = "carpage.html?carName="+$(this).attr("data-carName")
+        var carName = $(this).siblings("h1").text();
+        window.location = "carpage.html?carName="+carName;
     })
 });
