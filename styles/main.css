@@ -15,6 +15,7 @@
 .header-table a
 {
     color: dimgray;
+    transition: 0.25s;
     text-decoration: none;
 }
 
