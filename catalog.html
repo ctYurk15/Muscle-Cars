@@ -20,10 +20,40 @@
             </tr>
             <tr>
                 <td colspan="7">
-                    <div class="car-container">
-                        <br><h1>Dodge Charger 1969</h1>
-                        <img src="images/charger1969.jpg"><br>
-                        <button>Детальніше</button>
+                    <div class="car-container" style="border: 0px solid black">
+                        <br><h1>Фільтри</h1>
+                        <div id="filtersDiv">
+                            <form>
+                                <h3>Ціна:</h3>
+                                <label for="minPrice">Від: </label><input type="text" value="0" name="price" id="minPrice" size="7">
+                                <label for="maxPrice">До: </label><input type="text" value="0" name="price" id="maxPrice" size="7">
+                                <br><br>
+                                <h3>Диски(у дюймах):</h3>
+                                <label for="minWS">Від: </label><input type="text" value="0" id="minWS" size="7">
+                                <label for="maxWS">До: </label><input type="text" value="0" id="maxWS" size="7">
+                                <br><br>
+                                <h3>Потужність двигуна(у кінських силах):</h3>
+                                <label for="minHP">Від: </label><input type="text" value="0" id="minHP" size="7">
+                                <label for="maxHP">До: </label><input type="text" value="0" id="maxHP" size="7">
+                                <br><br>
+                                <h3>Виробник: </h3>
+                                <input type="checkbox" id="Chevrolet"><lable for="Chevrolet">Chevrolet</lable><br>
+                                <input type="checkbox" id="Mustang"><lable for="Mustang">Mustang</lable><br>
+                                <input type="checkbox" id="Dodge"><lable for="Dodge">Dodge</lable><br>
+                                <input type="checkbox" id="Plymouth"><lable for="Plymouth">Plymouth</lable>
+                                <br><br>
+                                <h3>Сортувати за: </h3>
+                                <select>
+                                    <option>Зростанням ціни</option>
+                                    <option>Спаданням ціни</option>
+                                    <option>Роком виходу</option>
+                                    <option>Алфавітним порядком</option>
+                                    <option>Потужністю двигуна</option>
+                                </select>
+                                <br><br>
+                                <button>Застосувати</button>
+                            </form>
+                        </div>
                     </div>
                     <div class="car-container">
                         <br><h1>Chevrolet Camaro SS 1969</h1>
@@ -33,6 +63,21 @@
                     <div class="car-container">
                         <br><h1>Ford Mustang 1969</h1>
                         <img src="images/mustang1969.jpg"><br>
+                        <button>Детальніше</button>
+                    </div>
+                    <div class="car-container">
+                        <br><h1>Dodge Charger 1969</h1>
+                        <img src="images/charger1969.jpg"><br>
+                        <button>Детальніше</button>
+                    </div>
+                    <div class="car-container">
+                        <br><h1>Dodge Challenger 1970</h1>
+                        <img src="images/challenger1970.jpg"><br>
+                        <button>Детальніше</button>
+                    </div>
+                    <div class="car-container">
+                        <br><h1>Plymouth Barracuda 1971</h1>
+                        <img src="images/barracuda1971.jpg"><br>
                         <button>Детальніше</button>
                     </div>
                 </td>
