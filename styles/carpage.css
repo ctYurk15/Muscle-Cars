@@ -91,3 +91,24 @@
 *:focus { /*Hiding default borders*/
     outline: 0 !important;
 }
+
+/*Comments*/
+#commentDiv
+{
+    width: 95%;
+    text-align: left;
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    font-size: 0.85em;
+    margin: 20px;
+}
+
+#commentDiv img
+{
+    width: 100%;
+}
+
+#commentDiv:hover
+{
+    background-color: lightgray;
+}
