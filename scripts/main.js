@@ -8,7 +8,7 @@ var header = "<td width='14.28%'>"+
         "<a href='catalog.html'>Автомобілі</a>"+
     "</td>"+
     "<td width='14.28%'>"+
-        "<a href='#'>Акції</a>"+
+        "<a href='sales.html'>Акції</a>"+
     "</td>"+
     "<td width='14.28%'>"+
         "<a href='#'>Кредитування</a>"+
@@ -17,7 +17,7 @@ var header = "<td width='14.28%'>"+
         "<a href='#'>Про нас</a>"+
     "</td>"+
     "<td width='14.28%'>"+
-        "<a href='#'><img src='images/account.png' width='35%'></a>"+
+        "<img src='images/account.png' width='35%' id='accountImg'>"+
     "</td>";
 
 var footer = "<td width='14.28%''>"+
@@ -38,3 +38,9 @@ var footer = "<td width='14.28%''>"+
 
 document.getElementById("headerTR").innerHTML += header;
 document.getElementById("footerTR").innerHTML += footer;
+
+$(document).ready(function(){
+   $("#accountImg").on("click", function(){
+       $("#accountDiv").toggleClass("slideHide");
+   });
+});
