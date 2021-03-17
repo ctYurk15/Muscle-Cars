@@ -96,8 +96,16 @@
     height: 0%;
 }
 
+/*Filters*/
 #filtersDiv
 {
     text-align: left;
     padding: 5px;
+}
+
+#filtersDiv input, #filtersDiv select, #filtersDiv option
+{
+    color: dimgray;
+    border: 1px solid lightgray;
+    border-radius: 2px;
 }

@@ -93,7 +93,7 @@
 }
 
 /*Comments*/
-#commentDiv
+.commentDiv
 {
     width: 95%;
     text-align: left;
@@ -103,12 +103,54 @@
     margin: 20px;
 }
 
-#commentDiv img
+.commentDiv img
 {
     width: 100%;
 }
 
-#commentDiv:hover
+.commentDiv:hover
 {
     background-color: lightgray;
+}
+
+#leaveCommentDiv
+{
+    width: 95%;
+    text-align: left;
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    font-size: 0.85em;
+    margin: 20px;
+}
+
+#leaveCommentDiv textarea
+{
+    width: 97%;
+    margin: 20px;
+}
+
+#leaveCommentDiv button
+{
+    margin: 20px;
+    padding: 5px;
+    width: 15%;
+    font-size: 20px;
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    background-color: white;
+    color: dimgray;
+}
+
+#leaveCommentDiv button:hover
+{
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+#leaveCommentDiv input, #leaveCommentDiv textarea
+{
+    color: dimgray;
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    margin: 20px;
 }
