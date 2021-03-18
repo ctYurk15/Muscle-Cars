@@ -23,4 +23,5 @@ $(document).ready(function(){
         var carName = $(this).siblings("h1").text();
         window.location = "carpage.html?carName="+carName;
     })
+    
 });
