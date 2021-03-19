@@ -6,6 +6,7 @@ $(document).ready(function(){
     
     var carName = urlParams.get("carName");
     $("#labelText").text(carName);
+    $("title").text(carName);
     
     //slide buttons changes
     var left = 0;

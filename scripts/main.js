@@ -37,7 +37,7 @@ var footer = "<td width='14.28%''>"+
                 "</td>";
 
 var accountDiv = "<div id='accountDiv'>"+
-                        "<button>Аккаунт</button>"+
+                        "<button onclick='location.replace("+'"account.html"'+")'>Аккаунт</button>"+
                         "<button>Вантажівка</button>"+
                         "<button id='accountLeave'>Вийти</button>"+
                     "</div>";
@@ -75,6 +75,7 @@ $(document).ready(function(){
         $("#transparentDiv").addClass("hidden");
     });
     
+    //dialog div hiding
     $(document).on("click", function(event){
         if(event.target.id != "accountImg")
         {
@@ -82,10 +83,7 @@ $(document).ready(function(){
             {
                 $("#dialogDiv").addClass("hidden");
                 $("#transparentDiv").addClass("hidden");
-                //$("#accountDiv").addClass("slideHide");
             }
-            //console.log(event.target.id);
         }
-        //else $("#transparentDiv").toggleClass("hidden");
     });
 });

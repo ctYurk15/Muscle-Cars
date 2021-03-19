@@ -1,0 +1,62 @@
+.profileImg
+{
+    width: 100%;
+}
+
+#profileDiv
+{
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    width: 100%;
+    font-size: 20px;
+    color: dimgray;
+    text-align: left;
+}
+
+#profileDiv *
+{
+    margin: 10px;
+}
+
+.myTable 
+{ 
+    border-color: lightgray;
+    border-collapse: collapse; 
+    border-radius: 2px;
+    width: 97%;
+    font-size: 25px;
+}
+
+.myTable td
+{ 
+    padding: 5px;
+    border: 0px solid lightgray; 
+}
+
+myTable tr
+{
+    height: 20px;
+}
+
+.myTable button
+{
+    margin: 20px;
+    padding: 5px;
+    width: 85%;
+    font-size: 20px;
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    background-color: white;
+    color: dimgray;
+}
+
+.myTable img
+{
+   width: 50%;
+}
+
+.myTable button:hover
+{
+    background-color: lightgray;
+    cursor: pointer;
+}
