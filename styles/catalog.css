@@ -70,7 +70,20 @@
     bottom: -20%;
 }
 
-.car-container button:hover, .catalog-car-info button:hover
+
+#moreButton
+{
+    width: 30%;
+    font-size: 20px;
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    background-color: white;
+    color: dimgray;
+    bottom: -20%;
+    margin-bottom: 20px;
+}
+
+.car-container button:hover, .catalog-car-info button:hover, #moreButton:hover
 {
     background-color: lightgray;
     cursor: pointer;
@@ -82,6 +95,7 @@
 {
     width: 85%;    
 }
+
 
 /*Filters*/
 #filtersDiv
