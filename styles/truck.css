@@ -1,0 +1,43 @@
+#truckDiv
+{
+    width: 50%;
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    color: dimgray;
+    background-color: white;
+}
+
+.truckItem
+{
+    width: 50%;
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    color: dimgray;
+    background-color: white;
+    width: 95%;
+    margin: 20px;
+    text-align: left;
+    font-size: 15px;
+}
+
+.truckItem:hover
+{
+    border-color: dimgray;
+}
+
+.countButton
+{
+    width: 15%;
+    font-size: 15px;
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    background-color: white;
+    color: dimgray;
+    margin: 20px;
+}
+
+.countButton:hover
+{
+    background-color: lightgray;
+    cursor: pointer;
+}

@@ -23,22 +23,19 @@ var header = "<td width='14.28%'>"+
 var footer = "<td width='14.28%''>"+
                     "<img src='images/logo.png' width='35%'>"+
                 "</td>"+
-                "<td width='14.28%'>"+
-                    "<a href='footerPage.html'>Контакти</a>"+
+                "<td width='28.56%' colspan='2'>"+
+                    "<a href='footerPage.html?topic=Контакти'>Контакти</a>"+
                 "</td>"+
                 "<td width='28.56%' colspan='2'>"+
-                    "<a href='footerPage.html'>Політика конфіденційності</a>"+
+                    "<a href='footerPage.html?topic=Політика конфіденційності'>Політика конфіденційності</a>"+
                 "</td>"+
                 "<td width='28.56%' colspan='2'>"+
-                    "<a href='footerPage.html'>Юридична інформація</a>"+
-                "</td>"+
-                "<td width='14.28%'>"+
-                    "<a href='footerPage.html'>Про нас</a>"+
+                    "<a href='footerPage.html?topic=Юридична інформація'>Юридична інформація</a>"+
                 "</td>";
 
 var accountDiv = "<div id='accountDiv'>"+
                         "<button onclick='location.replace("+'"account.html"'+")'>Аккаунт</button>"+
-                        "<button>Вантажівка</button>"+
+                        "<button onclick='location.replace("+'"truck.html"'+")'>Вантажівка</button>"+
                         "<button id='accountLeave'>Вийти</button>"+
                     "</div>";
 
