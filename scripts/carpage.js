@@ -17,6 +17,11 @@ $(document).ready(function(){
         slide(-1);
     });
     
+    $("#buyButton").on("click", function(){
+        $("#optionsDiv").removeClass("hidden");
+        $("#transparentDiv").removeClass("hidden");
+    });
+    
     function slide(i)
     {
         var line = document.getElementById('line');

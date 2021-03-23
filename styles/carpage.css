@@ -22,7 +22,7 @@
     margin: 20px;
 }
 
-.buyButton
+#buyButton
 {
     margin: 20px;
     padding: 10px;
@@ -34,7 +34,7 @@
     color: dimgray;
 }
 
-.buyButton:hover
+#buyButton:hover
 {
     background-color: lightgray;
     cursor: pointer;
@@ -153,4 +153,22 @@
     border: 1px solid lightgray;
     border-radius: 2px;
     margin: 20px;
+}
+
+/*Car options*/
+#optionsDiv
+{
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    color: dimgray;
+    background-color: white;
+    width: 60%;
+    height: 60%;
+    position: fixed;
+    right: 20%;
+    top: 30%;
+    transition: 1s ease;
+    text-align: center;
+    font-size: 20px;
+    z-index: 3;
 }

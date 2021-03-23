@@ -39,6 +39,15 @@ var accountDiv = "<div id='accountDiv'>"+
                         "<button id='accountLeave'>Вийти</button>"+
                     "</div>";
 
+var exitAccountDiv = "<div class='transparent-div hidden' id='transparentDiv'></div>"+
+                        "<div id='dialogDiv' class='hidden'>"+
+                            "<h2>Ви справді хочете вийти з аккаунту?</h2><br>"+
+                            "<span>"+
+                                "<button id='yes'>Так</button>"+
+                                "<button id='no'>Ні</button>"+
+                                "</span>"+
+                        "</div>";
+
 //adding header and footer
 document.getElementById("headerTR").innerHTML += header;
 document.getElementById("footerTR").innerHTML += footer;
@@ -50,15 +59,9 @@ $(document).ready(function(){
    });
     
     $("#headerTR").next().append(accountDiv);
+    $("table").after(exitAccountDiv);
     
     $("#priceText").text("$"+numberWithSpaces($("#priceText").text()));
-    
-    function numberWithSpaces(x) 
-    {
-        var parts = x.toString().split(".");
-        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-        return parts.join(".");
-    }
     
     //if we pressed on leave account button
     $("#accountLeave").on("click", function(){
@@ -80,7 +83,15 @@ $(document).ready(function(){
             {
                 $("#dialogDiv").addClass("hidden");
                 $("#transparentDiv").addClass("hidden");
+                $("#optionsDiv").addClass("hidden");
             }
         }
     });
+    
+    function numberWithSpaces(x) 
+    {
+        var parts = x.toString().split(".");
+        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+        return parts.join(".");
+    }
 });
