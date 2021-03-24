@@ -79,11 +79,12 @@ $(document).ready(function(){
     $(document).on("click", function(event){
         if(event.target.id != "accountImg")
         {
-            if( event.target.localName != "button")
+            if( event.target.id == "transparentDiv")
             {
                 $("#dialogDiv").addClass("hidden");
                 $("#transparentDiv").addClass("hidden");
                 $("#optionsDiv").addClass("hidden");
+                console.log(event);
             }
         }
     });
