@@ -1,0 +1,44 @@
+#reglogDiv
+{
+    width: 80%;
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    margin: 20px;
+    font-size: 22px;
+}
+
+#reglogDiv input
+{
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    color: dimgray;
+    background-color: white;
+    font-size: 20px;
+    margin: 5px;
+}
+
+#sumbitButton
+{
+    height: 10%;
+    font-size: 25px;
+    margin: 20px;
+}
+
+#sumbitButton:hover
+{
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+a
+{
+    font-size: 22px;
+    text-decoration: none;
+    margin: 20px;
+    color: dimgray;
+}
+
+a:hover
+{
+    cursor: pointer;
+}

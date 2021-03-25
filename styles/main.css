@@ -12,14 +12,14 @@
     height: 100vh;
 }
 
-.header-table a
+#headerTR, #footerTR a
 {
     color: dimgray;
     transition: 0.25s;
     text-decoration: none;
 }
 
-.header-table a:hover
+#headerTR, #footerTR a:hover
 {
     font-size: 1.25em;
 }
