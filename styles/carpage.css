@@ -22,7 +22,7 @@
     margin: 20px;
 }
 
-#buyButton
+.buyButton
 {
     margin: 20px;
     padding: 10px;
@@ -34,7 +34,7 @@
     color: dimgray;
 }
 
-#buyButton:hover
+.buyButton:hover
 {
     background-color: lightgray;
     cursor: pointer;
@@ -163,10 +163,10 @@
     color: dimgray;
     background-color: white;
     width: 60%;
-    height: 70%;
+    height: 77%;
     position: fixed;
     right: 20%;
-    top: 20%;
+    top: 17%;
     transition: 1s ease;
     text-align: center;
     font-size: 20px;
@@ -195,6 +195,12 @@
 }
 
 .engineButton:hover
+{
+    background-color: lightgray;
+    cursor: pointer;
+}
+
+.engineButton:focus
 {
     background-color: lightgray;
     cursor: pointer;
