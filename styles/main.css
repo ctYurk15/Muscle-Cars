@@ -12,14 +12,14 @@
     height: 100vh;
 }
 
-#headerTR, #footerTR a
+#headerTR a, #footerTR a
 {
     color: dimgray;
     transition: 0.25s;
     text-decoration: none;
 }
 
-#headerTR, #footerTR a:hover
+#headerTR a:hover, #footerTR a:hover
 {
     font-size: 1.25em;
 }

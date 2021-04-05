@@ -5,7 +5,7 @@ var header = "<td width='14.28%'>"+
         "<a href='index.html'>Головна</a>"+
     "</td>"+
     "<td width='14.28%'>"+
-        "<a href='catalog.html'>Автомобілі</a>"+
+        "<a href='catalog.php'>Автомобілі</a>"+
     "</td>"+
     "<td width='14.28%'>"+
         "<a href='sales.html'>Акції</a>"+

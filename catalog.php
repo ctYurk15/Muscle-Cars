@@ -56,31 +56,22 @@
                             </form>
                         </div>
                     </div>
-                    <div class="car-container">
-                        <br><h1>Chevrolet Camaro SS 1969</h1>
-                        <img src="images/camaross1969.jpg"><br>
-                        <button>Детальніше</button>
-                    </div>
-                    <div class="car-container">
-                        <br><h1>Ford Mustang 1969</h1>
-                        <img src="images/mustang1969.jpg"><br>
-                        <button>Детальніше</button>
-                    </div>
-                    <div class="car-container">
-                        <br><h1>Dodge Charger 1969</h1>
-                        <img src="images/charger1969.jpg"><br>
-                        <button>Детальніше</button>
-                    </div>
-                    <div class="car-container">
-                        <br><h1>Dodge Challenger 1970</h1>
-                        <img src="images/challenger1970.jpg"><br>
-                        <button>Детальніше</button>
-                    </div>
-                    <div class="car-container">
-                        <br><h1>Plymouth Barracuda 1971</h1>
-                        <img src="images/barracuda1971.jpg"><br>
-                        <button>Детальніше</button>
-                    </div>
+                    <?php
+                        //testing server side
+                        $img = array("camaross1969.jpg", "mustang1969.jpg", "charger1969.jpg", "challenger1970.jpg", "barracuda1971.jpg");
+                        $name = array("Chevrolet Camaro SS 1969", "Ford Mustang 1969", "Dodge Charger 1969", "Dodge Challenger 1970", "Plymouth Barracuda 1971");
+                        
+                        for($i = 0; $i < 5; $i++)
+                        {
+                            echo "
+                                <div class='car-container'>
+                                    <br><h1>".$name[$i]."</h1>
+                                    <img src='images/".$img[$i]."'><br>
+                                    <button>Детальніше</button>
+                                </div>
+                            ";
+                        }
+                    ?>
                     <button align="center" id="moreButton">Ще</button>
                 </td>
             </tr> 
