@@ -21,7 +21,7 @@ $(document).ready(function(){
     
     $("#carInfoBlock button").on("click", function(){
         var carName = $(this).siblings("h1").text();
-        window.location = "carpage.html?carName="+carName;
+        window.location = "carpage.php?carName="+carName;
     })
     
 });
