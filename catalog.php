@@ -57,20 +57,33 @@
                         </div>
                     </div>
                     <?php
-                        //testing server side
-                        $img = array("camaross1969.jpg", "mustang1969.jpg", "charger1969.jpg", "challenger1970.jpg", "barracuda1971.jpg");
-                        $name = array("Chevrolet Camaro SS 1969", "Ford Mustang 1969", "Dodge Charger 1969", "Dodge Challenger 1970", "Plymouth Barracuda 1971");
-                        
-                        for($i = 0; $i < 5; $i++)
+                        //variables using for connection to db
+                        $servername = "localhost";
+                        $database = "muscle-carsdb";
+                        $username = "root";
+                        $password = "root";
+
+                        // Create connection
+                        $conn = new mysqli($servername, $username, $password, $database);
+                        if ($mysqli->connect_errno) 
+                        {
+                            printf("Failed to connect to: %s\n", $mysqli->connect_error);
+                            exit();
+                        }
+                    
+                        $result = $conn->query("SELECT * FROM car");
+                        while($row = $result->fetch_array()) //fetching request to array
                         {
                             echo "
                                 <div class='car-container'>
-                                    <br><h1>".$name[$i]."</h1>
-                                    <img src='images/".$img[$i]."'><br>
+                                    <br><h1>".$row['name']."</h1>
+                                    <img src='images/".$row['img']."'><br>
                                     <button>Детальніше</button>
                                 </div>
                             ";
                         }
+
+                        $conn->close(); //closing connection
                     ?>
                     <button align="center" id="moreButton">Ще</button>
                 </td>
