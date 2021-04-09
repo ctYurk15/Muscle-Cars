@@ -26,9 +26,9 @@
                 <td colspan="3" align="center">
                     <div id="reglogDiv">
                         <br><h1>Логін</h1><br>
-                        <form >
-                            <lable for="loginInput">Логін: </lable><br><input type="login" id="loginInput" size="25"><br>
-                            <lable for="passInput">Пароль: </lable><br><input type="password" id="passInput" size="25"><br>
+                        <form method="post" action="phpScripts/loginScript.php">
+                            <lable for="loginInput">Логін: </lable><br><input type="login" id="loginInput" size="25" name="login"><br>
+                            <lable for="passInput">Пароль: </lable><br><input type="password" id="passInput" size="25" name="pass"><br>
                             <input type="submit" value="Ввійти" id="sumbitButton"><br>
                             <a href="registration.html">Не має аккаунту?</a>
                             <a href="#">Забули пароль?</a><br><br>
