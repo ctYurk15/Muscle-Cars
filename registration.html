@@ -27,12 +27,12 @@
                     <div id="reglogDiv">
                         <br><h1>Реєстрація</h1><br>
                         <form action="phpScripts/registrationScript.php" method="post">
-                            <lable for="loginInput">Логін: </lable><br><input type="login" id="loginInput" size="25" name="login"><br>
-                            <lable for="nameInput">Повне ім'я: </lable><br><input type="text" id="nameInput" size="25" name="name"><br>
-                            <lable for="emailInput">Пошта: </lable><br><input type="email" id="emailInput" size="25" name="email"><br>
-                            <lable for="passInput">Пароль: </lable><br><input type="password" id="passInput" size="25" name="pass"><br>
-                            <lable for="rpassInput">Повторити пароль: </lable><br><input type="password" id="rpassInput" size="25" name="rPass"><br>
-                            <label for="accept">Я згідний з правилами сайту </label><input type="checkbox" name="agree"><br>
+                            <lable for="loginInput">Логін: </lable><br><input type="login" id="loginInput" size="25" name="login" required><br>
+                            <lable for="nameInput">Повне ім'я: </lable><br><input type="text" id="nameInput" size="25" name="name" required><br>
+                            <lable for="emailInput">Пошта: </lable><br><input type="email" id="emailInput" size="25" name="email" required><br>
+                            <lable for="passInput">Пароль: </lable><br><input type="password" id="passInput" size="25" name="pass" required><br>
+                            <lable for="rpassInput">Повторити пароль: </lable><br><input type="password" id="rpassInput" size="25" name="rPass" required><br>
+                            <label for="accept">Я згідний з правилами сайту </label><input type="checkbox" name="agree" required><br>
                             <input type="submit" value="Зареєструватися" id="sumbitButton"><br>
                             <a href="login.html">Уже є аккаунт?</a><br><br>
                         </form>

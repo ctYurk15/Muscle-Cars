@@ -1,3 +1,10 @@
+<?php
+    if(!isset($_COOKIE["login"])) //if we`re not logged redirecting to login page
+    {
+        header('location: login.html');
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
    
@@ -24,17 +31,35 @@
                     <h1>Моя вантажівка</h1>
                     <div id="truckDiv">
                         <?php
-                            for($i = 0; $i < 5; $i++)
+                        
+                            //variables using for connection to db
+                            $servername = "localhost";
+                            $database = "muscle-carsdb";
+                            $username = "root";
+                            $password = "root";
+
+                            // Create connection
+                            $conn = new mysqli($servername, $username, $password, $database);
+                            if ($mysqli->connect_errno) 
+                            {
+                                printf("Failed to connect to: %s\n", $mysqli->connect_error);
+                                exit();
+                            }
+                            
+                            $request = "SELECT car.name, car.year, car.manufacturer, car.img FROM `order` JOIN car ON car.ID = car_ID JOIN `user` ON `user`.ID = user_ID WHERE `user`.login = '{$_COOKIE["login"]}'";
+                             
+                            $result = $conn->query($request);
+                            while($row = $result->fetch_array()) //fetching request to array
                             {
                                 echo " 
                                     <div class='truckItem'>
                                         <table width='100%'>
                                             <tr>
                                                 <td width='25%' rowspan='2'>
-                                                    <a href='carpage.php?carName=Chevrolet Camaro SS 1969'><img src='images/barracuda1971.jpg' style='width: 100%'></a>
+                                                    <a href='carpage.php?carName={$row["name"]}'><img src='images/{$row["img"]}' style='width: 100%'></a>
                                                 </td>
                                                 <td width='50%' colspan='3'>
-                                                    <h3>Plymouth Barracuda 1971</h3>
+                                                    <h3>{$row["manufacturer"]} {$row["name"]} {$row["year"]}</h3>
                                                 </td>
                                                 <td width='25%' align='center'>
                                                     $<i>30000</i>
@@ -45,15 +70,17 @@
                                                 <td>15`</td>
                                                 <td>Black</td>
                                                 <td>
-                                                    <button class='countButton'>-</button>
+                                                    <button class='countButton'>+</button>
                                                     <i>2</i>
-                                                    <button class='countButton''>+</button>
+                                                    <button class='countButton''>-</button>
                                                 </td>
                                             </tr>
                                         </table>
                                     </div>
                                 ";
                             }
+
+                            $conn->close(); //closing connection
                         ?>
                     </div>
                 </td>

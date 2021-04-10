@@ -1,3 +1,11 @@
+<?php
+    if(!isset($_COOKIE["login"])) //if we`re not logged redirecting to login page
+    {
+        header('location: login.html');
+    }
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
    
@@ -29,7 +37,7 @@
                         <table class="myTable">
                             <tr>
                                 <td width="33%">Логін </td>
-                                <td width="33%">VorVZakone</td>
+                                <td width="33%"><?php echo $_COOKIE["login"]; ?></td>
                                 <td width="33%" align="center"><button id="changeLogin">Змінити</button></td>
                             </tr>
                             <tr><td colspan="3"><hr></td></tr>
@@ -54,9 +62,14 @@
                             <tr>
                                 <td width="33%">Замовлень</td>
                                 <td width="33%">32</td>
-                                <td width="33%" align="center"><button id="changeName">Змінити</button></td>
+                                <td width="33%" align="center"><button id="changeName" onclick="location.replace('catalog.php')">Змінити</button></td>
                             </tr>
-                            <tr><td colspan="3"><hr></td></tr>
+                            <tr>
+                                <td colspan="3" align="center">
+                                    <hr>
+                                    <button onclick="location.replace('phpScripts/unloginScript.php')">Вийти з аккаунту</button>
+                                </td>
+                            </tr>
                         </table><br>
                     </div>
                 </td>

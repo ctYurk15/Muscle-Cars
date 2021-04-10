@@ -22,6 +22,7 @@
     }
                     
     $conn->query($request);
+    setcookie("login", $login, time()+(60*60*24), '/');  //setting cookie for next 1 day
     echo "Registration was successful. Redirecting to account page.
         <script>location.replace('../account.php')</script>";
 ?>

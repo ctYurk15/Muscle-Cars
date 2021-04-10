@@ -34,8 +34,8 @@ var footer = "<td width='14.28%''>"+
                 "</td>";
 
 var accountDiv = "<div id='accountDiv'>"+
-                        "<button onclick='location.replace("+'"account.html"'+")'>Аккаунт</button>"+
-                        "<button onclick='location.replace("+'"truck.html"'+")'>Вантажівка</button>"+
+                        "<button onclick='location.replace("+'"account.php"'+")'>Аккаунт</button>"+
+                        "<button onclick='location.replace("+'"truck.php"'+")'>Вантажівка</button>"+
                         "<button id='accountLeave'>Вийти</button>"+
                     "</div>";
 

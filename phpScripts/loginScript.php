@@ -30,7 +30,11 @@
         {
             echo "<script>alert('Incorrect password!'); location.replace('../login.html')</script>";
         }
-        else echo "<script>location.replace('../account.php')</script>";
+        else 
+        {
+            setcookie("login", $login, time()+(60*60*24), '/');  //setting cookie for next 1 day
+            echo "<script>location.replace('../account.php')</script>"; //redirecting to account page
+        }
     }
     
 ?>
