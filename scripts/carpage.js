@@ -6,6 +6,7 @@ $(document).ready(function(){
     
     var carName = urlParams.get("carName");
     $("#labelText").text(carName);
+    $(".formCarName").val(carName);
     $("title").text(carName);
     
     //slide buttons changes

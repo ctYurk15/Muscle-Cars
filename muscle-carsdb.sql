@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3307
--- Час створення: Квт 09 2021 р., 13:49
+-- Час створення: Квт 12 2021 р., 14:31
 -- Версія сервера: 10.1.44-MariaDB
 -- Версія PHP: 7.1.33
 
@@ -57,9 +57,17 @@ CREATE TABLE `comment` (
   `positive` tinyint(4) NOT NULL,
   `commentText` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `UserID` int(11) NOT NULL,
-  `car_ID` int(11) NOT NULL,
+  `CarID` int(11) NOT NULL,
   `date` timestamp NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп даних таблиці `comment`
+--
+
+INSERT INTO `comment` (`ID`, `positive`, `commentText`, `UserID`, `CarID`, `date`) VALUES
+(1, 1, 'First comment. I hope it would be successful.', 10, 1, '2021-04-12 11:25:17'),
+(2, 0, 'Negative comment', 10, 1, '2021-04-12 11:26:28');
 
 -- --------------------------------------------------------
 
@@ -73,6 +81,8 @@ CREATE TABLE `options` (
   `Engine` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   `HP` int(11) NOT NULL,
   `Disk` float NOT NULL,
+  `Quantity` tinyint(5) NOT NULL DEFAULT '0',
+  `Price` tinyint(10) NOT NULL,
   `car_ID` int(11) NOT NULL,
   `Selling` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -81,8 +91,8 @@ CREATE TABLE `options` (
 -- Дамп даних таблиці `options`
 --
 
-INSERT INTO `options` (`ID`, `Color`, `Engine`, `HP`, `Disk`, `car_ID`, `Selling`) VALUES
-(1, 'Black', '426 HEMI', 426, 15, 1, 0);
+INSERT INTO `options` (`ID`, `Color`, `Engine`, `HP`, `Disk`, `Quantity`, `Price`, `car_ID`, `Selling`) VALUES
+(1, 'Black', '426 HEMI', 426, 15, 0, 0, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -93,8 +103,20 @@ INSERT INTO `options` (`ID`, `Color`, `Engine`, `HP`, `Disk`, `car_ID`, `Selling
 CREATE TABLE `order` (
   `ID` int(11) NOT NULL,
   `car_ID` int(11) NOT NULL,
-  `user_ID` int(11) NOT NULL
+  `user_ID` int(11) NOT NULL,
+  `Count` tinyint(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп даних таблиці `order`
+--
+
+INSERT INTO `order` (`ID`, `car_ID`, `user_ID`, `Count`) VALUES
+(1, 1, 10, 1),
+(2, 2, 10, 1),
+(3, 3, 10, 1),
+(4, 5, 10, 1),
+(5, 4, 10, 1);
 
 -- --------------------------------------------------------
 
@@ -119,7 +141,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`ID`, `login`, `name`, `email`, `address`, `avatar`, `orders`, `pass`) VALUES
 (5, 'johndoe', 'John Doe', 'emaple@ex.com', 'Somewhere', 'account.png', 0, 'password'),
-(10, 'ctyurk15', 'Lev Zykol', 'levgenetic@gmail.com', 'Somewhere', 'account.png', 0, 'qwerty');
+(10, 'ctyurk15', 'Lev Zykol', 'levgenetic@gmail.com', 'Somewhere', 'account.png', 0, 'qwerty'),
+(11, 'test1', 'test11', 'test1@gmail.com', 'Somewhere', 'account.png', 0, 'test1pass');
 
 --
 -- Індекси збережених таблиць
@@ -137,7 +160,7 @@ ALTER TABLE `car`
 ALTER TABLE `comment`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `fk_comment_user_idx` (`UserID`),
-  ADD KEY `fk_comment_car1_idx` (`car_ID`);
+  ADD KEY `fk_comment_car1_idx` (`CarID`);
 
 --
 -- Індекси таблиці `options`
@@ -174,7 +197,7 @@ ALTER TABLE `car`
 -- AUTO_INCREMENT для таблиці `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT для таблиці `options`
@@ -186,13 +209,13 @@ ALTER TABLE `options`
 -- AUTO_INCREMENT для таблиці `order`
 --
 ALTER TABLE `order`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT для таблиці `user`
 --
 ALTER TABLE `user`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Обмеження зовнішнього ключа збережених таблиць
@@ -202,7 +225,7 @@ ALTER TABLE `user`
 -- Обмеження зовнішнього ключа таблиці `comment`
 --
 ALTER TABLE `comment`
-  ADD CONSTRAINT `fk_comment_car1` FOREIGN KEY (`car_ID`) REFERENCES `car` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_comment_car1` FOREIGN KEY (`CarID`) REFERENCES `car` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `fk_comment_user` FOREIGN KEY (`UserID`) REFERENCES `user` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --

@@ -83,42 +83,67 @@
                     <h1>Відгуки про даний автомобіль</h1><br>
                     
                     <?php
-                        
-                        for($i = 0; $i < 5; $i++)
+                        //variables using for connection to db
+                        $servername = "localhost";
+                        $database = "muscle-carsdb";
+                        $username = "root";
+                        $password = "root";
+
+                        // Create connection
+                        $conn = new mysqli($servername, $username, $password, $database);
+                        if ($mysqli->connect_errno) 
                         {
+                            printf("Failed to connect to: %s\n", $mysqli->connect_error);
+                            exit();
+                        }
+                        
+                        //forming request
+                        $request = "SELECT positive, commentText, `date`, `user`.avatar FROM `comment` JOIN `user` ON UserID = `user`.`ID` JOIN `car` ON CarID = `car`.`ID` WHERE `user`.`login` = 'ctyurk15'";
+                        $result = $conn->query($request);
+                    
+                        $commentsDisplayed = 0;
+                        while($row = $result->fetch_array()) //fetching request to array
+                        {
+                            $commentImage = $row['positive'] == 1 ? "like.png" : "dislike.png"; //is it positive or negative comment?
+                                
                             echo "
                                 <div class='commentDiv'>
                                     <table>
                                         <tr>
                                             <td width='10%' rowspan='2'>
-                                                <img src='images/account.png'>
+                                                <img src='images/".$row['avatar']."'>
                                             </td>
                                             <td width='85%'>
-                                                <b>Коментар було залишено 10.03.2022</b>
+                                                <b>Коментар було залишено ".$row['date']."</b>
                                             </td>
                                             <td width='5%' rowspan='2' align='center'>
-                                                <img src='images/like.png'>
+                                                <img src='images/".$commentImage."'>
                                             </td>
                                         </tr>
                                         <tr>
                                             <td>
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam animi ratione, unde harum perferendis corporis quam accusantium repellat in blanditiis, iste. Facilis nesciunt fugiat, praesentium similique accusamus ullam unde optio dolor dolore asperiores, aliquam voluptatibus, vel vero excepturi maiores quo eaque autem beatae reiciendis ex mollitia ducimus consectetur eligendi. Possimus tenetur dignissimos dicta cupiditate, temporibus libero vero dolor debitis unde aut, explicabo enim veniam! Qui accusantium repellendus molestiae necessitatibus, aliquam, dolor exercitationem, cumque pariatur incidunt dolores sit veniam doloribus numquam optio id minus magni dolorum quod saepe minima tempore blanditiis reiciendis quis nesciunt ab. Necessitatibus sit minima mollitia est sunt.
+                                                ".$row['commentText']."
                                             </td>
                                         </tr>
                                     </table>
                                 </div>
                             ";
+                            $commentsDisplayed++;
                         }
+                        
+                        if($commentsDisplayed == 0) echo "Наразі комментарів немає";
+                        $conn->close(); //closing connection
                     ?>
                     
                     
                     <div id="leaveCommentDiv">
-                        <form method="get">
+                        <form method="post" action = "phpScripts/addCommentScript.php">
                             <h2 style="margin: 20px;"><i>Залишіть свій відгук</i></h2>
-                            <textarea id="" cols="30" rows="10"></textarea>
-                            <input type="radio" name="comment" id="goodOption" checked><label for="goodOption">Добре</label>
-                            <input type="radio" name="comment" id="badOption"><label for="badOption">Погано</label><br>
+                            <textarea id="" cols="30" rows="10" name="commentText"></textarea>
+                            <input type="radio" name="positiveComment" id="goodOption" checked value="1"><label for="goodOption">Добре</label>
+                            <input type="radio" name="positiveComment" id="badOption" value="0"><label for="badOption">Погано</label><br>
                             <button>Залишити відгук</button>
+                            <input type="text" name="carname" class="formCarName" style="display: none" value="1">
                         </form>
                     </div>
                 </td>
@@ -137,8 +162,9 @@
             </tr>       
         </table>
         <div id="optionsDiv" class="hidden">
-            <h1>Опції</h1>
-            <form>
+            
+            <form method="post" action="phpScripts/addToTruckScript.php">
+                <h1>Опції</h1>
                 <h2 style="margin: 10px;">Колір:</h2>
                 <input type="button" name="carColor" id="redCC" class="radioColor">
                 <input type="button" name="carColor" id="greenCC" class="radioColor">
@@ -151,9 +177,11 @@
                 <h2 style="margin: 10px;">Диски:</h2>
                 <input type="button" value="13" class="engineButton">
                 <input type="button" value="14" class="engineButton">
-                <input type="button" value="15" class="engineButton">
+                <input type="button" value="15" class="engineButton"><br>
+                <button onclick="location.replace('truck.html')" class="buyButton">Вибрати</button>
+                <input type="text" name="carname" class="formCarName" style="display: none" value="1">
             </form>
-            <button onclick="location.replace('truck.html')" class="buyButton">Вибрати</button>
+            
         </div>
         <script src="scripts/jquery.min.js"></script>
         <script src="scripts/main.js"></script>
