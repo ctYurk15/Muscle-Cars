@@ -29,8 +29,10 @@
             <tr>
                 <td colspan="7" align="center">
                     <h1>Моя вантажівка</h1>
-                    <div id="truckDiv">
+                    
                         <?php
+                    
+                            echo "<div id='truckDiv'>";
                         
                             //variables using for connection to db
                             $servername = "localhost";
@@ -46,9 +48,15 @@
                                 exit();
                             }
                             
-                            $request = "SELECT car.name, car.year, car.manufacturer, car.img FROM `order` JOIN car ON car.ID = car_ID JOIN `user` ON `user`.ID = user_ID WHERE `user`.login = '{$_COOKIE["login"]}'";
+                            $request = "SELECT car.name, car.year, car.manufacturer, car.img, `options`.HP, `options`.disk, `options`.Color, `options`.price,                   `order`.Count
+                                        FROM `order` 
+                                        JOIN `options` ON `options`.ID = OptionID 
+                                        JOIN car ON car.ID = `options`.CarID
+                                        JOIN `user` ON `user`.ID = UserID 
+                                        WHERE `user`.login = '{$_COOKIE['login']}'";
                              
                             $result = $conn->query($request);
+                            $goodsCount = 0;
                             while($row = $result->fetch_array()) //fetching request to array
                             {
                                 echo " 
@@ -62,27 +70,29 @@
                                                     <h3>{$row["manufacturer"]} {$row["name"]} {$row["year"]}</h3>
                                                 </td>
                                                 <td width='25%' align='center'>
-                                                    $<i>30000</i>
+                                                    $<i>{$row["price"]}</i>
                                                 </td>
                                             </tr>
                                             <tr align='center'>
-                                                <td>370HP</td>
-                                                <td>15`</td>
-                                                <td>Black</td>
+                                                <td >{$row["HP"]}</td>
+                                                <td>{$row["disk"]}`</td>
+                                                <td>{$row["Color"]}</td>
                                                 <td>
                                                     <button class='countButton'>+</button>
-                                                    <i>2</i>
+                                                    <i>{$row["Count"]}</i>
                                                     <button class='countButton''>-</button>
                                                 </td>
                                             </tr>
                                         </table>
                                     </div>
                                 ";
+                                $goodsCount++;
                             }
-
+                            echo "</div>";
+                            if($goodsCount == 0) echo "<h3>Наразі вантажівка пуста</h3>";
                             $conn->close(); //closing connection
                         ?>
-                    </div>
+                    
                 </td>
             </tr> 
             <tr>

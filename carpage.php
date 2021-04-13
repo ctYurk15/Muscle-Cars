@@ -21,61 +21,85 @@
             </tr>
             <tr>
                 <td colspan="7">
-                    <h1 id="labelText"></h1>
-                    <table width="100%" border="0px">
-                        <tr>
-                            <td width="50%" rowspan="2">
-                                <img src="images/camaross1969.jpg" class="mainImg">
-                            </td>
-                            <td width="50%">
-                                <div class="descriptionDiv">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit unde, excepturi tempora ipsum vero quae et corporis sit numquam ab cumque alias fugit, incidunt consequuntur! Voluptas voluptatem, sint, veniam, voluptate suscipit eos aliquam animi aspernatur voluptatibus molestiae vel impedit eius autem perspiciatis nisi! Odit fugit quaerat laboriosam maxime et quo quod molestias cum optio nemo maiores deleniti necessitatibus veniam ipsum totam, minus amet dolor iusto ut similique sit porro repudiandae. Optio corporis rerum autem provident cum veritatis beatae ipsa suscipit, quis. Fugiat totam distinctio, quidem earum esse nam? Sequi repellendus ipsa molestias aspernatur, veritatis, cumque aperiam iusto distinctio corporis voluptates?
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td width="50%" align="left">
-                                <div class="statsDiv">
-                                    <h3><b>Характеристики:</b></h3>
-                                    <h3>Мотор - <i>V8 396HP</i></h3>
-                                    <h3>Диски - <i>15'</i></h3>
-                                    <h3>0-60 - <i>6.5s</i></h3>
-                                    <h3>Ціна - <i id="priceText">30000</i></h3>
-                                </div>
-                                <button id="buyButton" class="buyButton">Додати до вантажівки</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" align="center">
-                                
-                                
-                                
-                                <table>
-                                    <tr>
-                                        <td>
-                                            <button id="leftBSlider" align="left">&#60;</button>
-                                        </td>
-                                        <td>
-                                            <div id="slider">
-                                                <div id="line">
-                                                    <img src="images/camaross1969.jpg" alt="">
-                                                    <img src="images/camaross1969.jpg" alt="">
-                                                    <img src="images/camaross1969.jpg" alt="">
-                                                    <img src="images/camaross1969.jpg" alt="">
-                                                    <img src="images/camaross1969.jpg" alt="">
-                                                    <img src="images/camaross1969.jpg" alt="">
-                                                    <img src="images/camaross1969.jpg" alt="">
+                    <?php
+                        //variables using for connection to db
+                        $servername = "localhost";
+                        $database = "muscle-carsdb";
+                        $username = "root";
+                        $password = "root";
+
+                        // Create connection
+                        $conn = new mysqli($servername, $username, $password, $database);
+                        if ($mysqli->connect_errno) 
+                        {
+                            printf("Failed to connect to: %s\n", $mysqli->connect_error);
+                            exit();
+                        }
+                        
+                        //forming request
+                        $request = "SELECT * FROM car WHERE Name = '{$_GET["carName"]}'";
+                        $result = $conn->query($request);
+                    
+                        $row = $result->fetch_array();
+                    
+                        echo "
+                        <h1 id='labelText'></h1>
+                        <table width='100%' border='0px'>
+                            <tr>
+                                <td width='50%' rowspan='2'>
+                                    <img src='images/{$row["img"]}' class='mainImg'>
+                                </td>
+                                <td width='50%''>
+                                    <div class='descriptionDiv'>
+                                        {$row["Description"]}
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td width='50%' align='left'>
+                                    <div class='statsDiv'>
+                                        <h3><b>Характеристики:</b></h3>
+                                        <h3>Мотор - <i>V8 396HP</i></h3>
+                                        <h3>Диски - <i>15`</i></h3>
+                                        <h3>0-60 - <i>6.5s</i></h3>
+                                        <h3>Ціна - <i id='priceText'>30000</i></h3>
+                                    </div>
+                                    <button id='buyButton' class='buyButton'>Додати до вантажівки</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan='2' align='center'>
+
+
+
+                                    <table>
+                                        <tr>
+                                            <td>
+                                                <button id='leftBSlider' align='left'>&#60;</button>
+                                            </td>
+                                            <td>
+                                                <div id='slider'>
+                                                    <div id='line'>
+                                                        <img src='images/camaross1969.jpg' alt=''>
+                                                        <img src='images/camaross1969.jpg' alt=''>
+                                                        <img src='images/camaross1969.jpg' alt=''>
+                                                        <img src='images/camaross1969.jpg' alt=''>
+                                                        <img src='images/camaross1969.jpg' alt=''>
+                                                        <img src='images/camaross1969.jpg' alt=''>
+                                                        <img src='images/camaross1969.jpg' alt=''>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <button id="rightBSlider">&#62;</button>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </td>
-                        </tr>
-                    </table>
+                                            </td>
+                                            <td>
+                                                <button id='rightBSlider'>&#62;</button>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                        </table>
+                        ";
+                    ?>
                 </td>
             </tr> 
             <tr>
@@ -98,7 +122,7 @@
                         }
                         
                         //forming request
-                        $request = "SELECT positive, commentText, `date`, `user`.avatar FROM `comment` JOIN `user` ON UserID = `user`.`ID` JOIN `car` ON CarID = `car`.`ID` WHERE `user`.`login` = 'ctyurk15'";
+                        $request = "SELECT positive, commentText, `date`, `user`.avatar, `user`.login FROM `comment` JOIN `user` ON UserID = `user`.`ID` JOIN `car` ON CarID = `car`.`ID` WHERE car.Name = '{$_GET["carName"]}'";
                         $result = $conn->query($request);
                     
                         $commentsDisplayed = 0;
@@ -111,12 +135,14 @@
                                     <table>
                                         <tr>
                                             <td width='10%' rowspan='2'>
+                                                <h4 style='text-align: center; margin-top: 10px;'>".$row["login"]."</h4>
                                                 <img src='images/".$row['avatar']."'>
                                             </td>
                                             <td width='85%'>
                                                 <b>Коментар було залишено ".$row['date']."</b>
                                             </td>
                                             <td width='5%' rowspan='2' align='center'>
+                                                
                                                 <img src='images/".$commentImage."'>
                                             </td>
                                         </tr>
@@ -162,22 +188,48 @@
             </tr>       
         </table>
         <div id="optionsDiv" class="hidden">
-            
             <form method="post" action="phpScripts/addToTruckScript.php">
-                <h1>Опції</h1>
-                <h2 style="margin: 10px;">Колір:</h2>
-                <input type="button" name="carColor" id="redCC" class="radioColor">
-                <input type="button" name="carColor" id="greenCC" class="radioColor">
-                <input type="button" name="carColor" id="blueCC" class="radioColor">
-                <input type="button" name="carColor" id="blackCC" class="radioColor"><br>
-                <h2 style="margin: 10px;">Двигун:</h2>
-                <input type="button" value="426 HEMI" class="engineButton">
-                <input type="button" value="426 HEMI" class="engineButton">
-                <input type="button" value="426 HEMI" class="engineButton"><br>
-                <h2 style="margin: 10px;">Диски:</h2>
-                <input type="button" value="13" class="engineButton">
-                <input type="button" value="14" class="engineButton">
-                <input type="button" value="15" class="engineButton"><br>
+                <h1>Опції</h1><br>
+                <br><h3>Колір</h3><br>
+                <label class="container RC" style="color: red">Червоний
+                  <input type="radio" checked name="carcolor" value="red">
+                  <span class="checkmark"></span>
+                </label>
+                <label class="container GC" style="color: green">Зелений
+                  <input type="radio" name="carcolor" value="green">
+                  <span class="checkmark"></span>
+                </label>
+                <label class="container BC" style="color: blue">Синій
+                  <input type="radio" name="carcolor" value="blue">
+                  <span class="checkmark"></span>
+                </label>
+                <label class="container BlC" style="color: black">Чорний
+                  <input type="radio" name="carcolor" value="black">
+                  <span class="checkmark"></span>
+                </label>
+                <br><br><h3>Двигуни</h3><br>
+                <div class="radio-toolbar">
+                    <input type="radio" id="v8b" name="carengine" value="V8B" checked>
+                    <label for="v8b">V8 big</label>
+
+                    <input type="radio" id="v8" name="carengine" value="V8">
+                    <label for="v8">V8</label>
+
+                    <input type="radio" id="v6" name="carengine" value="V6">
+                    <label for="v6">V6</label> 
+                </div>
+                <br><br><h3>Диски</h3><br>
+                <div class="radio-toolbar">
+                    <input type="radio" id="15d" name="cardisk" value="15" checked>
+                    <label for="15d">15`</label>
+
+                    <input type="radio" id="16d" name="cardisk" value="16">
+                    <label for="16d">16`</label>
+
+                    <input type="radio" id="17d" name="cardisk" value="17">
+                    <label for="17d">17`</label> 
+                </div><br>
+                <h1>Загалом: <i>45000</i></h1>
                 <button onclick="location.replace('truck.html')" class="buyButton">Вибрати</button>
                 <input type="text" name="carname" class="formCarName" style="display: none" value="1">
             </form>

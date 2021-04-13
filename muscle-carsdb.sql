@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3307
--- Час створення: Квт 12 2021 р., 14:31
+-- Час створення: Квт 13 2021 р., 14:32
 -- Версія сервера: 10.1.44-MariaDB
 -- Версія PHP: 7.1.33
 
@@ -32,19 +32,20 @@ CREATE TABLE `car` (
   `name` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   `year` int(11) NOT NULL,
   `manufacturer` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `img` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
+  `img` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `Description` text COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Дамп даних таблиці `car`
 --
 
-INSERT INTO `car` (`ID`, `name`, `year`, `manufacturer`, `img`) VALUES
-(1, 'Camaro SS', 1969, 'Chevrolet', 'camaross1969.jpg'),
-(2, 'Mustang', 1969, 'Ford', 'mustang1969.jpg'),
-(3, 'Charger', 1969, 'Dodge', 'charger1969.jpg'),
-(4, 'Challenger', 1970, 'Dodge', 'challenger1970.jpg'),
-(5, 'Barracuda', 1971, 'Plymouth', 'barracuda1971.jpg');
+INSERT INTO `car` (`ID`, `name`, `year`, `manufacturer`, `img`, `Description`) VALUES
+(1, 'Camaro SS', 1969, 'Chevrolet', 'camaross1969.jpg', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit unde, excepturi tempora ipsum vero quae et corporis sit numquam ab cumque alias fugit, incidunt consequuntur! Voluptas voluptatem, sint, veniam, voluptate suscipit eos aliquam animi aspernatur voluptatibus molestiae vel impedit eius autem perspiciatis nisi! Odit fugit quaerat laboriosam maxime et quo quod molestias cum optio nemo maiores deleniti necessitatibus veniam ipsum totam, minus amet dolor iusto ut similique sit porro repudiandae. Optio corporis rerum autem provident cum veritatis beatae ipsa suscipit, quis. Fugiat totam distinctio, quidem earum esse nam? Sequi repellendus ipsa molestias aspernatur, veritatis, cumque aperiam iusto distinctio corporis voluptates?'),
+(2, 'Mustang', 1969, 'Ford', 'mustang1969.jpg', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit unde, excepturi tempora ipsum vero quae et corporis sit numquam ab cumque alias fugit, incidunt consequuntur! Voluptas voluptatem, sint, veniam, voluptate suscipit eos aliquam animi aspernatur voluptatibus molestiae vel impedit eius autem perspiciatis nisi! Odit fugit quaerat laboriosam maxime et quo quod molestias cum optio nemo maiores deleniti necessitatibus veniam ipsum totam, minus amet dolor iusto ut similique sit porro repudiandae. Optio corporis rerum autem provident cum veritatis beatae ipsa suscipit, quis. Fugiat totam distinctio, quidem earum esse nam? Sequi repellendus ipsa molestias aspernatur, veritatis, cumque aperiam iusto distinctio corporis voluptates?'),
+(3, 'Charger', 1969, 'Dodge', 'charger1969.jpg', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit unde, excepturi tempora ipsum vero quae et corporis sit numquam ab cumque alias fugit, incidunt consequuntur! Voluptas voluptatem, sint, veniam, voluptate suscipit eos aliquam animi aspernatur voluptatibus molestiae vel impedit eius autem perspiciatis nisi! Odit fugit quaerat laboriosam maxime et quo quod molestias cum optio nemo maiores deleniti necessitatibus veniam ipsum totam, minus amet dolor iusto ut similique sit porro repudiandae. Optio corporis rerum autem provident cum veritatis beatae ipsa suscipit, quis. Fugiat totam distinctio, quidem earum esse nam? Sequi repellendus ipsa molestias aspernatur, veritatis, cumque aperiam iusto distinctio corporis voluptates?'),
+(4, 'Challenger', 1970, 'Dodge', 'challenger1970.jpg', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit unde, excepturi tempora ipsum vero quae et corporis sit numquam ab cumque alias fugit, incidunt consequuntur! Voluptas voluptatem, sint, veniam, voluptate suscipit eos aliquam animi aspernatur voluptatibus molestiae vel impedit eius autem perspiciatis nisi! Odit fugit quaerat laboriosam maxime et quo quod molestias cum optio nemo maiores deleniti necessitatibus veniam ipsum totam, minus amet dolor iusto ut similique sit porro repudiandae. Optio corporis rerum autem provident cum veritatis beatae ipsa suscipit, quis. Fugiat totam distinctio, quidem earum esse nam? Sequi repellendus ipsa molestias aspernatur, veritatis, cumque aperiam iusto distinctio corporis voluptates?'),
+(5, 'Barracuda', 1971, 'Plymouth', 'barracuda1971.jpg', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit unde, excepturi tempora ipsum vero quae et corporis sit numquam ab cumque alias fugit, incidunt consequuntur! Voluptas voluptatem, sint, veniam, voluptate suscipit eos aliquam animi aspernatur voluptatibus molestiae vel impedit eius autem perspiciatis nisi! Odit fugit quaerat laboriosam maxime et quo quod molestias cum optio nemo maiores deleniti necessitatibus veniam ipsum totam, minus amet dolor iusto ut similique sit porro repudiandae. Optio corporis rerum autem provident cum veritatis beatae ipsa suscipit, quis. Fugiat totam distinctio, quidem earum esse nam? Sequi repellendus ipsa molestias aspernatur, veritatis, cumque aperiam iusto distinctio corporis voluptates?');
 
 -- --------------------------------------------------------
 
@@ -67,7 +68,31 @@ CREATE TABLE `comment` (
 
 INSERT INTO `comment` (`ID`, `positive`, `commentText`, `UserID`, `CarID`, `date`) VALUES
 (1, 1, 'First comment. I hope it would be successful.', 10, 1, '2021-04-12 11:25:17'),
-(2, 0, 'Negative comment', 10, 1, '2021-04-12 11:26:28');
+(6, 1, 'Rewrited comment', 11, 2, '2021-04-13 08:57:03');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблиці `gallery`
+--
+
+CREATE TABLE `gallery` (
+  `ID` int(11) NOT NULL,
+  `img1` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `img2` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `img3` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `img4` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `img5` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `img6` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `CarID` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп даних таблиці `gallery`
+--
+
+INSERT INTO `gallery` (`ID`, `img1`, `img2`, `img3`, `img4`, `img5`, `img6`, `CarID`) VALUES
+(1, 'camaross1969.jpg', 'camaross1969.jpg', 'camaross1969.jpg', 'camaross1969.jpg', 'camaross1969.jpg', 'camaross1969.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -82,17 +107,20 @@ CREATE TABLE `options` (
   `HP` int(11) NOT NULL,
   `Disk` float NOT NULL,
   `Quantity` tinyint(5) NOT NULL DEFAULT '0',
-  `Price` tinyint(10) NOT NULL,
-  `car_ID` int(11) NOT NULL,
-  `Selling` tinyint(1) DEFAULT NULL
+  `Price` int(11) NOT NULL,
+  `CarID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Дамп даних таблиці `options`
 --
 
-INSERT INTO `options` (`ID`, `Color`, `Engine`, `HP`, `Disk`, `Quantity`, `Price`, `car_ID`, `Selling`) VALUES
-(1, 'Black', '426 HEMI', 426, 15, 0, 0, 1, 0);
+INSERT INTO `options` (`ID`, `Color`, `Engine`, `HP`, `Disk`, `Quantity`, `Price`, `CarID`) VALUES
+(1, 'black', 'V8B', 426, 15, 10, 45000, 1),
+(3, 'blue', 'V8B', 426, 15, 10, 45000, 1),
+(4, 'blue', 'V8B', 426, 17, 10, 46000, 1),
+(5, 'red', 'V8', 396, 15, 10, 45000, 1),
+(6, 'red', 'V6', 396, 16, 10, 45500, 1);
 
 -- --------------------------------------------------------
 
@@ -102,21 +130,18 @@ INSERT INTO `options` (`ID`, `Color`, `Engine`, `HP`, `Disk`, `Quantity`, `Price
 
 CREATE TABLE `order` (
   `ID` int(11) NOT NULL,
-  `car_ID` int(11) NOT NULL,
-  `user_ID` int(11) NOT NULL,
-  `Count` tinyint(5) NOT NULL
+  `OptionID` int(11) NOT NULL,
+  `UserID` int(11) NOT NULL,
+  `Count` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Дамп даних таблиці `order`
 --
 
-INSERT INTO `order` (`ID`, `car_ID`, `user_ID`, `Count`) VALUES
-(1, 1, 10, 1),
-(2, 2, 10, 1),
-(3, 3, 10, 1),
-(4, 5, 10, 1),
-(5, 4, 10, 1);
+INSERT INTO `order` (`ID`, `OptionID`, `UserID`, `Count`) VALUES
+(1, 1, 11, 1),
+(2, 6, 11, 1);
 
 -- --------------------------------------------------------
 
@@ -163,19 +188,26 @@ ALTER TABLE `comment`
   ADD KEY `fk_comment_car1_idx` (`CarID`);
 
 --
+-- Індекси таблиці `gallery`
+--
+ALTER TABLE `gallery`
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `CarID` (`CarID`);
+
+--
 -- Індекси таблиці `options`
 --
 ALTER TABLE `options`
   ADD PRIMARY KEY (`ID`),
-  ADD KEY `fk_Options_car1_idx` (`car_ID`);
+  ADD KEY `fk_Options_car1_idx` (`CarID`);
 
 --
 -- Індекси таблиці `order`
 --
 ALTER TABLE `order`
   ADD PRIMARY KEY (`ID`),
-  ADD KEY `fk_order_car1_idx` (`car_ID`),
-  ADD KEY `fk_order_user1_idx` (`user_ID`);
+  ADD KEY `OptionID` (`OptionID`),
+  ADD KEY `UserID` (`UserID`);
 
 --
 -- Індекси таблиці `user`
@@ -197,19 +229,25 @@ ALTER TABLE `car`
 -- AUTO_INCREMENT для таблиці `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT для таблиці `gallery`
+--
+ALTER TABLE `gallery`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT для таблиці `options`
 --
 ALTER TABLE `options`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT для таблиці `order`
 --
 ALTER TABLE `order`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT для таблиці `user`
@@ -229,17 +267,23 @@ ALTER TABLE `comment`
   ADD CONSTRAINT `fk_comment_user` FOREIGN KEY (`UserID`) REFERENCES `user` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
+-- Обмеження зовнішнього ключа таблиці `gallery`
+--
+ALTER TABLE `gallery`
+  ADD CONSTRAINT `gallery_ibfk_1` FOREIGN KEY (`CarID`) REFERENCES `car` (`ID`);
+
+--
 -- Обмеження зовнішнього ключа таблиці `options`
 --
 ALTER TABLE `options`
-  ADD CONSTRAINT `fk_Options_car1` FOREIGN KEY (`car_ID`) REFERENCES `car` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `fk_Options_car1` FOREIGN KEY (`CarID`) REFERENCES `car` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Обмеження зовнішнього ключа таблиці `order`
 --
 ALTER TABLE `order`
-  ADD CONSTRAINT `fk_order_car1` FOREIGN KEY (`car_ID`) REFERENCES `car` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `fk_order_user1` FOREIGN KEY (`user_ID`) REFERENCES `user` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `order_ibfk_1` FOREIGN KEY (`OptionID`) REFERENCES `options` (`ID`),
+  ADD CONSTRAINT `order_ibfk_2` FOREIGN KEY (`UserID`) REFERENCES `user` (`ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
