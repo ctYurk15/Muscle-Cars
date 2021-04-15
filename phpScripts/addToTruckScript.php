@@ -51,6 +51,10 @@
 
         /**/
     }
+    else
+    {
+        echo "<script>location.replace('../login.html')</script>";
+    }   
 
     //INSERT INTO options(Color, `Engine`, HP, Disk, Quantity, Price, car_ID) VALUES("Red", "V8", 396, 15, 10, 45000, 1);
 ?>

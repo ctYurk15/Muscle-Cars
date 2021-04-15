@@ -48,7 +48,7 @@
                                 exit();
                             }
                             
-                            $request = "SELECT car.name, car.year, car.manufacturer, car.img, `options`.HP, `options`.disk, `options`.Color, `options`.price,                   `order`.Count
+                            $request = "SELECT car.name, car.year, car.manufacturer, car.img, `options`.HP, `options`.disk, `options`.Color, `options`.price,                   `order`.Count, `order`.ID AS orderID
                                         FROM `order` 
                                         JOIN `options` ON `options`.ID = OptionID 
                                         JOIN car ON car.ID = `options`.CarID
@@ -70,7 +70,7 @@
                                                     <h3>{$row["manufacturer"]} {$row["name"]} {$row["year"]}</h3>
                                                 </td>
                                                 <td width='25%' align='center'>
-                                                    $<i>{$row["price"]}</i>
+                                                    $<i id='priceText{$goodsCount}' name='priceText'>{$row["price"]}</i>
                                                 </td>
                                             </tr>
                                             <tr align='center'>
@@ -78,9 +78,11 @@
                                                 <td>{$row["disk"]}`</td>
                                                 <td>{$row["Color"]}</td>
                                                 <td>
-                                                    <button class='countButton'>+</button>
-                                                    <i>{$row["Count"]}</i>
-                                                    <button class='countButton''>-</button>
+                                                    <form method='post' action='phpScripts/truckScript.php'>
+                                                        <button class='countButton' onclick='updateSumPrice()' value='{$row["orderID"]},+' name='action'>+</button>
+                                                        <i id='count{$goodsCount}'>{$row["Count"]}</i>
+                                                        <button class='countButton' onclick='updateSumPrice()' value='{$row["orderID"]},-' name='action'>-</button>
+                                                    </form>
                                                 </td>
                                             </tr>
                                         </table>
@@ -88,11 +90,14 @@
                                 ";
                                 $goodsCount++;
                             }
-                            echo "</div>";
+                            echo "                    
+                                <h3 style='text-align: right; margin: 20px;' id='sumPrice'>Загалом: 90000$</h3> 
+                            </div>";
                             if($goodsCount == 0) echo "<h3>Наразі вантажівка пуста</h3>";
                             $conn->close(); //closing connection
                         ?>
-                    
+                   
+
                 </td>
             </tr> 
             <tr>
@@ -111,6 +116,7 @@
         </table>
         <script src="scripts/jquery.min.js"></script>
         <script src="scripts/main.js"></script>
+        <script src="scripts/truck.js"></script>
     </body>
     
 </html>

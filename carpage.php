@@ -36,11 +36,26 @@
                             exit();
                         }
                         
-                        //forming request
-                        $request = "SELECT * FROM car WHERE Name = '{$_GET["carName"]}'";
+                        //forming request about main info
+                        $request = "SELECT * FROM car 
+                                    INNER JOIN gallery ON car.ID = gallery.CarID
+                                    WHERE Name = '{$_GET["carName"]}'";
                         $result = $conn->query($request);
+                        $row = $result->fetch_array(); 
                     
-                        $row = $result->fetch_array();
+                        //forming request about options
+                        $requestOpt = "SELECT Engine, HP, options.Disk AS disk, Price FROM options 
+                                    INNER JOIN car ON car.ID = options.CarID
+                                    WHERE car.Name = '{$_GET["carName"]}'";
+                        $resultOpt = $conn->query($requestOpt);
+                    
+                        $enginesInfo = ""; $disksInfo = ""; $pricesInfo = "";
+                        while($rowOpt = $resultOpt->fetch_array())
+                        {
+                            $enginesInfo .= "{$rowOpt["Engine"]} {$rowOpt["HP"]}HP ";
+                            $disksInfo .= "{$rowOpt["disk"]} ` ";
+                            $pricesInfo .= "{$rowOpt["Price"]} ";
+                        }
                     
                         echo "
                         <h1 id='labelText'></h1>
@@ -56,13 +71,13 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td width='50%' align='left'>
+                                <td width='100%' align='left' colspan='2'>
                                     <div class='statsDiv'>
                                         <h3><b>Характеристики:</b></h3>
-                                        <h3>Мотор - <i>V8 396HP</i></h3>
-                                        <h3>Диски - <i>15`</i></h3>
+                                        <h3>Доступні мотори - <i>{$enginesInfo}</i></h3>
+                                        <h3>Доступні диски - <i>{$disksInfo}</i></h3>
                                         <h3>0-60 - <i>6.5s</i></h3>
-                                        <h3>Ціна - <i id='priceText'>30000</i></h3>
+                                        <h3>Ціни - <i id='priceText'>{$pricesInfo}</i></h3>
                                     </div>
                                     <button id='buyButton' class='buyButton'>Додати до вантажівки</button>
                                 </td>
@@ -80,13 +95,13 @@
                                             <td>
                                                 <div id='slider'>
                                                     <div id='line'>
-                                                        <img src='images/camaross1969.jpg' alt=''>
-                                                        <img src='images/camaross1969.jpg' alt=''>
-                                                        <img src='images/camaross1969.jpg' alt=''>
-                                                        <img src='images/camaross1969.jpg' alt=''>
-                                                        <img src='images/camaross1969.jpg' alt=''>
-                                                        <img src='images/camaross1969.jpg' alt=''>
-                                                        <img src='images/camaross1969.jpg' alt=''>
+                                                        <img src='images/{$row["img1"]}' alt=''>
+                                                        <img src='images/{$row["img2"]}' alt=''>
+                                                        <img src='images/{$row["img3"]}' alt=''>
+                                                        <img src='images/{$row["img4"]}' alt=''>
+                                                        <img src='images/{$row["img5"]}' alt=''>
+                                                        <img src='images/{$row["img6"]}' alt=''>
+                                                        <img src='images/{$row["img7"]}' alt=''>
                                                     </div>
                                                 </div>
                                             </td>
@@ -165,7 +180,7 @@
                     <div id="leaveCommentDiv">
                         <form method="post" action = "phpScripts/addCommentScript.php">
                             <h2 style="margin: 20px;"><i>Залишіть свій відгук</i></h2>
-                            <textarea id="" cols="30" rows="10" name="commentText"></textarea>
+                            <textarea id="" cols="30" rows="10" name="commentText"></textarea><br>
                             <input type="radio" name="positiveComment" id="goodOption" checked value="1"><label for="goodOption">Добре</label>
                             <input type="radio" name="positiveComment" id="badOption" value="0"><label for="badOption">Погано</label><br>
                             <button>Залишити відгук</button>
