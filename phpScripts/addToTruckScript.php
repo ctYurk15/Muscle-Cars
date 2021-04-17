@@ -37,9 +37,25 @@
         
         if($count != 0) //it there is options with needed parameters
         {
-            $request = "INSERT INTO `order`(OptionID, UserID, Count) VALUES({$optionsInfo['ID']}, $user_id, 1);";
+            //is there already this order
+            
+            $getOrderCountRequest = "SELECT COUNT(*) AS c, ID FROM `order` WHERE OptionID = {$optionsInfo['ID']} AND UserID = {$user_id}"; 
+            $ordersInfo = $conn->query($getOrderCountRequest)->fetch_array();
+            $countOrders = $ordersInfo['c'];
+            
+            $request = "";
+            if($countOrders == 0) //creating new order
+            {
+                $request = "INSERT INTO `order`(OptionID, UserID, Count) VALUES({$optionsInfo['ID']}, $user_id, 1);";
+            }
+            else //increasing existing
+            {
+                $request = "UPDATE `order` SET Count = Count+1 WHERE ID={$ordersInfo['ID']}";
+            }
+            
+            
             $conn->query($request);
-            //echo $request;
+            //echo $ordersInfo['ID']." ".$countOrders;
             echo "Success. Redirecting to truck page. <script>location.replace('../truck.php')</script>";
         }
         else

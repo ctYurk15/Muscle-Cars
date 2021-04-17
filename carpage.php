@@ -64,23 +64,15 @@
                                 <td width='50%' rowspan='2'>
                                     <img src='images/{$row["img"]}' class='mainImg'>
                                 </td>
-                                <td width='50%''>
+                                <td width='50%' rowspan='2'>
                                     <div class='descriptionDiv'>
                                         {$row["Description"]}
                                     </div>
+                                    <button id='buyButton' class='buyButton'>Додати до вантажівки</button>
                                 </td>
                             </tr>
                             <tr>
-                                <td width='100%' align='left' colspan='2'>
-                                    <div class='statsDiv'>
-                                        <h3><b>Характеристики:</b></h3>
-                                        <h3>Доступні мотори - <i>{$enginesInfo}</i></h3>
-                                        <h3>Доступні диски - <i>{$disksInfo}</i></h3>
-                                        <h3>0-60 - <i>6.5s</i></h3>
-                                        <h3>Ціни - <i id='priceText'>{$pricesInfo}</i></h3>
-                                    </div>
-                                    <button id='buyButton' class='buyButton'>Додати до вантажівки</button>
-                                </td>
+                                
                             </tr>
                             <tr>
                                 <td colspan='2' align='center'>

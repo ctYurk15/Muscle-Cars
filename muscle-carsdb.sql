@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3307
--- Час створення: Квт 13 2021 р., 14:32
+-- Час створення: Квт 17 2021 р., 13:56
 -- Версія сервера: 10.1.44-MariaDB
 -- Версія PHP: 7.1.33
 
@@ -31,21 +31,26 @@ CREATE TABLE `car` (
   `ID` int(11) NOT NULL,
   `name` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   `year` int(11) NOT NULL,
-  `manufacturer` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   `img` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `Description` text COLLATE utf8mb4_unicode_ci NOT NULL
+  `Description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ManufacturerID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Дамп даних таблиці `car`
 --
 
-INSERT INTO `car` (`ID`, `name`, `year`, `manufacturer`, `img`, `Description`) VALUES
-(1, 'Camaro SS', 1969, 'Chevrolet', 'camaross1969.jpg', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit unde, excepturi tempora ipsum vero quae et corporis sit numquam ab cumque alias fugit, incidunt consequuntur! Voluptas voluptatem, sint, veniam, voluptate suscipit eos aliquam animi aspernatur voluptatibus molestiae vel impedit eius autem perspiciatis nisi! Odit fugit quaerat laboriosam maxime et quo quod molestias cum optio nemo maiores deleniti necessitatibus veniam ipsum totam, minus amet dolor iusto ut similique sit porro repudiandae. Optio corporis rerum autem provident cum veritatis beatae ipsa suscipit, quis. Fugiat totam distinctio, quidem earum esse nam? Sequi repellendus ipsa molestias aspernatur, veritatis, cumque aperiam iusto distinctio corporis voluptates?'),
-(2, 'Mustang', 1969, 'Ford', 'mustang1969.jpg', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit unde, excepturi tempora ipsum vero quae et corporis sit numquam ab cumque alias fugit, incidunt consequuntur! Voluptas voluptatem, sint, veniam, voluptate suscipit eos aliquam animi aspernatur voluptatibus molestiae vel impedit eius autem perspiciatis nisi! Odit fugit quaerat laboriosam maxime et quo quod molestias cum optio nemo maiores deleniti necessitatibus veniam ipsum totam, minus amet dolor iusto ut similique sit porro repudiandae. Optio corporis rerum autem provident cum veritatis beatae ipsa suscipit, quis. Fugiat totam distinctio, quidem earum esse nam? Sequi repellendus ipsa molestias aspernatur, veritatis, cumque aperiam iusto distinctio corporis voluptates?'),
-(3, 'Charger', 1969, 'Dodge', 'charger1969.jpg', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit unde, excepturi tempora ipsum vero quae et corporis sit numquam ab cumque alias fugit, incidunt consequuntur! Voluptas voluptatem, sint, veniam, voluptate suscipit eos aliquam animi aspernatur voluptatibus molestiae vel impedit eius autem perspiciatis nisi! Odit fugit quaerat laboriosam maxime et quo quod molestias cum optio nemo maiores deleniti necessitatibus veniam ipsum totam, minus amet dolor iusto ut similique sit porro repudiandae. Optio corporis rerum autem provident cum veritatis beatae ipsa suscipit, quis. Fugiat totam distinctio, quidem earum esse nam? Sequi repellendus ipsa molestias aspernatur, veritatis, cumque aperiam iusto distinctio corporis voluptates?'),
-(4, 'Challenger', 1970, 'Dodge', 'challenger1970.jpg', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit unde, excepturi tempora ipsum vero quae et corporis sit numquam ab cumque alias fugit, incidunt consequuntur! Voluptas voluptatem, sint, veniam, voluptate suscipit eos aliquam animi aspernatur voluptatibus molestiae vel impedit eius autem perspiciatis nisi! Odit fugit quaerat laboriosam maxime et quo quod molestias cum optio nemo maiores deleniti necessitatibus veniam ipsum totam, minus amet dolor iusto ut similique sit porro repudiandae. Optio corporis rerum autem provident cum veritatis beatae ipsa suscipit, quis. Fugiat totam distinctio, quidem earum esse nam? Sequi repellendus ipsa molestias aspernatur, veritatis, cumque aperiam iusto distinctio corporis voluptates?'),
-(5, 'Barracuda', 1971, 'Plymouth', 'barracuda1971.jpg', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit unde, excepturi tempora ipsum vero quae et corporis sit numquam ab cumque alias fugit, incidunt consequuntur! Voluptas voluptatem, sint, veniam, voluptate suscipit eos aliquam animi aspernatur voluptatibus molestiae vel impedit eius autem perspiciatis nisi! Odit fugit quaerat laboriosam maxime et quo quod molestias cum optio nemo maiores deleniti necessitatibus veniam ipsum totam, minus amet dolor iusto ut similique sit porro repudiandae. Optio corporis rerum autem provident cum veritatis beatae ipsa suscipit, quis. Fugiat totam distinctio, quidem earum esse nam? Sequi repellendus ipsa molestias aspernatur, veritatis, cumque aperiam iusto distinctio corporis voluptates?');
+INSERT INTO `car` (`ID`, `name`, `year`, `img`, `Description`, `ManufacturerID`) VALUES
+(1, 'Camaro SS', 1969, 'camaross1969.jpg', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit unde, excepturi tempora ipsum vero quae et corporis sit numquam ab cumque alias fugit, incidunt consequuntur! Voluptas voluptatem, sint, veniam, voluptate suscipit eos aliquam animi aspernatur voluptatibus molestiae vel impedit eius autem perspiciatis nisi! Odit fugit quaerat laboriosam maxime et quo quod molestias cum optio nemo maiores deleniti necessitatibus veniam ipsum totam, minus amet dolor iusto ut similique sit porro repudiandae. Optio corporis rerum autem provident cum veritatis beatae ipsa suscipit, quis. Fugiat totam distinctio, quidem earum esse nam? Sequi repellendus ipsa molestias aspernatur, veritatis, cumque aperiam iusto distinctio corporis voluptates?', 1),
+(2, 'Mustang', 1969, 'mustang1969.jpg', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit unde, excepturi tempora ipsum vero quae et corporis sit numquam ab cumque alias fugit, incidunt consequuntur! Voluptas voluptatem, sint, veniam, voluptate suscipit eos aliquam animi aspernatur voluptatibus molestiae vel impedit eius autem perspiciatis nisi! Odit fugit quaerat laboriosam maxime et quo quod molestias cum optio nemo maiores deleniti necessitatibus veniam ipsum totam, minus amet dolor iusto ut similique sit porro repudiandae. Optio corporis rerum autem provident cum veritatis beatae ipsa suscipit, quis. Fugiat totam distinctio, quidem earum esse nam? Sequi repellendus ipsa molestias aspernatur, veritatis, cumque aperiam iusto distinctio corporis voluptates?', 2),
+(3, 'Charger', 1969, 'charger1969.jpg', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit unde, excepturi tempora ipsum vero quae et corporis sit numquam ab cumque alias fugit, incidunt consequuntur! Voluptas voluptatem, sint, veniam, voluptate suscipit eos aliquam animi aspernatur voluptatibus molestiae vel impedit eius autem perspiciatis nisi! Odit fugit quaerat laboriosam maxime et quo quod molestias cum optio nemo maiores deleniti necessitatibus veniam ipsum totam, minus amet dolor iusto ut similique sit porro repudiandae. Optio corporis rerum autem provident cum veritatis beatae ipsa suscipit, quis. Fugiat totam distinctio, quidem earum esse nam? Sequi repellendus ipsa molestias aspernatur, veritatis, cumque aperiam iusto distinctio corporis voluptates?', 3),
+(4, 'Challenger', 1972, 'challenger1970.jpg', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit unde, excepturi tempora ipsum vero quae et corporis sit numquam ab cumque alias fugit, incidunt consequuntur! Voluptas voluptatem, sint, veniam, voluptate suscipit eos aliquam animi aspernatur voluptatibus molestiae vel impedit eius autem perspiciatis nisi! Odit fugit quaerat laboriosam maxime et quo quod molestias cum optio nemo maiores deleniti necessitatibus veniam ipsum totam, minus amet dolor iusto ut similique sit porro repudiandae. Optio corporis rerum autem provident cum veritatis beatae ipsa suscipit, quis. Fugiat totam distinctio, quidem earum esse nam? Sequi repellendus ipsa molestias aspernatur, veritatis, cumque aperiam iusto distinctio corporis voluptates?', 3),
+(5, 'Barracuda', 1971, 'barracuda1971.jpg', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit unde, excepturi tempora ipsum vero quae et corporis sit numquam ab cumque alias fugit, incidunt consequuntur! Voluptas voluptatem, sint, veniam, voluptate suscipit eos aliquam animi aspernatur voluptatibus molestiae vel impedit eius autem perspiciatis nisi! Odit fugit quaerat laboriosam maxime et quo quod molestias cum optio nemo maiores deleniti necessitatibus veniam ipsum totam, minus amet dolor iusto ut similique sit porro repudiandae. Optio corporis rerum autem provident cum veritatis beatae ipsa suscipit, quis. Fugiat totam distinctio, quidem earum esse nam? Sequi repellendus ipsa molestias aspernatur, veritatis, cumque aperiam iusto distinctio corporis voluptates?', 4),
+(6, 'Charger Daytona', 1969, 'chargerdaytona1969.jpg', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit unde, excepturi tempora ipsum vero quae et corporis sit numquam ab cumque alias fugit, incidunt consequuntur! Voluptas voluptatem, sint, veniam, voluptate suscipit eos aliquam animi aspernatur voluptatibus molestiae vel impedit eius autem perspiciatis nisi! Odit fugit quaerat laboriosam maxime et quo quod molestias cum optio nemo maiores deleniti necessitatibus veniam ipsum totam, minus amet dolor iusto ut similique sit porro repudiandae. Optio corporis rerum autem provident cum veritatis beatae ipsa suscipit, quis. Fugiat totam distinctio, quidem earum esse nam? Sequi repellendus ipsa molestias aspernatur, veritatis, cumque aperiam iusto distinctio corporis voluptates?', 3),
+(7, 'Firebird', 1968, 'firebird1968.jpg', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit unde, excepturi tempora ipsum vero quae et corporis sit numquam ab cumque alias fugit, incidunt consequuntur! Voluptas voluptatem, sint, veniam, voluptate suscipit eos aliquam animi aspernatur voluptatibus molestiae vel impedit eius autem perspiciatis nisi! Odit fugit quaerat laboriosam maxime et quo quod molestias cum optio nemo maiores deleniti necessitatibus veniam ipsum totam, minus amet dolor iusto ut similique sit porro repudiandae. Optio corporis rerum autem provident cum veritatis beatae ipsa suscipit, quis. Fugiat totam distinctio, quidem earum esse nam? Sequi repellendus ipsa molestias aspernatur, veritatis, cumque aperiam iusto distinctio corporis voluptates?', 5),
+(8, 'Rebel Machine', 1970, 'rebelmachine1970.jpg', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit unde, excepturi tempora ipsum vero quae et corporis sit numquam ab cumque alias fugit, incidunt consequuntur! Voluptas voluptatem, sint, veniam, voluptate suscipit eos aliquam animi aspernatur voluptatibus molestiae vel impedit eius autem perspiciatis nisi! Odit fugit quaerat laboriosam maxime et quo quod molestias cum optio nemo maiores deleniti necessitatibus veniam ipsum totam, minus amet dolor iusto ut similique sit porro repudiandae. Optio corporis rerum autem provident cum veritatis beatae ipsa suscipit, quis. Fugiat totam distinctio, quidem earum esse nam? Sequi repellendus ipsa molestias aspernatur, veritatis, cumque aperiam iusto distinctio corporis voluptates?', 6),
+(9, 'Impala SS', 1967, 'impalass1967.jpg', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit unde, excepturi tempora ipsum vero quae et corporis sit numquam ab cumque alias fugit, incidunt consequuntur! Voluptas voluptatem, sint, veniam, voluptate suscipit eos aliquam animi aspernatur voluptatibus molestiae vel impedit eius autem perspiciatis nisi! Odit fugit quaerat laboriosam maxime et quo quod molestias cum optio nemo maiores deleniti necessitatibus veniam ipsum totam, minus amet dolor iusto ut similique sit porro repudiandae. Optio corporis rerum autem provident cum veritatis beatae ipsa suscipit, quis. Fugiat totam distinctio, quidem earum esse nam? Sequi repellendus ipsa molestias aspernatur, veritatis, cumque aperiam iusto distinctio corporis voluptates?', 1),
+(10, 'Roadrunner', 1969, 'roadrunner1969.jpg', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit unde, excepturi tempora ipsum vero quae et corporis sit numquam ab cumque alias fugit, incidunt consequuntur! Voluptas voluptatem, sint, veniam, voluptate suscipit eos aliquam animi aspernatur voluptatibus molestiae vel impedit eius autem perspiciatis nisi! Odit fugit quaerat laboriosam maxime et quo quod molestias cum optio nemo maiores deleniti necessitatibus veniam ipsum totam, minus amet dolor iusto ut similique sit porro repudiandae. Optio corporis rerum autem provident cum veritatis beatae ipsa suscipit, quis. Fugiat totam distinctio, quidem earum esse nam? Sequi repellendus ipsa molestias aspernatur, veritatis, cumque aperiam iusto distinctio corporis voluptates?', 4);
 
 -- --------------------------------------------------------
 
@@ -84,15 +89,48 @@ CREATE TABLE `gallery` (
   `img4` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   `img5` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
   `img6` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `CarID` int(11) NOT NULL
+  `CarID` int(11) NOT NULL,
+  `img7` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Дамп даних таблиці `gallery`
 --
 
-INSERT INTO `gallery` (`ID`, `img1`, `img2`, `img3`, `img4`, `img5`, `img6`, `CarID`) VALUES
-(1, 'camaross1969.jpg', 'camaross1969.jpg', 'camaross1969.jpg', 'camaross1969.jpg', 'camaross1969.jpg', 'camaross1969.jpg', 1);
+INSERT INTO `gallery` (`ID`, `img1`, `img2`, `img3`, `img4`, `img5`, `img6`, `CarID`, `img7`) VALUES
+(1, 'camaross1969.jpg', 'camaross1969.jpg', 'camaross1969.jpg', 'camaross1969.jpg', 'camaross1969.jpg', 'camaross1969.jpg', 1, 'camaross1969.jpg'),
+(2, 'mustang1969.jpg', 'mustang1969.jpg', 'mustang1969.jpg', 'mustang1969.jpg', 'mustang1969.jpg', 'mustang1969.jpg', 2, 'mustang1969.jpg'),
+(3, 'charger1969.jpg', 'charger1969.jpg', 'charger1969.jpg', 'charger1969.jpg', 'charger1969.jpg', 'charger1969.jpg', 3, 'charger1969.jpg'),
+(4, 'challenger1970.jpg', 'challenger1970.jpg', 'challenger1970.jpg', 'challenger1970.jpg', 'challenger1970.jpg', 'challenger1970.jpg', 4, 'challenger1970.jpg'),
+(5, 'barracuda1971.jpg', 'barracuda1971.jpg', 'barracuda1971.jpg', 'barracuda1971.jpg', 'barracuda1971.jpg', 'barracuda1971.jpg', 5, 'barracuda1971.jpg'),
+(6, 'chargerdaytona1969.jpg', 'chargerdaytona1969.jpg', 'chargerdaytona1969.jpg', 'chargerdaytona1969.jpg', 'chargerdaytona1969.jpg', 'chargerdaytona1969.jpg', 6, 'chargerdaytona1969.jpg'),
+(7, 'firebird1968.jpg', 'firebird1968.jpg', 'firebird1968.jpg', 'firebird1968.jpg', 'firebird1968.jpg', 'firebird1968.jpg', 7, 'firebird1968.jpg'),
+(8, 'rebelmachine1970.jpg', 'rebelmachine1970.jpg', 'rebelmachine1970.jpg', 'rebelmachine1970.jpg', 'rebelmachine1970.jpg', 'rebelmachine1970.jpg', 8, 'rebelmachine1970.jpg'),
+(9, 'impalass1967.jpg', 'impalass1967.jpg', 'impalass1967.jpg', 'impalass1967.jpg', 'impalass1967.jpg', 'impalass1967.jpg', 9, 'impalass1967.jpg'),
+(10, 'roadrunner1969.jpg', 'roadrunner1969.jpg', 'roadrunner1969.jpg', 'roadrunner1969.jpg', 'roadrunner1969.jpg', 'roadrunner1969.jpg', 10, 'roadrunner1969.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Структура таблиці `manufacturer`
+--
+
+CREATE TABLE `manufacturer` (
+  `ID` int(11) NOT NULL,
+  `Name` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп даних таблиці `manufacturer`
+--
+
+INSERT INTO `manufacturer` (`ID`, `Name`) VALUES
+(1, 'Chevrolet'),
+(2, 'Ford'),
+(3, 'Dodge'),
+(4, 'Plymouth'),
+(5, 'Pontiac'),
+(6, 'AMC');
 
 -- --------------------------------------------------------
 
@@ -119,8 +157,29 @@ INSERT INTO `options` (`ID`, `Color`, `Engine`, `HP`, `Disk`, `Quantity`, `Price
 (1, 'black', 'V8B', 426, 15, 10, 45000, 1),
 (3, 'blue', 'V8B', 426, 15, 10, 45000, 1),
 (4, 'blue', 'V8B', 426, 17, 10, 46000, 1),
-(5, 'red', 'V8', 396, 15, 10, 45000, 1),
-(6, 'red', 'V6', 396, 16, 10, 45500, 1);
+(5, 'red', 'V8', 396, 15, 10, 40000, 1),
+(6, 'red', 'V6', 240, 16, 10, 35500, 1),
+(7, 'red', 'V6', 120, 15, 10, 25000, 2),
+(8, 'blue', 'V8B', 375, 16, 10, 30000, 2),
+(9, 'red', 'V8', 335, 16, 10, 35500, 2),
+(10, 'green', 'V6', 145, 15, 10, 28000, 3),
+(11, 'red', 'V8', 290, 15, 10, 35000, 3),
+(12, 'black', 'V8B', 425, 15, 10, 46500, 3),
+(13, 'red', 'V6', 125, 15, 10, 29500, 4),
+(14, 'red', 'V8', 300, 16, 10, 36000, 4),
+(15, 'green', 'V8B', 390, 16, 10, 48000, 4),
+(16, 'blue', 'V6', 125, 15, 10, 20000, 5),
+(17, 'blue', 'V8', 216, 15, 10, 35000, 5),
+(18, 'blue', 'V8', 380, 15, 10, 39000, 5),
+(19, 'black', 'V8B', 425, 15, 10, 50000, 6),
+(20, 'blue', 'V6', 165, 15, 10, 18000, 7),
+(21, 'black', 'V8', 325, 15, 10, 34000, 7),
+(22, 'red', 'V8', 325, 16, 10, 35000, 7),
+(23, 'green', 'V8', 146, 16, 10, 19000, 8),
+(24, 'blue', 'V8', 284, 15, 10, 31000, 8),
+(25, 'blue', 'V8', 319, 15, 10, 33700, 8),
+(26, 'green', 'V8И', 425, 15, 10, 46500, 9),
+(27, 'red', 'V8', 335, 15, 10, 32000, 10);
 
 -- --------------------------------------------------------
 
@@ -140,8 +199,7 @@ CREATE TABLE `order` (
 --
 
 INSERT INTO `order` (`ID`, `OptionID`, `UserID`, `Count`) VALUES
-(1, 1, 11, 1),
-(2, 6, 11, 1);
+(3, 1, 11, 1);
 
 -- --------------------------------------------------------
 
@@ -177,7 +235,8 @@ INSERT INTO `user` (`ID`, `login`, `name`, `email`, `address`, `avatar`, `orders
 -- Індекси таблиці `car`
 --
 ALTER TABLE `car`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`ID`),
+  ADD KEY `ManufacturerID` (`ManufacturerID`);
 
 --
 -- Індекси таблиці `comment`
@@ -193,6 +252,12 @@ ALTER TABLE `comment`
 ALTER TABLE `gallery`
   ADD PRIMARY KEY (`ID`),
   ADD KEY `CarID` (`CarID`);
+
+--
+-- Індекси таблиці `manufacturer`
+--
+ALTER TABLE `manufacturer`
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Індекси таблиці `options`
@@ -223,7 +288,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT для таблиці `car`
 --
 ALTER TABLE `car`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT для таблиці `comment`
@@ -235,19 +300,25 @@ ALTER TABLE `comment`
 -- AUTO_INCREMENT для таблиці `gallery`
 --
 ALTER TABLE `gallery`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT для таблиці `manufacturer`
+--
+ALTER TABLE `manufacturer`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT для таблиці `options`
 --
 ALTER TABLE `options`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT для таблиці `order`
 --
 ALTER TABLE `order`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT для таблиці `user`
@@ -258,6 +329,12 @@ ALTER TABLE `user`
 --
 -- Обмеження зовнішнього ключа збережених таблиць
 --
+
+--
+-- Обмеження зовнішнього ключа таблиці `car`
+--
+ALTER TABLE `car`
+  ADD CONSTRAINT `car_ibfk_1` FOREIGN KEY (`ManufacturerID`) REFERENCES `manufacturer` (`ID`);
 
 --
 -- Обмеження зовнішнього ключа таблиці `comment`

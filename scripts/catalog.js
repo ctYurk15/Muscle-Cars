@@ -1,6 +1,6 @@
 $(document).ready(function(){
     
-    $(".car-container button").on("click", function(){
+    $(".car-block button").on("click", function(){
         var carName = $(this).parent().find("h1").text();
         
         $("#carInfoBlock").removeClass("hidden");
@@ -23,5 +23,5 @@ $(document).ready(function(){
         var carName = $(this).siblings("h1").text();
         window.location = "carpage.php?carName="+carName;
     })
-    
 });
+

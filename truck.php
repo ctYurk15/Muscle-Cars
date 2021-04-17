@@ -90,9 +90,8 @@
                                 ";
                                 $goodsCount++;
                             }
-                            echo "                    
-                                <h3 style='text-align: right; margin: 20px;' id='sumPrice'>Загалом: 90000$</h3> 
-                            </div>";
+                            if($goodsCount != 0) echo "<h3 style='text-align: right; margin: 20px;' id='sumPrice'>Загалом: 90000$</h3>"; 
+                            echo "</div>";
                             if($goodsCount == 0) echo "<h3>Наразі вантажівка пуста</h3>";
                             $conn->close(); //closing connection
                         ?>

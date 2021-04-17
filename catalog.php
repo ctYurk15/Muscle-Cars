@@ -1,3 +1,18 @@
+<?php
+    //variables using for connection to db
+    $servername = "localhost";
+    $database = "muscle-carsdb";
+    $username = "root";
+    $password = "root";
+
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $database);
+    if ($mysqli->connect_errno) 
+    {
+        printf("Failed to connect to: %s\n", $mysqli->connect_error);
+        exit();
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
    
@@ -26,8 +41,8 @@
                         <div id="filtersDiv">
                             <form>
                                 <h3>Ціна:</h3>
-                                <label for="minPrice">Від: </label><input type="text" value="0" name="price" id="minPrice" size="7">
-                                <label for="maxPrice">До: </label><input type="text" value="0" name="price" id="maxPrice" size="7">
+                                <label for="minPrice">Від: </label><input type="text" value="0" id="minPrice" size="7">
+                                <label for="maxPrice">До: </label><input type="text" value="0" id="maxPrice" size="7">
                                 <br><br>
                                 <h3>Диски(у дюймах):</h3>
                                 <label for="minWS">Від: </label><input type="text" value="0" id="minWS" size="7">
@@ -38,18 +53,24 @@
                                 <label for="maxHP">До: </label><input type="text" value="0" id="maxHP" size="7">
                                 <br><br>
                                 <h3>Виробник: </h3>
-                                <input type="checkbox" id="Chevrolet"><lable for="Chevrolet">Chevrolet</lable><br>
-                                <input type="checkbox" id="Mustang"><lable for="Mustang">Mustang</lable><br>
-                                <input type="checkbox" id="Dodge"><lable for="Dodge">Dodge</lable><br>
-                                <input type="checkbox" id="Plymouth"><lable for="Plymouth">Plymouth</lable>
+                                <?php
+                                    $result = $conn->query("SELECT Name FROM manufacturer"); //making request
+                                    while($row = $result->fetch_array())
+                                    {
+                                        $manufacturerName = $row['Name']; //getting manufacturer name
+                                        echo "<input type='checkbox' id='$manufacturerName'><lable for='$manufacturerName'>$manufacturerName</lable><br>";
+                                    }
+                                ?>
                                 <br><br>
                                 <h3>Сортувати за: </h3>
-                                <select>
-                                    <option>Зростанням ціни</option>
-                                    <option>Спаданням ціни</option>
-                                    <option>Роком виходу</option>
-                                    <option>Алфавітним порядком</option>
-                                    <option>Потужністю двигуна</option>
+                                <select name="sorting" id="sortingSelect">
+                                    <option name="sortingOptions" value='price ASC' disabled>Зростанням ціни</option>
+                                    <option name="sortingOptions" value='price DESC' disabled>Спаданням ціни</option>
+                                    <option name="sortingOptions" value="year DESC">Від новіших до старіших</option>
+                                    <option name="sortingOptions" value="year ASC">Від старіших до новіших</option>
+                                    <option name="sortingOptions" value="name">Алфавітним порядком</option>
+                                    <option name="sortingOptions" value="engine ASC" disabled>Від потужнішого до слабшого двигуна</option>
+                                    <option name="sortingOptions" value="engine DESC" disabled>Від слабшого до потужнішого двигуна</option>
                                 </select>
                                 <br><br>
                                 <button>Застосувати</button>
@@ -57,25 +78,56 @@
                         </div>
                     </div>
                     <?php
-                        //variables using for connection to db
-                        $servername = "localhost";
-                        $database = "muscle-carsdb";
-                        $username = "root";
-                        $password = "root";
-
-                        // Create connection
-                        $conn = new mysqli($servername, $username, $password, $database);
-                        if ($mysqli->connect_errno) 
+                        
+                    
+                        //getting sorting type
+                        $sorting = " ";
+                        if(isset($_GET['sorting']))
                         {
-                            printf("Failed to connect to: %s\n", $mysqli->connect_error);
-                            exit();
+                            if($sorting == 'price ASC' || $sorting == 'price DESC') //sorting by price
+                            {
+                                
+                            }
+                            elseif($sorting == 'engine ASC' || $sorting == 'price DESC') //sorting by price
+                            {
+                                
+                            }
+                            else //simple sorting. does not requires additional request
+                            {
+                                $sorting = "ORDER BY ".$_GET['sorting'];
+                            }
+                            
+                            //returning form state to previous
+                            echo "
+                                <script>
+                                    //getting sorting type
+                                    var url = new URL(window.location.href);
+                                    var sortingType = url.searchParams.get('sorting');
+                                    
+                                    var selectTag = document.getElementById('sortingSelect');
+                                    //checking all options
+                                    for(var i = 0; i < selectTag.options.length; i++)
+                                    {
+                                        console.log(selectTag.options[i].value == sortingType);
+                                        if(selectTag.options[i].value == sortingType)
+                                        {
+                                            selectTag.options[i].selected = true;
+                                            break;
+                                        }
+                                        else
+                                        {
+                                            selectTag.options[i].selected = false;
+                                        }
+                                    }
+                                </script>
+                            ";
                         }
                     
-                        $result = $conn->query("SELECT * FROM car");
+                        $result = $conn->query("SELECT * FROM car {$sorting}");
                         while($row = $result->fetch_array()) //fetching request to array
                         {
                             echo "
-                                <div class='car-container'>
+                                <div class='car-container car-block'>
                                     <br><h1>".$row['name']."</h1>
                                     <img src='images/".$row['img']."'><br>
                                     <button>Детальніше</button>
@@ -85,9 +137,14 @@
 
                         $conn->close(); //closing connection
                     ?>
-                    <button align="center" id="moreButton">Ще</button>
+                    
                 </td>
             </tr> 
+            <tr>
+                <td colspan="7">
+                    <button align="center" id="moreButton">Ще</button>
+                </td>
+            </tr>
             <tr>
                 <td colspan="7">
                     <hr>
