@@ -48,14 +48,17 @@
                                 exit();
                             }
                             
-                            $request = "SELECT car.name, car.year, car.manufacturer, car.img, `options`.HP, `options`.disk, `options`.Color, `options`.price,                   `order`.Count, `order`.ID AS orderID
+                            $request = "SELECT car.name AS carName, car.year, manufacturer.name AS manufacturerName, car.img, `options`.HP,                         `options`.disk, `options`.Color, `options`.price, `order`.Count, `order`.ID AS orderID
                                         FROM `order` 
                                         JOIN `options` ON `options`.ID = OptionID 
                                         JOIN car ON car.ID = `options`.CarID
                                         JOIN `user` ON `user`.ID = UserID 
+                                        JOIN manufacturer ON manufacturer.ID = car.ManufacturerID 
                                         WHERE `user`.login = '{$_COOKIE['login']}'";
-                             
+                             //echo $request;
                             $result = $conn->query($request);
+                    
+                            echo "<form method='post' action='phpScripts/truckScript.php'>";
                             $goodsCount = 0;
                             while($row = $result->fetch_array()) //fetching request to array
                             {
@@ -64,10 +67,10 @@
                                         <table width='100%'>
                                             <tr>
                                                 <td width='25%' rowspan='2'>
-                                                    <a href='carpage.php?carName={$row["name"]}'><img src='images/{$row["img"]}' style='width: 100%'></a>
+                                                    <a href='carpage.php?carName={$row["carName"]}'><img src='images/{$row["img"]}' style='width: 100%' class='carIcon'></a>
                                                 </td>
                                                 <td width='50%' colspan='3'>
-                                                    <h3>{$row["manufacturer"]} {$row["name"]} {$row["year"]}</h3>
+                                                    <h3>{$row["manufacturerName"]} {$row["carName"]} {$row["year"]}</h3>
                                                 </td>
                                                 <td width='25%' align='center'>
                                                     $<i id='priceText{$goodsCount}' name='priceText'>{$row["price"]}</i>
@@ -78,7 +81,7 @@
                                                 <td>{$row["disk"]}`</td>
                                                 <td>{$row["Color"]}</td>
                                                 <td>
-                                                    <form method='post' action='phpScripts/truckScript.php'>
+                                                    
                                                         <button class='countButton' onclick='updateSumPrice()' value='{$row["orderID"]},+' name='action'>+</button>
                                                         <i id='count{$goodsCount}'>{$row["Count"]}</i>
                                                         <button class='countButton' onclick='updateSumPrice()' value='{$row["orderID"]},-' name='action'>-</button>
@@ -90,9 +93,17 @@
                                 ";
                                 $goodsCount++;
                             }
-                            if($goodsCount != 0) echo "<h3 style='text-align: right; margin: 20px;' id='sumPrice'>Загалом: 90000$</h3>"; 
-                            echo "</div>";
-                            if($goodsCount == 0) echo "<h3>Наразі вантажівка пуста</h3>";
+                            if($goodsCount != 0) 
+                            {
+                                echo "<h3 style='text-align: right; margin: 20px;' id='sumPrice'>Загалом: 90000$</h3>
+                                    <button id='makeOrder' name='action' value='purchase'>Оформити замовлення</button><br>
+                                </div>";
+                            }
+                            else
+                            {
+                                echo "</div><h3>Наразі вантажівка пуста</h3>";
+                            }
+                            echo "</form>";
                             $conn->close(); //closing connection
                         ?>
                    

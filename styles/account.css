@@ -60,3 +60,8 @@ myTable tr
     background-color: lightgray;
     cursor: pointer;
 }
+
+#passText:hover, #hiddenPassText:hover
+{
+    cursor: pointer;
+}

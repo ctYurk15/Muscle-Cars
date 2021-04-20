@@ -44,7 +44,7 @@
                         $row = $result->fetch_array(); 
                     
                         //forming request about options
-                        $requestOpt = "SELECT Engine, HP, options.Disk AS disk, Price FROM options 
+                        /*$requestOpt = "SELECT Engine, HP, options.Disk AS disk, Price FROM options 
                                     INNER JOIN car ON car.ID = options.CarID
                                     WHERE car.Name = '{$_GET["carName"]}'";
                         $resultOpt = $conn->query($requestOpt);
@@ -55,8 +55,8 @@
                             $enginesInfo .= "{$rowOpt["Engine"]} {$rowOpt["HP"]}HP ";
                             $disksInfo .= "{$rowOpt["disk"]} ` ";
                             $pricesInfo .= "{$rowOpt["Price"]} ";
-                        }
-                    
+                        }*/
+                        //echo $request;
                         echo "
                         <h1 id='labelText'></h1>
                         <table width='100%' border='0px'>

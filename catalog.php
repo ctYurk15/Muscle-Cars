@@ -188,7 +188,7 @@
                                 }
                             echo "</script>";
                             
-                            $request = "SELECT DISTINCT manufacturer.Name AS manufacturerName, car.name as carName, car.img AS carImg 
+                            $request = "SELECT DISTINCT car.name as carName, car.img AS carImg 
                                         FROM car 
                                         JOIN manufacturer ON car.ManufacturerID = manufacturer.ID 
                                         JOIN options ON options.CarID = car.ID
@@ -199,7 +199,7 @@
                             {
                                 echo "
                                     <div class='car-container car-block'>
-                                        <br><h1>{$row["manufacturerName"]} {$row['carName']}</h1>
+                                        <br><h1>{$row['carName']}</h1>
                                         <img src='images/{$row['carImg']}'><br>
                                         <button>Детальніше</button>
                                     </div>
