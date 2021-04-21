@@ -48,7 +48,8 @@
                 <td colspan="3" valign="top">
                     <br><h1>Мій аккаунт</h1><br>
                     <div id="profileDiv">
-                        <table class="myTable">
+                        <table class="myTable"> 
+                           <form method="post" action="phpScripts/accountScript.php">
                             <?php
                                 //getting all info about user with login we currently have in cookies
                                 $request = "SELECT * FROM `user` WHERE login = '{$_COOKIE['login']}'";
@@ -56,13 +57,13 @@
                                 echo "  <tr>
                                             <td width='33%'>Логін </td>
                                             <td width='33%'>{$result['login']}</td>
-                                            <td width='33%' align='center'><button id='changeLogin'>Змінити</button></td>
+                                            <td width='33%' align='center'><input type='button' class='changeButton' value='Змінити' id='login'></td>
                                         </tr>
                                         <tr><td colspan='3'><hr></td></tr>
                                         <tr>
                                             <td width='33%'>Повне ім'я</td>
                                             <td width='33%'>{$result['name']}</td>
-                                            <td width='33%' align='center'><button id='changeName'>Змінити</button></td>
+                                            <td width='33%' align='center'><input type='button' class='changeButton' value='Змінити' id='name'></td>
                                         </tr>
                                         <tr><td colspan='3'><hr></td></tr>
                                         <tr>
@@ -74,34 +75,35 @@
                                         <tr>
                                             <td width='33%'>Адреса</td>
                                             <td width='33%'>{$result['address']}</td>
-                                            <td width='33%' align='center'><button id='changeName'>Змінити</button></td>
+                                            <td width='33%' align='center'><button>Змінити</button></td>
                                         </tr>
                                         <tr><td colspan='3'><hr></td></tr>
                                         <tr>
                                             <td width='33%'>Пароль</td>
                                             <td width='33%' class='hidden' id='passText'>{$result['pass']}</td>
                                             <td width='33%' id='hiddenPassText'>*********</td>
-                                            <td width='33%' align='center'><button id='changeName'>Змінити</button></td>
+                                            <td width='33%' align='center'><button>Змінити</button></td>
                                         </tr>
                                         <tr><td colspan='3'><hr></td></tr>
                                         <tr>
                                             <td width='33%'>Аватарка</td>
                                             <td width='33%'><img src='images/{$result['avatar']}'></td>
-                                            <td width='33%' align='center'><button id='changeName'>Змінити</button></td>
+                                            <td width='33%' align='center'><button>Змінити</button></td>
                                         </tr>
                                         <tr><td colspan='3'><hr></td></tr>
                                         <tr>
                                             <td width='33%'>Замовлень</td>
                                             <td width='33%'>{$result['orders']}</td>
-                                            <td width='33%' align='center'><button id='changeName' onclick='location.replace('catalog.php')'>Змінити</button></td>
+                                            <td width='33%' align='center'><button onclick='location.replace('catalog.php')'>Змінити</button></td>
                                         </tr>
                                         <tr>
                                             <td colspan='3' align='center'>
                                                 <hr>
-                                                <button onclick='location.replace('phpScripts/unloginScript.php')'>Вийти з аккаунту</button>
+                                                <button onclick='unlogin()'>Вийти з аккаунту</button>
                                             </td>
                                         </tr>"
                             ?>
+                            </form>
                         </table><br>
                     </div><br>
                 </td>
@@ -127,5 +129,11 @@
         <script src="scripts/main.js"></script>
         <script src="scripts/account.js"></script>
     </body>
-    
+
+    <script>
+        function unlogin()
+        {
+            location.replace("phpScripts/unloginScript.php");
+        }
+    </script>    
 </html>

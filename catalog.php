@@ -69,8 +69,8 @@
                                     <option name="sortingOptions" value="car.year DESC">Від новіших до старіших</option>
                                     <option name="sortingOptions" value="car.year ASC">Від старіших до новіших</option>
                                     <option name="sortingOptions" value="car.name">Алфавітним порядком</option>
-                                    <option name="sortingOptions" value="options.HP ASC">Від потужнішого до слабшого двигуна</option>
-                                    <option name="sortingOptions" value="options.HP DESC">Від слабшого до потужнішого двигуна</option>
+                                    <option name="sortingOptions" value="options.HP DESC">Від потужнішого до слабшого двигуна</option>
+                                    <option name="sortingOptions" value="options.HP ASC">Від слабшого до потужнішого двигуна</option>
                                 </select>
                                 <br><br>
                                 <button>Застосувати</button>
@@ -188,7 +188,7 @@
                                 }
                             echo "</script>";
                             
-                            $request = "SELECT DISTINCT car.name as carName, car.img AS carImg 
+                            $request = "SELECT DISTINCT car.name as carName, car.img AS carImg, car.ShortDescription AS carDesription
                                         FROM car 
                                         JOIN manufacturer ON car.ManufacturerID = manufacturer.ID 
                                         JOIN options ON options.CarID = car.ID
@@ -200,8 +200,9 @@
                                 echo "
                                     <div class='car-container car-block'>
                                         <br><h1>{$row['carName']}</h1>
-                                        <img src='images/{$row['carImg']}'><br>
+                                        <img src='images/{$row['carImg']}' value='1'><br>
                                         <button>Детальніше</button>
+                                        <i style='display: none' class='description'>{$row['carDesription']}</i>
                                     </div>
                                 ";
                             }
@@ -240,13 +241,15 @@
                 <h3>0-60 - <i>6.5s</i></h3>
                 <h3>Ціна - <i id="priceText">30000</i></h3>
                 <br><h3>Опис:</h3>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad ex, ut labore dicta, itaque modi beatae rerum, perspiciatis molestias iusto ea fugit sequi voluptates laboriosam sed deleniti consequatur, harum corporis. Pariatur ex cupiditate consequatur architecto, recusandae libero, debitis autem magni perspiciatis, rerum et dignissimos ea laboriosam officia repellat beatae dicta obcaecati deserunt inventore ut. 
+                <div id='descriptionDiv'>
+                    
+                </div>
             </div>
             <button id="buyCarButton" data-carName="empty">Купити</button>
         </div>
-        <script src="scripts/jquery.min.js"></script>
-        <script src="scripts/main.js"></script>
-        <script src="scripts/catalog.js"></script>
+        <script src="scripts/jquery.min.js" type="text/javascript"></script>
+        <script src="scripts/main.js" type="text/javascript"></script>
+        <script src="scripts/catalog.js" type="text/javascript"></script>
     </body>
     
 </html>

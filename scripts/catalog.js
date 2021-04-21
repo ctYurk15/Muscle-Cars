@@ -1,12 +1,18 @@
 $(document).ready(function(){
     
     $(".car-block button").on("click", function(){
+        //getting info about car 
         var carName = $(this).parent().find("h1").text();
+        var carImg = $(this).parent().find("img").attr("src");
+        var carDescription = $(this).parent().find(".description").text();
         
         $("#carInfoBlock").removeClass("hidden");
         
+        //filling block with information needed
         $("#carInfoBlock button").attr("data-carName", carName);
+        $("#carInfoBlock img").attr("src", carImg);
         $("#carInfoBlock h1").text(carName);
+        $("#descriptionDiv").text(carDescription);
         $("#transparentDiv").removeClass("hidden");
     });
     
@@ -26,7 +32,7 @@ $(document).ready(function(){
     
     /*var carBlocksDisplayed = 5; //how much cars we want to see
     
-    export function updateCarBlocks( carBlockAddition)
+    function updateCarBlocks( carBlockAddition)
     {
         carBlocksDisplayed += carBlockAddition; //adding more cars to display
         var carBlocks = document.getElementsByClassName("car-block"); //getting all car blocks
