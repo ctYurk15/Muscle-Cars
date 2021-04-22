@@ -15,14 +15,14 @@ $(document).ready(function(){
     for(var i = 0; i < changeButtons.length; i++)
     {
         $(changeButtons[i]).on("click", function(){
-            $(this).parent().prev().html("<input type='text' value='"+$(this).parent().prev().text()+"' name='"+$(this).attr("id")+"'>"); //changing type of the text to input
-            $(this).unbind();
+            //removing previous block
+            $(this).parent().prev().addClass('hidden');
+            $(this).parent().addClass('hidden');
             
-            var $this = $(this);
-            setTimeout(function() //in order to avoid bugs
-            { 
-                $this.attr("type", "submit"); //chaning button type to submit
-            }, 1);
+            //showing editable next block
+            $(this).parent().next().removeClass('hidden');
+            $(this).parent().next().next().removeClass('hidden');
+            
         });
     }
 });

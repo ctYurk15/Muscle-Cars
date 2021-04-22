@@ -55,6 +55,16 @@ myTable tr
    width: 50%;
 }
 
+.myTable input
+{
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    color: dimgray;
+    background-color: white;
+    font-size: 15px;
+    margin: 5px;
+}
+
 .changeButton:hover
 {
     background-color: lightgray;
