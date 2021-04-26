@@ -1,4 +1,7 @@
 <?php
+
+    include '../dbdata.php';
+    
     //getting new data
     $newlogin = htmlspecialchars($_POST['login']);
     $newname = htmlspecialchars($_POST['name']);
@@ -6,12 +9,6 @@
     $newaddress = htmlspecialchars($_POST['address']);
     $newpass = htmlspecialchars($_POST['pass']);
     $newavatar = $_FILES['avatar']['name'];
-
-    //variables using for connection to db
-    $servername = "localhost";
-    $database = "muscle-carsdb";
-    $username = "root";
-    $password = "root";
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $database);

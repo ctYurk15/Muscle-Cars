@@ -1,13 +1,9 @@
 <?php
+    include '../dbdata.php';
+
     //what user whants to do
     $cmdStr =  htmlspecialchars($_POST["action"]);
     $cmdStr = explode(',', $cmdStr);
-
-    //variables using for connection to db
-    $servername = "localhost";
-    $database = "muscle-carsdb";
-    $username = "root";
-    $password = "root";
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $database);

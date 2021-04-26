@@ -32,9 +32,10 @@
                             <lable for="emailInput">Пошта: </lable><br><input type="email" id="emailInput" size="25" name="email" required><br>
                             <lable for="passInput">Пароль: </lable><br><input type="password" id="passInput" size="25" name="pass" required><br>
                             <lable for="rpassInput">Повторити пароль: </lable><br><input type="password" id="rpassInput" size="25" name="rPass" required><br>
-                            <label for="accept">Я згідний з правилами сайту </label><input type="checkbox" name="agree" required><br>
+                            <label for="accept">Я згідний з правилами сайту </label><input type="checkbox" name="agree" id="agreeBox" value='yes' required><br>
                             <input type="submit" value="Зареєструватися" id="sumbitButton"><br>
                             <a href="login.html">Уже є аккаунт?</a><br><br>
+                            <p id='errorText'></p><br>
                         </form>
                     </div>
                 </td>
@@ -58,6 +59,7 @@
         </table>
         <script src="scripts/jquery.min.js"></script>
         <script src="scripts/main.js"></script>
+        <script src="scripts/registration.js"></script>
     </body>
     
 </html>

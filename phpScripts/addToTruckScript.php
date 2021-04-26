@@ -1,4 +1,6 @@
 <?php
+    include '../dbdata.php';
+
     if(isset($_COOKIE['login']))
     {
         //getting order values
@@ -8,13 +10,6 @@
         $disk = $_POST['cardisk'];
         
         $login = $_COOKIE['login']; //getting login
-        //echo $carname." ".$color." ".$engine." ".$disk;
-
-        //variables using for connection to db
-        $servername = "localhost";
-        $database = "muscle-carsdb";
-        $username = "root";
-        $password = "root";
 
         // Create connection
         $conn = new mysqli($servername, $username, $password, $database);

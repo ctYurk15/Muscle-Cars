@@ -3,6 +3,16 @@
     {
         header('location: login.html');
     }
+
+    include 'dbdata.php';
+
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $database);
+    if ($mysqli->connect_errno) 
+    {
+        printf("Failed to connect to: %s\n", $mysqli->connect_error);
+        exit();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -33,20 +43,8 @@
                         <?php
                     
                             echo "<div id='truckDiv'>";
-                        
-                            //variables using for connection to db
-                            $servername = "localhost";
-                            $database = "muscle-carsdb";
-                            $username = "root";
-                            $password = "root";
 
-                            // Create connection
-                            $conn = new mysqli($servername, $username, $password, $database);
-                            if ($mysqli->connect_errno) 
-                            {
-                                printf("Failed to connect to: %s\n", $mysqli->connect_error);
-                                exit();
-                            }
+                            
                             
                             $request = "SELECT car.name AS carName, car.year, manufacturer.name AS manufacturerName, car.img, `options`.HP,                         `options`.disk, `options`.Color, `options`.price, `order`.Count, `order`.ID AS orderID
                                         FROM `order` 

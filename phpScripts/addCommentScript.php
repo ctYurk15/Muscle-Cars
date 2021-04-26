@@ -2,17 +2,13 @@
     
     if(isset($_COOKIE["login"]))
     {
+        include '../dbdata.php';
+        
         //getting comment
         $comment = htmlspecialchars($_POST['commentText']);
         $carname = htmlspecialchars($_POST['carname']);
         $positive = $_POST["positiveComment"];
         $login = $_COOKIE['login'];
-
-        //variables using for connection to db
-        $servername = "localhost";
-        $database = "muscle-carsdb";
-        $username = "root";
-        $password = "root";
 
         // Create connection
         $conn = new mysqli($servername, $username, $password, $database);

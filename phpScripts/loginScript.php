@@ -1,13 +1,11 @@
 <?php
-    //getting registration values
+    
+    include '../dbdata.php';
+    include 'generalScripts.php';
+    
+    //getting login values
     $login = $_POST['login'];
     $pass = $_POST['pass'];
-
-    //variables using for connection to db
-    $servername = "localhost";
-    $database = "muscle-carsdb";
-    $username = "root";
-    $password = "root";
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $database);
@@ -22,18 +20,18 @@
 
     if($result['c'] == 0) //checking is there is user with such login
     {
-        echo "<script>alert('There`s no user with login ".$login."'); location.replace('../login.html')</script>";
+        echo "Немає користувачів з таким логіном!";
     }
     else
     {
         if($result['pass'] != $pass) //if password wasn`t correct
         {
-            echo "<script>alert('Incorrect password!'); location.replace('../login.html')</script>";
+            echo "Неправильний пароль!";
         }
         else 
         {
             setcookie("login", $login, time()+(60*60*24), '/');  //setting cookie for next 1 day
-            echo "<script>location.replace('../account.php')</script>"; //redirecting to account page
+            gotoURL('../account.php'); //redirecting to account page
         }
     }
     

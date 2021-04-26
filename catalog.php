@@ -1,11 +1,7 @@
 <?php
-    //variables using for connection to db
-    $servername = "localhost";
-    $database = "muscle-carsdb";
-    $username = "root";
-    $password = "root";
-
+    include 'dbdata.php';
     // Create connection
+
     $conn = new mysqli($servername, $username, $password, $database);
     if ($mysqli->connect_errno) 
     {
@@ -198,7 +194,7 @@
                             while($row = $result->fetch_array()) //fetching request to array
                             {
                                 echo "
-                                    <div class='car-container car-block'>
+                                    <div class='car-container car-block hidden'>
                                         <br><h1>{$row['carName']}</h1>
                                         <img src='images/{$row['carImg']}' value='1'><br>
                                         <button>Детальніше</button>
@@ -214,7 +210,7 @@
             </tr> 
             <tr>
                 <td colspan="7">
-                    <button align="center" id="moreButton" onclick=''>Ще</button>
+                    <button align="center" id="moreButton">Ще</button>
                 </td>
             </tr>
             <tr>

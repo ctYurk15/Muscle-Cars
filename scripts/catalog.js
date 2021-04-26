@@ -30,7 +30,7 @@ $(document).ready(function(){
         window.location = "carpage.php?carName="+carName;
     })
     
-    /*var carBlocksDisplayed = 5; //how much cars we want to see
+    var carBlocksDisplayed = 5; //how much cars we want to see
     
     function updateCarBlocks( carBlockAddition)
     {
@@ -42,10 +42,12 @@ $(document).ready(function(){
         {
             carBlocks[i].classList.remove('hidden');
         }
-        alert(1);
     }
     
-    updateCarBlocks(0);*/
+    updateCarBlocks(0);
+    $('#moreButton').on("click", function(){
+        updateCarBlocks(6);
+    })
     
     /*var manufacturerCheckBoxes = document.getElementsByName('manufacturer[]');
     console.log(manufacturerCheckBoxes[0].checked);*/

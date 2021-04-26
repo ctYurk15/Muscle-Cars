@@ -1,3 +1,15 @@
+<?php
+    include 'dbdata.php';
+
+    // Create connection
+    $conn = new mysqli($servername, $username, $password, $database);
+    if ($mysqli->connect_errno) 
+    {
+        printf("Failed to connect to: %s\n", $mysqli->connect_error);
+        exit();
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
    
@@ -22,19 +34,7 @@
             <tr>
                 <td colspan="7">
                     <?php
-                        //variables using for connection to db
-                        $servername = "localhost";
-                        $database = "muscle-carsdb";
-                        $username = "root";
-                        $password = "root";
-
-                        // Create connection
-                        $conn = new mysqli($servername, $username, $password, $database);
-                        if ($mysqli->connect_errno) 
-                        {
-                            printf("Failed to connect to: %s\n", $mysqli->connect_error);
-                            exit();
-                        }
+                        
                         
                         //forming request about main info
                         $request = "SELECT * FROM car 
@@ -68,7 +68,7 @@
                                     <div class='descriptionDiv'>
                                         {$row["Description"]}
                                     </div>
-                                    <button id='buyButton' class='buyButton'>Додати до вантажівки</button>
+                                    <button id='buyButton' class='buyButton'>Обрати опції</button>
                                 </td>
                             </tr>
                             <tr>

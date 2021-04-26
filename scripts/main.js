@@ -43,7 +43,7 @@ var exitAccountDiv = "<div class='transparent-div hidden' id='transparentDiv'></
                         "<div id='dialogDiv' class='hidden'>"+
                             "<h2>Ви справді хочете вийти з аккаунту?</h2><br>"+
                             "<span>"+
-                                "<button id='yes'>Так</button>"+
+                                "<button id='leaveAcc'>Так</button>"+
                                 "<button id='no'>Ні</button>"+
                                 "</span>"+
                         "</div>";
@@ -73,6 +73,11 @@ $(document).ready(function(){
     $("#no").on("click", function(){
         $("#dialogDiv").addClass("hidden");
         $("#transparentDiv").addClass("hidden");
+    });
+    
+    //leaaving account    
+    $("#leaveAcc").on("click", function(){
+        location.replace("phpScripts/unloginScript.php");
     });
     
     //dialog div hiding

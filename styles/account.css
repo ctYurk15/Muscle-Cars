@@ -38,7 +38,7 @@ myTable tr
     height: 20px;
 }
 
-.changeButton
+.changeButtonStyle 
 {
     margin: 20px;
     padding: 5px;
@@ -65,7 +65,7 @@ myTable tr
     margin: 5px;
 }
 
-.changeButton:hover
+.changeButtonStyle:hover
 {
     background-color: lightgray;
     cursor: pointer;

@@ -4,11 +4,7 @@
         header('location: login.html');
     }
 
-    //variables using for connection to db
-    $servername = "localhost";
-    $database = "muscle-carsdb";
-    $username = "root";
-    $password = "root";
+    include 'dbdata.php';
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $database);
@@ -57,61 +53,61 @@
                                 echo "  <tr>
                                             <td width='33%'>Логін </td>
                                             <td width='33%'>{$result['login']}</td>
-                                            <td width='33%' align='center'><input type='button' class='changeButton' value='Змінити'></td>
+                                            <td width='33%' align='center'><input type='button' class='changeButtonStyle changeButton' value='Змінити'></td>
                                             <td width='33%' class='hidden'><input type='text' value='{$result['login']}' name='login'></td>
-                                            <td width='33%' align='center' class='hidden'><input type='submit' class='changeButton' value='Змінити'></td>
+                                            <td width='33%' align='center' class='hidden'><input type='submit' class='changeButtonStyle changeButton' value='Змінити'></td>
                                         </tr>
                                         <tr><td colspan='3'><hr></td></tr>
                                         <tr>
                                             <td width='33%'>Повне ім'я</td>
                                             <td width='33%'>{$result['name']}</td>
-                                            <td width='33%' align='center'><input type='button' class='changeButton' value='Змінити'</td>
+                                            <td width='33%' align='center'><input type='button' class='changeButtonStyle changeButton' value='Змінити'</td>
                                             <td width='33%' class='hidden'><input type='text' value='{$result['name']}' name='name'></td>
-                                            <td width='33%' align='center' class='hidden'><input type='submit' class='changeButton' value='Змінити'></td>
+                                            <td width='33%' align='center' class='hidden'><input type='submit' class='changeButtonStyle changeButton' value='Змінити'></td>
                                         </tr>
                                         <tr><td colspan='3'><hr></td></tr>
                                         <tr>
                                             <td width='33%'>Email</td>
                                             <td width='33%'>{$result['email']}</td>
-                                            <td width='33%' align='center'><input type='button' class='changeButton' value='Змінити'></td>
+                                            <td width='33%' align='center'><input type='button' class='changeButtonStyle changeButton' value='Змінити'></td>
                                             <td width='33%' class='hidden'><input type='text' value='{$result['email']}' name='email'></td>
-                                            <td width='33%' align='center' class='hidden'><input type='submit' class='changeButton' value='Змінити'></td>
+                                            <td width='33%' align='center' class='hidden'><input type='submit' class='changeButtonStyle changeButton' value='Змінити'></td>
                                         </tr>
                                         <tr><td colspan='3'><hr></td></tr>
                                         <tr>
                                             <td width='33%'>Адреса</td>
                                             <td width='33%'>{$result['address']}</td>
-                                            <td width='33%' align='center'><input type='button' class='changeButton' value='Змінити'></td>
+                                            <td width='33%' align='center'><input type='button' class='changeButtonStyle changeButton' value='Змінити'></td>
                                             <td width='33%' class='hidden'><input type='text' value='{$result['address']}' name='address'></td>
-                                            <td width='33%' align='center' class='hidden'><input type='submit' class='changeButton' value='Змінити'></td>
+                                            <td width='33%' align='center' class='hidden'><input type='submit' class='changeButtonStyle changeButton' value='Змінити'></td>
                                         </tr>
                                         <tr><td colspan='3'><hr></td></tr>
                                         <tr>
                                             <td width='33%'>Пароль</td>
                                             <td width='33%' class='hidden' id='passText'>{$result['pass']}</td>
                                             <td width='33%' id='hiddenPassText'>*********</td>
-                                            <td width='33%' align='center'><input type='button' class='changeButton' value='Змінити'></td>
+                                            <td width='33%' align='center'><input type='button' class='changeButtonStyle changeButton' value='Змінити'></td>
                                             <td width='33%' class='hidden'><input type='text' value='{$result['pass']}' name='pass'></td>
-                                            <td width='33%' align='center' class='hidden'><input type='submit' class='changeButton' value='Змінити'></td>
+                                            <td width='33%' align='center' class='hidden'><input type='submit' class='changeButtonStyle changeButton' value='Змінити'></td>
                                         </tr>
                                         <tr><td colspan='3'><hr></td></tr>
                                         <tr>
                                             <td width='33%'>Аватарка</td>
                                             <td width='33%'><img src='images/{$result['avatar']}'></td>
-                                            <td width='33%' align='center'><input type='button' class='changeButton' value='Змінити'></td>
+                                            <td width='33%' align='center'><input type='button' class='changeButtonStyle changeButton' value='Змінити'></td>
                                             <td width='33%' class='hidden'><input type='file' name='avatar' size=''></td>
-                                            <td width='33%' align='center' class='hidden'><input type='submit' class='changeButton' value='Змінити'></td>
+                                            <td width='33%' align='center' class='hidden'><input type='submit' class='changeButtonStyle changeButton' value='Змінити'></td>
                                         </tr>
                                         <tr><td colspan='3'><hr></td></tr>
                                         <tr>
                                             <td width='33%'>Замовлень</td>
                                             <td width='33%'>{$result['orders']}</td>
-                                            <td width='33%' align='center'><a href='catalog.php' class='changeButton'>Змінити</a></td>
+                                            <td width='33%' align='center'><input type='button' href='catalog.php' class='changeButtonStyle' value='Змінити'></td>
                                         </tr>
                                         <tr>
                                             <td colspan='3' align='center'>
                                                 <hr>
-                                                <button onclick='unlogin()'>Вийти з аккаунту</button>
+                                                <input type='button' value='Вийти з аккайнту' id='leaveAcc' class='changeButtonStyle'>
                                             </td>
                                         </tr>"
                             ?>
@@ -141,11 +137,5 @@
         <script src="scripts/main.js"></script>
         <script src="scripts/account.js"></script>
     </body>
-
-    <script>
-        function unlogin()
-        {
-            location.replace("phpScripts/unloginScript.php");
-        }
-    </script>    
+ 
 </html>
