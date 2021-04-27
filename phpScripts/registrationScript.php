@@ -1,13 +1,7 @@
 <?php
     include '../dbdata.php';
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $database);
-    if ($mysqli->connect_errno) 
-    {
-        printf("Failed to connect to: %s\n", $mysqli->connect_error);
-        exit();
-    }
+    include 'generalScripts.php';
+    include 'User.php';
 
     //getting registration values
     $login = $_POST['login'];
@@ -16,20 +10,19 @@
     $pass = $_POST['pass'];
     $rpass = $_POST['rpass'];
     $agreed = $_POST['agreed'];
-
+    
+    //validating data
     $error = false;
-
     if($pass != $rpass) //if passwords don`t match
     {
         echo "Паролі не співпадають";
         $error = true;
     }
     
-    else if(!filter_var($email, FILTER_VALIDATE_EMAIL))
+    if(!filter_var($email, FILTER_VALIDATE_EMAIL))
     {
         echo "Пошта не є коректною";
         $error = true;
-
     }
 
     if($agreed != "yes") //agree button
@@ -41,7 +34,7 @@
     if(empty($login) || empty($name) || empty($email) || empty($pass) || empty($rpass) || empty($agreed)) //empty fields
     {
         echo "Заповніть будь ласка усі поля";
-        $error = true;
+        $error = true;       
     }
 
     //if there is already user with that login 
@@ -60,13 +53,11 @@
         $error = true;
     }
 
-
-    /*if(!error) //if all were correct
+    if(!$error) //if all were correct
     {
-        $request = "INSERT INTO `user`(pass, login, name,  email) VALUES('$pass', '$login', '$name', '$email')";
-
-        $conn->query($request);
-        setcookie("login", $login, time()+(60*60*24), '/');  //setting cookie for next 1 day
-        gotoURL('../account.php');
-    }*/
+        $user = new User($conn);
+        $user->addUser($login, $name, $email, $pass);
+        
+        createCookie("login", $login, (60*60*24), '../account.php');  //setting cookie for next 1 day
+    }
 ?>

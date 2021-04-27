@@ -10,14 +10,6 @@
     $newpass = htmlspecialchars($_POST['pass']);
     $newavatar = $_FILES['avatar']['name'];
 
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $database);
-    if ($mysqli->connect_error) 
-    {
-        printf("Failed to connect to: %s\n", $mysqli->connect_error);
-        exit();
-    }
-
     $request = "UPDATE user
                 SET login='{$newlogin}',
                     name='{$newname}',
@@ -30,6 +22,5 @@
 
     setcookie('login', '0', time()-10, "/"); //unsetting previous cookie
     setcookie('login', $newlogin, time()+(60*60*24), "/"); //setting cookie with new login
-    //echo $request;
     echo "Success.<script>location.replace('../account.php')</script>"; //redirecting
 ?>

@@ -1,13 +1,5 @@
 <?php
     include 'dbdata.php';
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $database);
-    if ($mysqli->connect_errno) 
-    {
-        printf("Failed to connect to: %s\n", $mysqli->connect_error);
-        exit();
-    }
 ?>
 
 <!DOCTYPE html>

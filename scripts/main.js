@@ -89,7 +89,7 @@ $(document).ready(function(){
                 $("#dialogDiv").addClass("hidden");
                 $("#transparentDiv").addClass("hidden");
                 $("#optionsDiv").addClass("hidden");
-                console.log(event);
+                //console.log(event);
             }
         }
     });

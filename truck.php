@@ -5,14 +5,7 @@
     }
 
     include 'dbdata.php';
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $database);
-    if ($mysqli->connect_errno) 
-    {
-        printf("Failed to connect to: %s\n", $mysqli->connect_error);
-        exit();
-    }
+    include 'phpScripts/Truck.php';
 ?>
 
 <!DOCTYPE html>
@@ -42,56 +35,47 @@
                     
                         <?php
                     
-                            echo "<div id='truckDiv'>";
-
-                            
-                            
-                            $request = "SELECT car.name AS carName, car.year, manufacturer.name AS manufacturerName, car.img, `options`.HP,                         `options`.disk, `options`.Color, `options`.price, `order`.Count, `order`.ID AS orderID
-                                        FROM `order` 
-                                        JOIN `options` ON `options`.ID = OptionID 
-                                        JOIN car ON car.ID = `options`.CarID
-                                        JOIN `user` ON `user`.ID = UserID 
-                                        JOIN manufacturer ON manufacturer.ID = car.ManufacturerID 
-                                        WHERE `user`.login = '{$_COOKIE['login']}'";
-                             //echo $request;
-                            $result = $conn->query($request);
-                    
-                            echo "<form method='post' action='phpScripts/truckScript.php'>";
+                            echo "<div id='truckDiv'>
+                                    <form method='post' action='phpScripts/truckScript.php'>";
                             $goodsCount = 0;
-                            while($row = $result->fetch_array()) //fetching request to array
+                            
+                            $truck = new Truck($_COOKIE['login'], $conn);
+                            $orders = $truck->getOrders();
+                            
+                            for($i = 0; $i < count($orders); $i++)
                             {
                                 echo " 
                                     <div class='truckItem'>
                                         <table width='100%'>
                                             <tr>
                                                 <td width='25%' rowspan='2'>
-                                                    <a href='carpage.php?carName={$row["carName"]}'><img src='images/{$row["img"]}' style='width: 100%' class='carIcon'></a>
+                                                    <a href='carpage.php?carName={$orders[$i]["carName"]}'><img src='images/{$orders[$i]["img"]}' style='width: 100%' class='carIcon'></a>
                                                 </td>
                                                 <td width='50%' colspan='3'>
-                                                    <h3>{$row["manufacturerName"]} {$row["carName"]} {$row["year"]}</h3>
+                                                    <h3>{$orders[$i]["manufacturerName"]} {$orders[$i]["carName"]} {$orders[$i]["year"]}</h3>
                                                 </td>
                                                 <td width='25%' align='center'>
-                                                    $<i id='priceText{$goodsCount}' name='priceText'>{$row["price"]}</i>
+                                                    $<i id='priceText{$i}' name='priceText'>{$orders[$i]["price"]}</i>
                                                 </td>
                                             </tr>
                                             <tr align='center'>
-                                                <td >{$row["HP"]}</td>
-                                                <td>{$row["disk"]}`</td>
-                                                <td>{$row["Color"]}</td>
+                                                <td >{$orders[$i]["HP"]}</td>
+                                                <td>{$orders[$i]["disk"]}`</td>
+                                                <td>{$orders[$i]["Color"]}</td>
                                                 <td>
                                                     
-                                                        <button class='countButton' onclick='updateSumPrice()' value='{$row["orderID"]},+' name='action'>+</button>
-                                                        <i id='count{$goodsCount}'>{$row["Count"]}</i>
-                                                        <button class='countButton' onclick='updateSumPrice()' value='{$row["orderID"]},-' name='action'>-</button>
-                                                    </form>
+                                                        <button class='countButton' onclick='updateSumPrice()' value='{$orders[$i]["orderID"]},+' name='action'>+</button>
+                                                        <i id='count{$i}'>{$orders[$i]["Count"]}</i>
+                                                        <button class='countButton' onclick='updateSumPrice()' value='{$orders[$i]["orderID"]},-' name='action'>-</button>
+                                                    
                                                 </td>
                                             </tr>
                                         </table>
                                     </div>
                                 ";
-                                $goodsCount++;
                             }
-                            if($goodsCount != 0) 
+                    
+                            if($i != 0) 
                             {
                                 echo "<h3 style='text-align: right; margin: 20px;' id='sumPrice'>Загалом: 90000$</h3>
                                     <button id='makeOrder' name='action' value='purchase'>Оформити замовлення</button><br>
@@ -102,7 +86,6 @@
                                 echo "</div><h3>Наразі вантажівка пуста</h3>";
                             }
                             echo "</form>";
-                            $conn->close(); //closing connection
                         ?>
                    
 

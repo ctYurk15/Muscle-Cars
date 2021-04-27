@@ -10,14 +10,6 @@
         $positive = $_POST["positiveComment"];
         $login = $_COOKIE['login'];
 
-        // Create connection
-        $conn = new mysqli($servername, $username, $password, $database);
-        if ($mysqli->connect_errno) 
-        {
-            printf("Failed to connect to: %s\n", $mysqli->connect_error);
-            exit();
-        }
-
         //getting user and car id for correct insert
         $getUserIDRequest = "SELECT ID FROM user WHERE login='".$login."'"; //user
         $user_id = $conn->query($getUserIDRequest)->fetch_array()['ID'];

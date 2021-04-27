@@ -11,14 +11,6 @@
         
         $login = $_COOKIE['login']; //getting login
 
-        // Create connection
-        $conn = new mysqli($servername, $username, $password, $database);
-        if ($mysqli->connect_errno) 
-        {
-            printf("Failed to connect to: %s\n", $mysqli->connect_error);
-            exit();
-        }
-
         //getting user id, car id, options info for correct insert
         $getUserIDRequest = "SELECT ID FROM user WHERE login='".$login."'"; //user
         $user_id = $conn->query($getUserIDRequest)->fetch_array()['ID'];

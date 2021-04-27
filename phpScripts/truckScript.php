@@ -4,14 +4,6 @@
     //what user whants to do
     $cmdStr =  htmlspecialchars($_POST["action"]);
     $cmdStr = explode(',', $cmdStr);
-
-    // Create connection
-    $conn = new mysqli($servername, $username, $password, $database);
-    if ($mysqli->connect_errno) 
-    {
-        printf("Failed to connect to: %s\n", $mysqli->connect_error);
-        exit();
-    }
     
     $command = $cmdStr[0]; //what user wants to do
     if($command == "purchase") //if user wants to purchase his order
