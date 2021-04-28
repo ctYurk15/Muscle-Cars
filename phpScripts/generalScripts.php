@@ -2,7 +2,7 @@
 
     function alert($msg)
     {
-        echo "<script>alert({$msg})</script>";
+        echo "<script>alert('{$msg}')</script>";
     }
 
     function gotoURL($url)

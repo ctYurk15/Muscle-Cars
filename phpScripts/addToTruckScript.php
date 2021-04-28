@@ -1,63 +1,54 @@
 <?php
     include '../dbdata.php';
+    include 'generalScripts.php';
+    include 'Truck.php';
 
-    if(isset($_COOKIE['login']))
+    //getting order values
+    $carname = $_POST['carname'];
+    $color = $_POST['carcolor'];
+    $engine = $_POST['carengine'];
+    $disk = $_POST['cardisk'];
+
+
+    if($_GET['mode'] == 'purchase')
     {
-        //getting order values
-        $carname = $_POST['carname'];
-        $color = $_POST['carcolor'];
-        $engine = $_POST['carengine'];
-        $disk = $_POST['cardisk'];
-        
-        $login = $_COOKIE['login']; //getting login
-
-        //getting user id, car id, options info for correct insert
-        $getUserIDRequest = "SELECT ID FROM user WHERE login='".$login."'"; //user
-        $user_id = $conn->query($getUserIDRequest)->fetch_array()['ID'];
-
-        $getCarIDRequest = "SELECT ID FROM car WHERE name='".$carname."'"; //car
-        $car_id = $conn->query($getCarIDRequest)->fetch_array()['ID'];
-        
-        $getOptionRequest = "SELECT COUNT(*) AS c, ID FROM options WHERE CarID = ".$car_id." AND Color = '{$color}' AND Engine = '{$engine}' AND Disk='{$disk}'"; //getting all options for this car
-        $optionsInfo = $conn->query($getOptionRequest)->fetch_array();
-        $count = $optionsInfo['c'];
-        
-        if($count != 0) //it there is options with needed parameters
+        if(isset($_COOKIE['login']))
         {
-            //is there already this order
-            
-            $getOrderCountRequest = "SELECT COUNT(*) AS c, ID FROM `order` WHERE OptionID = {$optionsInfo['ID']} AND UserID = {$user_id}"; 
-            $ordersInfo = $conn->query($getOrderCountRequest)->fetch_array();
-            $countOrders = $ordersInfo['c'];
-            
-            $request = "";
-            if($countOrders == 0) //creating new order
+            $login = $_COOKIE['login']; //getting login
+
+            $truck = new Truck($login, $conn);
+            if($truck->addOrder($carname, $color, $engine, $disk))
             {
-                $request = "INSERT INTO `order`(OptionID, UserID, Count) VALUES({$optionsInfo['ID']}, $user_id, 1);";
+                gotoURL('../truck.php');
             }
-            else //increasing existing
+            else
             {
-                $request = "UPDATE `order` SET Count = Count+1 WHERE ID={$ordersInfo['ID']}";
+                alert('Для цього автомобіля немає таких опцій');
             }
-            
-            
-            $conn->query($request);
-            //echo $ordersInfo['ID']." ".$countOrders;
-            echo "Success. Redirecting to truck page. <script>location.replace('../truck.php')</script>";
+
         }
         else
         {
-            echo "<script>alert('There`s no options with this parameters for this car.'); location.replace('../carpage.php?carName=$carname')</script>";
-        }
-        
-        
-
-        /**/
+            gotoURL("../login.html");
+        }   
     }
-    else
+    elseif($_GET['mode'] == 'getPrice')
     {
-        echo "<script>location.replace('../login.html')</script>";
-    }   
+        $request = " SELECT Price FROM `options` 
+                     JOIN car on car.ID = options.CarID 
+                     WHERE car.name = '{$carname}' AND options.Color='{$color}' AND options.Engine = '{$engine}' AND options.Disk = {$disk}";
 
+        $result = $conn->query($request)->fetch_array();
+        $price = $result['Price'];
+        
+        if(isset($price)) //if there is option we want to
+        {
+            echo "Ціна: {$price}$";
+        }
+        else
+        {
+            echo "Для цього автомобіля немає таких опцій";
+        }
+    }
     //INSERT INTO options(Color, `Engine`, HP, Disk, Quantity, Price, car_ID) VALUES("Red", "V8", 396, 15, 10, 45000, 1);
 ?>

@@ -23,6 +23,48 @@ $(document).ready(function(){
         $("#transparentDiv").removeClass("hidden");
     });
     
+    $("#optionsForm").submit(function(event){
+        event.preventDefault();
+        
+        //getting options values
+        var carname = $('#labelText').text();
+        var carcolor = $('input[name="carcolor"]:checked').val();
+        var carengine = $('input[name="carengine"]:checked').val();
+        var cardisk = $('input[name="cardisk"]:checked').val();
+        
+        $("#empty").load("phpScripts/addToTruckScript.php?mode=purchase", {
+            carname: carname,
+            carcolor: carcolor,
+            carengine: carengine,
+            cardisk: cardisk
+        })
+    });
+    
+    $(".optionRadio").on("click", getPriceOfOption);
+    
+    function getPriceOfOption()
+    {
+        //getting options values
+        var carname = $('#labelText').text();
+        var carcolor = $('input[name="carcolor"]:checked').val();
+        var carengine = $('input[name="carengine"]:checked').val();
+        var cardisk = $('input[name="cardisk"]:checked').val();
+        
+        if(carcolor != undefined && carengine != undefined && cardisk != undefined) //if all is set
+        {
+            $("#optionPrice").load("phpScripts/addToTruckScript.php?mode=getPrice", {
+                carname: carname,
+                carcolor: carcolor,
+                carengine: carengine,
+                cardisk: cardisk
+            });
+        }
+        
+    }
+    getPriceOfOption();
+    
+    //$(".optionRadio").on(click)
+    
     function slide(i)
     {
         var line = document.getElementById('line');

@@ -35,20 +35,6 @@
                         $result = $conn->query($request);
                         $row = $result->fetch_array(); 
                     
-                        //forming request about options
-                        /*$requestOpt = "SELECT Engine, HP, options.Disk AS disk, Price FROM options 
-                                    INNER JOIN car ON car.ID = options.CarID
-                                    WHERE car.Name = '{$_GET["carName"]}'";
-                        $resultOpt = $conn->query($requestOpt);
-                    
-                        $enginesInfo = ""; $disksInfo = ""; $pricesInfo = "";
-                        while($rowOpt = $resultOpt->fetch_array())
-                        {
-                            $enginesInfo .= "{$rowOpt["Engine"]} {$rowOpt["HP"]}HP ";
-                            $disksInfo .= "{$rowOpt["disk"]} ` ";
-                            $pricesInfo .= "{$rowOpt["Price"]} ";
-                        }*/
-                        //echo $request;
                         echo "
                         <h1 id='labelText'></h1>
                         <table width='100%' border='0px'>
@@ -187,50 +173,51 @@
             </tr>       
         </table>
         <div id="optionsDiv" class="hidden">
-            <form method="post" action="phpScripts/addToTruckScript.php">
+            <form method="post" action="phpScripts/addToTruckScript.php" id="optionsForm">
                 <h1>Опції</h1><br>
                 <br><h3>Колір</h3><br>
-                <label class="container RC" style="color: red">Червоний
-                  <input type="radio" checked name="carcolor" value="red">
+                <label class="container RC optionRadio" style="color: red">Червоний
+                  <input type="radio" name="carcolor" value="red" checked>
                   <span class="checkmark"></span>
                 </label>
-                <label class="container GC" style="color: green">Зелений
+                <label class="container GC optionRadio" style="color: green">Зелений
                   <input type="radio" name="carcolor" value="green">
                   <span class="checkmark"></span>
                 </label>
-                <label class="container BC" style="color: blue">Синій
+                <label class="container BC optionRadio" style="color: blue">Синій
                   <input type="radio" name="carcolor" value="blue">
                   <span class="checkmark"></span>
                 </label>
-                <label class="container BlC" style="color: black">Чорний
+                <label class="container BlC optionRadio" style="color: black">Чорний
                   <input type="radio" name="carcolor" value="black">
                   <span class="checkmark"></span>
                 </label>
                 <br><br><h3>Двигуни</h3><br>
                 <div class="radio-toolbar">
-                    <input type="radio" id="v8b" name="carengine" value="V8B" checked>
+                    <input type="radio" id="v8b" name="carengine" value="V8B" class="optionRadio" checked>
                     <label for="v8b">V8 big</label>
 
-                    <input type="radio" id="v8" name="carengine" value="V8">
+                    <input type="radio" id="v8" name="carengine" value="V8" class="optionRadio">
                     <label for="v8">V8</label>
 
-                    <input type="radio" id="v6" name="carengine" value="V6">
+                    <input type="radio" id="v6" name="carengine" value="V6" class="optionRadio">
                     <label for="v6">V6</label> 
                 </div>
                 <br><br><h3>Диски</h3><br>
                 <div class="radio-toolbar">
-                    <input type="radio" id="15d" name="cardisk" value="15" checked>
+                    <input type="radio" id="15d" name="cardisk" value="15" class="optionRadio" checked>
                     <label for="15d">15`</label>
 
-                    <input type="radio" id="16d" name="cardisk" value="16">
+                    <input type="radio" id="16d" name="cardisk" value="16" class="optionRadio">
                     <label for="16d">16`</label>
 
-                    <input type="radio" id="17d" name="cardisk" value="17">
+                    <input type="radio" id="17d" name="cardisk" value="17" class="optionRadio">
                     <label for="17d">17`</label> 
                 </div><br>
-                <h1>Загалом: <i>45000</i></h1>
-                <button onclick="location.replace('truck.html')" class="buyButton">Вибрати</button>
+                <h1 id='optionPrice'>Виберіть будь ласка комплектацію</h1>
+                <button class="buyButton" id="addToTruckButton">Вибрати</button>
                 <input type="text" name="carname" class="formCarName" style="display: none" value="1">
+                <i style="display: none" id="empty"></i>
             </form>
             
         </div>
