@@ -1,5 +1,6 @@
 <?php
     include 'dbdata.php';
+    include 'phpScripts/Car.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -176,21 +177,15 @@
                                 }
                             echo "</script>";
                             
-                            $request = "SELECT DISTINCT car.name as carName, car.img AS carImg, car.ShortDescription AS carDesription
-                                        FROM car 
-                                        JOIN manufacturer ON car.ManufacturerID = manufacturer.ID 
-                                        JOIN options ON options.CarID = car.ID
-                                        {$filters} {$sorting}";
-                            //echo $request;
-                            $result = $conn->query($request); //getting request about cars
-                            while($row = $result->fetch_array()) //fetching request to array
+                            $cars = Car::getAllCars($filters, $sorting, $conn);
+                            for($i = 0 ; $i < count($cars); $i++)
                             {
                                 echo "
                                     <div class='car-container car-block hidden'>
-                                        <br><h1>{$row['carName']}</h1>
-                                        <img src='images/{$row['carImg']}' value='1'><br>
+                                        <br><h1>{$cars[$i]['carName']}</h1>
+                                        <img src='images/{$cars[$i]['carImg']}' value='1'><br>
                                         <button>Детальніше</button>
-                                        <i style='display: none' class='description'>{$row['carDesription']}</i>
+                                        <i style='display: none' class='description'>{$cars[$i]['carDesription']}</i>
                                     </div>
                                 ";
                             }

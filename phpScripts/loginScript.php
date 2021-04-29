@@ -8,8 +8,8 @@
     $login = $_POST['login'];
     $pass = $_POST['pass'];
 
-    $user = new User($conn);
-    $info = $user->getUserByLogin($login); 
+    $user = new User($conn, $login);
+    $info = $user->getUserInfo(); 
 
     if(empty($info)) //checking is there is user with such login
     {

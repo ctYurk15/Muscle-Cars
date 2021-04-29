@@ -1,3 +1,33 @@
+<?php
+    if(!isset($_COOKIE["login"])) //if we`re not logged - redirecting to login page
+    {
+        header('location: login.html');
+    }
+    else
+    {
+        //if this user has admin permissions
+        
+        //variables using for connection to db
+        $servername = "localhost";
+        $database = "muscle-carsdb";
+        $username = "root";
+        $password = "root";
+
+
+        // Create connection
+        $conn = new mysqli($servername, $username, $password, $database);
+        if ($mysqli->connect_errno) 
+        {
+            printf("Failed to connect to: %s\n", $mysqli->connect_error);
+            exit();
+        }
+        
+        //if our user admin or not
+        $request = "SELECT admin FROM `user` WHERE login = '{$_COOKIE['login']}'";
+        $hasPermission = $conn->query($request)->fetch_array()['admin']; 
+    }
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,12 +47,13 @@
             font-size: 20px;
             text-align: center;
             margin: 10px;
+            text-align: center;
         }
         
         .changeBlock
         {
             top: 0;
-            position: fixed;
+            position: absolute;
             width: 100%;
             height: 100%;
             font-size: 20px;
@@ -36,9 +67,12 @@
             height: 0%;
         }
         
+        
+        
     </style>
 </head>
 <body>
+   
     <table border='0px' id="mainTable">
         <tr>
             <td width="25%" valign="top">
@@ -58,6 +92,41 @@
                 </div>
                 <div class="changeBlock hidden" data-block="changeUsers">
                     <h1>Users</h1>
+                    <?php
+                        //getting all users
+                        $request = "SELECT * FROM `user`";
+                        $result = $conn->query($request);
+                    
+                        echo "<table border='1px'>
+                                    <tr>
+                                        <td>ID</td>
+                                        <td>login</td>
+                                        <td>name</td>
+                                        <td>email</td>
+                                        <td>pass</td>
+                                        <td>address</td>
+                                        <td>avatar</td>
+                                        <td>orders</td>
+                                        <td>is admin</td>
+                                    </tr>";
+                        
+                        while($row = $result->fetch_array())
+                        {
+                            echo "<tr>
+                                        <td>{$row['ID']}</td>
+                                        <td>{$row['login']}</td>
+                                        <td>{$row['name']}</td>
+                                        <td>{$row['email']}</td>
+                                        <td>{$row['pass']}</td>
+                                        <td>{$row['address']}</td>
+                                        <td>images/{$row['avatar']}</td>
+                                        <td>{$row['orders']}</td>
+                                        <td>{$row['admin']}</td>
+                                    </tr>";
+                        }
+                    
+                        echo "</table>";
+                    ?>
                 </div>
                 <div class="changeBlock hidden" data-block="changeCars">
                     <h1>Cars</h1>
@@ -89,6 +158,13 @@
             $(".changeBlock").addClass('hidden');
             $(".changeBlock[data-block='"+block+"']").removeClass('hidden');
         });
+        
+        //secure way to check user
+        var hasPermision = "<?= $hasPermission ?>";
+        if(hasPermision != 1)
+        {
+            $("#mainTable").html("У вас немає прав на цю панель. Зверніться до адміністратора.");
+        }
     });
 </script>
 

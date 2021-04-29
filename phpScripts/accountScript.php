@@ -1,6 +1,8 @@
 <?php
 
     include '../dbdata.php';
+    include 'User.php';
+    include 'generalScripts.php';
     
     //getting new data
     $newlogin = htmlspecialchars($_POST['login']);
@@ -10,17 +12,10 @@
     $newpass = htmlspecialchars($_POST['pass']);
     $newavatar = $_FILES['avatar']['name'];
 
-    $request = "UPDATE user
-                SET login='{$newlogin}',
-                    name='{$newname}',
-                    email='{$newemail}',
-                    address='{$newaddress}',
-                    pass='{$newpass}'
-                    WHERE login='{$_COOKIE['login']}'";
-    $conn->query($request); //making request
-    //echo $_COOKIE['login'];
+    $user = new User($conn, $_COOKIE['login']);
+    $user->fullUserUpdate($newlogin, $newname, $newemail, $newaddress, $newpass);
 
     setcookie('login', '0', time()-10, "/"); //unsetting previous cookie
     setcookie('login', $newlogin, time()+(60*60*24), "/"); //setting cookie with new login
-    echo "Success.<script>location.replace('../account.php')</script>"; //redirecting
+    gotoURL('../account.php'); //redirecting
 ?>

@@ -5,6 +5,7 @@
     }
 
     include 'dbdata.php';
+    include 'phpScripts/User.php';
 ?>
 
 
@@ -40,52 +41,51 @@
                            <form method="post" action="phpScripts/accountScript.php"  enctype="multipart/form-data">
                             <?php
                                 //getting all info about user with login we currently have in cookies
-                                $request = "SELECT * FROM `user` WHERE login = '{$_COOKIE['login']}'";
-                                $result = $conn->query($request)->fetch_array(); //converting to associative array
+                                $user = new User($conn, $_COOKIE['login']);
                                 echo "  <tr>
                                             <td width='33%'>Логін </td>
-                                            <td width='33%'>{$result['login']}</td>
+                                            <td width='33%'>{$user->getUserColumn('login')}</td>
                                             <td width='33%' align='center'><input type='button' class='changeButtonStyle changeButton' value='Змінити'></td>
-                                            <td width='33%' class='hidden'><input type='text' value='{$result['login']}' name='login'></td>
+                                            <td width='33%' class='hidden'><input type='text' value='{$user->getUserColumn('login')}' name='login'></td>
                                             <td width='33%' align='center' class='hidden'><input type='submit' class='changeButtonStyle changeButton' value='Змінити'></td>
                                         </tr>
                                         <tr><td colspan='3'><hr></td></tr>
                                         <tr>
                                             <td width='33%'>Повне ім'я</td>
-                                            <td width='33%'>{$result['name']}</td>
+                                            <td width='33%'>{$user->getUserColumn('name')}</td>
                                             <td width='33%' align='center'><input type='button' class='changeButtonStyle changeButton' value='Змінити'</td>
-                                            <td width='33%' class='hidden'><input type='text' value='{$result['name']}' name='name'></td>
+                                            <td width='33%' class='hidden'><input type='text' value='{$user->getUserColumn('name')}' name='name'></td>
                                             <td width='33%' align='center' class='hidden'><input type='submit' class='changeButtonStyle changeButton' value='Змінити'></td>
                                         </tr>
                                         <tr><td colspan='3'><hr></td></tr>
                                         <tr>
                                             <td width='33%'>Email</td>
-                                            <td width='33%'>{$result['email']}</td>
+                                            <td width='33%'>{$user->getUserColumn('email')}</td>
                                             <td width='33%' align='center'><input type='button' class='changeButtonStyle changeButton' value='Змінити'></td>
-                                            <td width='33%' class='hidden'><input type='text' value='{$result['email']}' name='email'></td>
+                                            <td width='33%' class='hidden'><input type='text' value='{$user->getUserColumn('email')}' name='email'></td>
                                             <td width='33%' align='center' class='hidden'><input type='submit' class='changeButtonStyle changeButton' value='Змінити'></td>
                                         </tr>
                                         <tr><td colspan='3'><hr></td></tr>
                                         <tr>
                                             <td width='33%'>Адреса</td>
-                                            <td width='33%'>{$result['address']}</td>
+                                            <td width='33%'>{$user->getUserColumn('address')}</td>
                                             <td width='33%' align='center'><input type='button' class='changeButtonStyle changeButton' value='Змінити'></td>
-                                            <td width='33%' class='hidden'><input type='text' value='{$result['address']}' name='address'></td>
+                                            <td width='33%' class='hidden'><input type='text' value='{$user->getUserColumn('address')}' name='address'></td>
                                             <td width='33%' align='center' class='hidden'><input type='submit' class='changeButtonStyle changeButton' value='Змінити'></td>
                                         </tr>
                                         <tr><td colspan='3'><hr></td></tr>
                                         <tr>
                                             <td width='33%'>Пароль</td>
-                                            <td width='33%' class='hidden' id='passText'>{$result['pass']}</td>
+                                            <td width='33%' class='hidden' id='passText'>{$user->getUserColumn('pass')}</td>
                                             <td width='33%' id='hiddenPassText'>*********</td>
                                             <td width='33%' align='center'><input type='button' class='changeButtonStyle changeButton' value='Змінити'></td>
-                                            <td width='33%' class='hidden'><input type='text' value='{$result['pass']}' name='pass'></td>
+                                            <td width='33%' class='hidden'><input type='text' value='{$user->getUserColumn('pass')}' name='pass'></td>
                                             <td width='33%' align='center' class='hidden'><input type='submit' class='changeButtonStyle changeButton' value='Змінити'></td>
                                         </tr>
                                         <tr><td colspan='3'><hr></td></tr>
                                         <tr>
                                             <td width='33%'>Аватарка</td>
-                                            <td width='33%'><img src='images/{$result['avatar']}'></td>
+                                            <td width='33%'><img src='images/{$user->getUserColumn('avatar')}'></td>
                                             <td width='33%' align='center'><input type='button' class='changeButtonStyle changeButton' value='Змінити'></td>
                                             <td width='33%' class='hidden'><input type='file' name='avatar' size=''></td>
                                             <td width='33%' align='center' class='hidden'><input type='submit' class='changeButtonStyle changeButton' value='Змінити'></td>
@@ -93,7 +93,7 @@
                                         <tr><td colspan='3'><hr></td></tr>
                                         <tr>
                                             <td width='33%'>Замовлень</td>
-                                            <td width='33%'>{$result['orders']}</td>
+                                            <td width='33%'>{$user->getUserColumn('orders')}</td>
                                             <td width='33%' align='center'><input type='button' href='catalog.php' class='changeButtonStyle' value='Змінити'></td>
                                         </tr>
                                         "

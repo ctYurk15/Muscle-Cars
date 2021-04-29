@@ -1,5 +1,4 @@
 <?php
-
     class Truck
     {
         public $currentUser;
@@ -13,12 +12,12 @@
         
         public function addOrder($carname, $color, $engine, $disk)
         {
-            //getting user id, car id, options info for correct insert
-            $getUserIDRequest = "SELECT ID FROM user WHERE login='".$this->currentUser."'"; //user
-            $user_id = $this->conn->query($getUserIDRequest)->fetch_array()['ID'];
+            //getting user and car id for correct insert
+            $user = new User($this->conn, $this->currentUser);
+            $car = new Car($this->conn, $carname);
 
-            $getCarIDRequest = "SELECT ID FROM car WHERE name='".$carname."'"; //car
-            $car_id = $this->conn->query($getCarIDRequest)->fetch_array()['ID'];
+            $user_id = $user->getUserColumn('ID');
+            $car_id = $car->getCarColumn('ID');
 
             $getOptionRequest = "SELECT COUNT(*) AS c, ID FROM options WHERE CarID = ".$car_id." AND Color = '{$color}' AND Engine = '{$engine}' AND Disk='{$disk}'"; //getting all options for this car
             $optionsInfo = $this->conn->query($getOptionRequest)->fetch_array();
@@ -87,13 +86,13 @@
             }
         }
         
-        public function redactOrder($idOrder, $sign, $value) 
+        private function redactOrder($idOrder, $sign, $value) 
         {
             $request = "UPDATE `order` SET Count = COUNT {$sign} {$value} WHERE id={$idOrder}";
             $this->conn->query($request);
         }
         
-        public function deleteOrder($idOrder)
+        private function deleteOrder($idOrder)
         {
             $request = "DELETE FROM `order` WHERE id={$idOrder}";
             $this->conn->query($request);
@@ -144,13 +143,13 @@
                 $totalPrice += $row["orderCount"] * $row['optionsPrice'];
             }
                    
-            $user = new User($this->conn); //for stats
+            $user = new User($this->conn, $this->currentUser); //for stats
             
             //changing database
             for($i = 0; $i < count($orders); $i++)
             {
                 //adding to user stats
-                $user->increaseUserOrders($this->currentUser, $orders[$i]["orderCount"]);
+                $user->increaseUserOrders($orders[$i]["orderCount"]);
                 //reducing optins quantity  
                 $this->conn->query("UPDATE options SET Quantity = Quantity - {$orders[$i]["orderCount"]} WHERE ID = {$orders[$i]["optionsID"]}");  
                 //deleting order

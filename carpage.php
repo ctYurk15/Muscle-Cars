@@ -1,5 +1,7 @@
 <?php
     include 'dbdata.php';
+    include 'phpScripts/Car.php';
+    include 'phpScripts/Comments.php';
 ?>
 
 <!DOCTYPE html>
@@ -26,25 +28,20 @@
             <tr>
                 <td colspan="7">
                     <?php
-                        
-                        
-                        //forming request about main info
-                        $request = "SELECT * FROM car 
-                                    INNER JOIN gallery ON car.ID = gallery.CarID
-                                    WHERE Name = '{$_GET["carName"]}'";
-                        $result = $conn->query($request);
-                        $row = $result->fetch_array(); 
+                    
+                        $car = new Car($conn, $_GET["carName"]);
+                        $gallery = $car->getGallery();
                     
                         echo "
                         <h1 id='labelText'></h1>
                         <table width='100%' border='0px'>
                             <tr>
                                 <td width='50%' rowspan='2'>
-                                    <img src='images/{$row["img"]}' class='mainImg'>
+                                    <img src='images/{$car->getCarColumn('img')}' class='mainImg'>
                                 </td>
                                 <td width='50%' rowspan='2'>
                                     <div class='descriptionDiv'>
-                                        {$row["Description"]}
+                                        {$car->getCarColumn("Description")}
                                     </div>
                                     <button id='buyButton' class='buyButton'>Обрати опції</button>
                                 </td>
@@ -65,13 +62,13 @@
                                             <td>
                                                 <div id='slider'>
                                                     <div id='line'>
-                                                        <img src='images/{$row["img1"]}' alt=''>
-                                                        <img src='images/{$row["img2"]}' alt=''>
-                                                        <img src='images/{$row["img3"]}' alt=''>
-                                                        <img src='images/{$row["img4"]}' alt=''>
-                                                        <img src='images/{$row["img5"]}' alt=''>
-                                                        <img src='images/{$row["img6"]}' alt=''>
-                                                        <img src='images/{$row["img7"]}' alt=''>
+                                                        <img src='images/{$gallery["img1"]}' alt=''>
+                                                        <img src='images/{$gallery["img2"]}' alt=''>
+                                                        <img src='images/{$gallery["img3"]}' alt=''>
+                                                        <img src='images/{$gallery["img4"]}' alt=''>
+                                                        <img src='images/{$gallery["img5"]}' alt=''>
+                                                        <img src='images/{$gallery["img6"]}' alt=''>
+                                                        <img src='images/{$gallery["img7"]}' alt=''>
                                                     </div>
                                                 </div>
                                             </td>
@@ -92,39 +89,24 @@
                     <h1>Відгуки про даний автомобіль</h1><br>
                     
                     <?php
-                        //variables using for connection to db
-                        $servername = "localhost";
-                        $database = "muscle-carsdb";
-                        $username = "root";
-                        $password = "root";
-
-                        // Create connection
-                        $conn = new mysqli($servername, $username, $password, $database);
-                        if ($mysqli->connect_errno) 
-                        {
-                            printf("Failed to connect to: %s\n", $mysqli->connect_error);
-                            exit();
-                        }
-                        
-                        //forming request
-                        $request = "SELECT positive, commentText, `date`, `user`.avatar, `user`.login FROM `comment` JOIN `user` ON UserID = `user`.`ID` JOIN `car` ON CarID = `car`.`ID` WHERE car.Name = '{$_GET["carName"]}'";
-                        $result = $conn->query($request);
                     
-                        $commentsDisplayed = 0;
-                        while($row = $result->fetch_array()) //fetching request to array
+                        $comments = new Comments($conn);
+                        $carComments = $comments->getCommentsForCar($_GET['carName']);
+
+                        for($i = 0 ; $i < count($carComments); $i++)
                         {
-                            $commentImage = $row['positive'] == 1 ? "like.png" : "dislike.png"; //is it positive or negative comment?
-                                
+                            $commentImage = $carComments[$i]['positive'] == 1 ? "like.png" : "dislike.png"; //is it positive or negative comment?
+                            
                             echo "
                                 <div class='commentDiv'>
                                     <table>
                                         <tr>
                                             <td width='10%' rowspan='2'>
-                                                <h4 style='text-align: center; margin-top: 10px;'>".$row["login"]."</h4>
-                                                <img src='images/".$row['avatar']."'>
+                                                <h4 style='text-align: center; margin-top: 10px;'>".$carComments[$i]["login"]."</h4>
+                                                <img src='images/".$carComments[$i]['avatar']."'>
                                             </td>
                                             <td width='85%'>
-                                                <b>Коментар було залишено ".$row['date']."</b>
+                                                <b>Коментар було залишено ".$carComments[$i]['date']."</b>
                                             </td>
                                             <td width='5%' rowspan='2' align='center'>
                                                 
@@ -133,16 +115,15 @@
                                         </tr>
                                         <tr>
                                             <td>
-                                                ".$row['commentText']."
+                                                ".$carComments[$i]['commentText']."
                                             </td>
                                         </tr>
                                     </table>
                                 </div>
                             ";
-                            $commentsDisplayed++;
                         }
-                        
-                        if($commentsDisplayed == 0) echo "Наразі комментарів немає";
+                        if(empty($carComments)) echo "Наразі комментарів немає";
+                    
                         $conn->close(); //closing connection
                     ?>
                     

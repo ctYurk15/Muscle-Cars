@@ -1,8 +1,12 @@
 <?php
-    
+
     if(isset($_COOKIE["login"]))
     {
         include '../dbdata.php';
+        include 'generalScripts.php';
+        include 'Car.php';
+        include 'User.php';
+        include 'Comments.php';
         
         //getting comment
         $comment = htmlspecialchars($_POST['commentText']);
@@ -11,33 +15,20 @@
         $login = $_COOKIE['login'];
 
         //getting user and car id for correct insert
-        $getUserIDRequest = "SELECT ID FROM user WHERE login='".$login."'"; //user
-        $user_id = $conn->query($getUserIDRequest)->fetch_array()['ID'];
-
-        $getCarIDRequest = "SELECT ID FROM car WHERE name='".$carname."'"; //user
-        $car_id = $conn->query($getCarIDRequest)->fetch_array()['ID'];
+        $user = new User($conn, $login);
+        $car = new Car($conn, $carname);
         
-        //did we already left comment?
-        $getUserIDRequest = "SELECT COUNT(*) AS c FROM comment WHERE UserID=$user_id AND CarID=$car_id"; //user
-        $count = $conn->query($getUserIDRequest)->fetch_array()['c'];
-
-        $request = "";
+        $user_id = $user->getUserColumn('ID');
+        $car_id = $car->getCarColumn('ID');
         
-        if($count != 0) //rewriting comment
-        {
-            $request = "DELETE FROM `comment` WHERE UserID=$user_id AND CarID=$car_id; ";
-            $conn->query($request); //deleting previous comment
-        }
+        $comments = new Comments($conn);
+        $comments->addComment($positive, $comment, $user_id, $car_id);
         
-        $request = "INSERT INTO `comment`(positive, commentText, UserID, CarID) VALUES($positive, '$comment', $user_id, $car_id);";
-        $conn->query($request); //inserting new comment
-        
-        echo "Success. Redirecting to car page.
-            <script>location.replace('../carpage.php?carName=$carname')</script>"; //redirecting
+        gotoURL("../carpage.php?carName={$carname}"); //redirecting
     }
-    else
+    else //redirecting to login page
     {
-        echo "<script>location.replace('../login.html')</script>";
+        gotoURL('../login.html');
     }
 
 ?>

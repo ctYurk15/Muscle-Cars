@@ -16,8 +16,8 @@
     if($command == "purchase") //if user wants to purchase his order
     {
         //to avoid bugs with NULL address
-        $user = new User($conn);
-        if($user->getUserColumn($_COOKIE['login'], "address") == "") 
+        $user = new User($conn, $_COOKIE['login']);
+        if($user->getUserColumn("address") == "") 
         {
             alert('Вкажіть будь-ласка свою адресу у аккаунті');
             gotoURL('../account.php');  

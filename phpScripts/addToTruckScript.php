@@ -2,6 +2,8 @@
     include '../dbdata.php';
     include 'generalScripts.php';
     include 'Truck.php';
+    include 'User.php';
+    include 'Car.php';
 
     //getting order values
     $carname = $_POST['carname'];
