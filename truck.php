@@ -6,6 +6,7 @@
 
     include 'dbdata.php';
     include 'phpScripts/Truck.php';
+    include 'phpScripts/DBmanager.php';
 ?>
 
 <!DOCTYPE html>

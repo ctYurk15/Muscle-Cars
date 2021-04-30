@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3307
--- Час створення: Квт 22 2021 р., 11:48
+-- Час створення: Квт 30 2021 р., 14:33
 -- Версія сервера: 10.1.44-MariaDB
 -- Версія PHP: 7.1.33
 
@@ -51,7 +51,8 @@ INSERT INTO `car` (`ID`, `name`, `year`, `img`, `Description`, `ManufacturerID`,
 (7, 'Firebird', 1968, 'firebird1968.jpg', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit unde, excepturi tempora ipsum vero quae et corporis sit numquam ab cumque alias fugit, incidunt consequuntur! Voluptas voluptatem, sint, veniam, voluptate suscipit eos aliquam animi aspernatur voluptatibus molestiae vel impedit eius autem perspiciatis nisi! Odit fugit quaerat laboriosam maxime et quo quod molestias cum optio nemo maiores deleniti necessitatibus veniam ipsum totam, minus amet dolor iusto ut similique sit porro repudiandae. Optio corporis rerum autem provident cum veritatis beatae ipsa suscipit, quis. Fugiat totam distinctio, quidem earum esse nam? Sequi repellendus ipsa molestias aspernatur, veritatis, cumque aperiam iusto distinctio corporis voluptates?', 5, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad ex, ut labore dicta, itaque modi beatae rerum, perspiciatis molestias iusto ea fugit sequi voluptates laboriosam sed deleniti consequatur, harum corporis. Pariatur ex cupiditate consequatur architecto, recusandae libero, debitis autem magni perspiciatis, rerum et dignissimos ea laboriosam officia repellat beatae dicta obcaecati deserunt inventore ut. '),
 (8, 'Rebel Machine', 1970, 'rebelmachine1970.jpg', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit unde, excepturi tempora ipsum vero quae et corporis sit numquam ab cumque alias fugit, incidunt consequuntur! Voluptas voluptatem, sint, veniam, voluptate suscipit eos aliquam animi aspernatur voluptatibus molestiae vel impedit eius autem perspiciatis nisi! Odit fugit quaerat laboriosam maxime et quo quod molestias cum optio nemo maiores deleniti necessitatibus veniam ipsum totam, minus amet dolor iusto ut similique sit porro repudiandae. Optio corporis rerum autem provident cum veritatis beatae ipsa suscipit, quis. Fugiat totam distinctio, quidem earum esse nam? Sequi repellendus ipsa molestias aspernatur, veritatis, cumque aperiam iusto distinctio corporis voluptates?', 6, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad ex, ut labore dicta, itaque modi beatae rerum, perspiciatis molestias iusto ea fugit sequi voluptates laboriosam sed deleniti consequatur, harum corporis. Pariatur ex cupiditate consequatur architecto, recusandae libero, debitis autem magni perspiciatis, rerum et dignissimos ea laboriosam officia repellat beatae dicta obcaecati deserunt inventore ut. '),
 (9, 'Impala SS', 1967, 'impalass1967.jpg', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit unde, excepturi tempora ipsum vero quae et corporis sit numquam ab cumque alias fugit, incidunt consequuntur! Voluptas voluptatem, sint, veniam, voluptate suscipit eos aliquam animi aspernatur voluptatibus molestiae vel impedit eius autem perspiciatis nisi! Odit fugit quaerat laboriosam maxime et quo quod molestias cum optio nemo maiores deleniti necessitatibus veniam ipsum totam, minus amet dolor iusto ut similique sit porro repudiandae. Optio corporis rerum autem provident cum veritatis beatae ipsa suscipit, quis. Fugiat totam distinctio, quidem earum esse nam? Sequi repellendus ipsa molestias aspernatur, veritatis, cumque aperiam iusto distinctio corporis voluptates?', 1, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad ex, ut labore dicta, itaque modi beatae rerum, perspiciatis molestias iusto ea fugit sequi voluptates laboriosam sed deleniti consequatur, harum corporis. Pariatur ex cupiditate consequatur architecto, recusandae libero, debitis autem magni perspiciatis, rerum et dignissimos ea laboriosam officia repellat beatae dicta obcaecati deserunt inventore ut. '),
-(10, 'Roadrunner', 1969, 'roadrunner1969.jpg', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit unde, excepturi tempora ipsum vero quae et corporis sit numquam ab cumque alias fugit, incidunt consequuntur! Voluptas voluptatem, sint, veniam, voluptate suscipit eos aliquam animi aspernatur voluptatibus molestiae vel impedit eius autem perspiciatis nisi! Odit fugit quaerat laboriosam maxime et quo quod molestias cum optio nemo maiores deleniti necessitatibus veniam ipsum totam, minus amet dolor iusto ut similique sit porro repudiandae. Optio corporis rerum autem provident cum veritatis beatae ipsa suscipit, quis. Fugiat totam distinctio, quidem earum esse nam? Sequi repellendus ipsa molestias aspernatur, veritatis, cumque aperiam iusto distinctio corporis voluptates?', 4, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad ex, ut labore dicta, itaque modi beatae rerum, perspiciatis molestias iusto ea fugit sequi voluptates laboriosam sed deleniti consequatur, harum corporis. Pariatur ex cupiditate consequatur architecto, recusandae libero, debitis autem magni perspiciatis, rerum et dignissimos ea laboriosam officia repellat beatae dicta obcaecati deserunt inventore ut. ');
+(10, 'Roadrunner', 1969, 'roadrunner1969.jpg', 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit unde, excepturi tempora ipsum vero quae et corporis sit numquam ab cumque alias fugit, incidunt consequuntur! Voluptas voluptatem, sint, veniam, voluptate suscipit eos aliquam animi aspernatur voluptatibus molestiae vel impedit eius autem perspiciatis nisi! Odit fugit quaerat laboriosam maxime et quo quod molestias cum optio nemo maiores deleniti necessitatibus veniam ipsum totam, minus amet dolor iusto ut similique sit porro repudiandae. Optio corporis rerum autem provident cum veritatis beatae ipsa suscipit, quis. Fugiat totam distinctio, quidem earum esse nam? Sequi repellendus ipsa molestias aspernatur, veritatis, cumque aperiam iusto distinctio corporis voluptates?', 4, 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad ex, ut labore dicta, itaque modi beatae rerum, perspiciatis molestias iusto ea fugit sequi voluptates laboriosam sed deleniti consequatur, harum corporis. Pariatur ex cupiditate consequatur architecto, recusandae libero, debitis autem magni perspiciatis, rerum et dignissimos ea laboriosam officia repellat beatae dicta obcaecati deserunt inventore ut. '),
+(13, 'test car', 2004, 'testcar.jpg', 'long test description', 9, 'test description');
 
 -- --------------------------------------------------------
 
@@ -74,7 +75,9 @@ CREATE TABLE `comment` (
 
 INSERT INTO `comment` (`ID`, `positive`, `commentText`, `UserID`, `CarID`, `date`) VALUES
 (1, 1, 'First comment. I hope it would be successful.', 10, 1, '2021-04-12 11:25:17'),
-(6, 1, 'Rewrited comment', 11, 2, '2021-04-13 08:57:03');
+(6, 1, 'Rewrited comment', 11, 2, '2021-04-13 08:57:03'),
+(11, 0, 'Well, I hope it would work', 11, 1, '2021-04-29 10:23:37'),
+(13, 0, 'Nah, it`s not so good', 10, 2, '2021-04-30 11:16:49');
 
 -- --------------------------------------------------------
 
@@ -108,7 +111,8 @@ INSERT INTO `gallery` (`ID`, `img1`, `img2`, `img3`, `img4`, `img5`, `img6`, `Ca
 (7, 'firebird1968.jpg', 'firebird1968.jpg', 'firebird1968.jpg', 'firebird1968.jpg', 'firebird1968.jpg', 'firebird1968.jpg', 7, 'firebird1968.jpg'),
 (8, 'rebelmachine1970.jpg', 'rebelmachine1970.jpg', 'rebelmachine1970.jpg', 'rebelmachine1970.jpg', 'rebelmachine1970.jpg', 'rebelmachine1970.jpg', 8, 'rebelmachine1970.jpg'),
 (9, 'impalass1967.jpg', 'impalass1967.jpg', 'impalass1967.jpg', 'impalass1967.jpg', 'impalass1967.jpg', 'impalass1967.jpg', 9, 'impalass1967.jpg'),
-(10, 'roadrunner1969.jpg', 'roadrunner1969.jpg', 'roadrunner1969.jpg', 'roadrunner1969.jpg', 'roadrunner1969.jpg', 'roadrunner1969.jpg', 10, 'roadrunner1969.jpg');
+(10, 'roadrunner1969.jpg', 'roadrunner1969.jpg', 'roadrunner1969.jpg', 'roadrunner1969.jpg', 'roadrunner1969.jpg', 'roadrunner1969.jpg', 10, 'roadrunner1969.jpg'),
+(12, 'testcar.jpg', 'testcar.jpg', 'testcar.jpg', 'testcar.jpg', 'testcar.jpg', 'testcar.jpg', 13, 'testcar.jpg');
 
 -- --------------------------------------------------------
 
@@ -131,7 +135,8 @@ INSERT INTO `manufacturer` (`ID`, `Name`) VALUES
 (3, 'Dodge'),
 (4, 'Plymouth'),
 (5, 'Pontiac'),
-(6, 'AMC');
+(6, 'AMC'),
+(9, 'Testm');
 
 -- --------------------------------------------------------
 
@@ -155,20 +160,20 @@ CREATE TABLE `options` (
 --
 
 INSERT INTO `options` (`ID`, `Color`, `Engine`, `HP`, `Disk`, `Quantity`, `Price`, `CarID`) VALUES
-(1, 'black', 'V8B', 426, 15, 12, 45000, 1),
+(1, 'black', 'V8B', 426, 15, 10, 45000, 1),
 (3, 'blue', 'V8B', 426, 15, 10, 45000, 1),
 (4, 'blue', 'V8B', 426, 17, 10, 46000, 1),
 (5, 'red', 'V8', 396, 15, 10, 40000, 1),
 (6, 'red', 'V6', 240, 16, 10, 35500, 1),
 (7, 'red', 'V6', 120, 15, 10, 20000, 2),
-(8, 'blue', 'V8B', 375, 16, 10, 30000, 2),
+(8, 'blue', 'V8B', 375, 16, 4, 30000, 2),
 (9, 'red', 'V8', 335, 16, 10, 35500, 2),
 (10, 'green', 'V6', 145, 15, 10, 28000, 3),
-(11, 'red', 'V8', 290, 15, 10, 35000, 3),
-(12, 'black', 'V8B', 425, 15, 10, 46500, 3),
+(11, 'red', 'V8', 290, 15, 8, 35000, 3),
+(12, 'black', 'V8B', 425, 15, 9, 46500, 3),
 (13, 'red', 'V6', 125, 15, 10, 29500, 4),
 (14, 'red', 'V8', 300, 16, 10, 36000, 4),
-(15, 'green', 'V8B', 390, 16, 10, 48000, 4),
+(15, 'green', 'V8B', 390, 16, 5, 48000, 4),
 (16, 'blue', 'V6', 125, 15, 10, 20000, 5),
 (17, 'blue', 'V8', 216, 15, 10, 35000, 5),
 (18, 'blue', 'V8', 380, 15, 10, 39000, 5),
@@ -177,10 +182,11 @@ INSERT INTO `options` (`ID`, `Color`, `Engine`, `HP`, `Disk`, `Quantity`, `Price
 (21, 'black', 'V8', 325, 15, 10, 34000, 7),
 (22, 'red', 'V8', 325, 16, 10, 35000, 7),
 (23, 'green', 'V8', 146, 16, 10, 19000, 8),
-(24, 'blue', 'V8', 284, 15, 10, 31000, 8),
+(24, 'blue', 'V8', 284, 15, 9, 31000, 8),
 (25, 'blue', 'V8', 319, 15, 10, 33700, 8),
-(26, 'green', 'V8B', 425, 15, 0, 46500, 9),
-(27, 'red', 'V8', 335, 15, 10, 32000, 10);
+(26, 'green', 'V8B', 425, 15, 1, 46500, 9),
+(27, 'red', 'V8', 335, 15, 10, 32000, 10),
+(33, 'black', 'V8B', 390, 16, 23, 54000, 13);
 
 -- --------------------------------------------------------
 
@@ -194,6 +200,13 @@ CREATE TABLE `order` (
   `UserID` int(11) NOT NULL,
   `Count` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Дамп даних таблиці `order`
+--
+
+INSERT INTO `order` (`ID`, `OptionID`, `UserID`, `Count`) VALUES
+(21, 1, 10, 1);
 
 -- --------------------------------------------------------
 
@@ -209,17 +222,23 @@ CREATE TABLE `user` (
   `address` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `avatar` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT 'account.png',
   `orders` int(11) DEFAULT '0',
-  `pass` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL
+  `pass` varchar(45) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `admin` tinyint(4) NOT NULL DEFAULT '0',
+  `totalWasted` int(11) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Дамп даних таблиці `user`
 --
 
-INSERT INTO `user` (`ID`, `login`, `name`, `email`, `address`, `avatar`, `orders`, `pass`) VALUES
-(5, 'johndoe', 'John Doe', 'emaple@ex.com', NULL, 'account.png', 0, 'password'),
-(10, 'ctyurk15', 'Lev Zykol', 'levgenetic@gmail.com', NULL, 'account.png', 0, 'qwerty'),
-(11, 'test14', 'test11', 'test1@gmail.com', 'Вулиця Пулюя', 'account.png', 7, 'test1pass');
+INSERT INTO `user` (`ID`, `login`, `name`, `email`, `address`, `avatar`, `orders`, `pass`, `admin`, `totalWasted`) VALUES
+(5, 'johndoe', 'John Doe', 'emaple@ex.com', NULL, 'account.png', 0, 'password', 0, 0),
+(10, 'ctyurk15', 'Lev Zykol', 'levgenetic@gmail.com', 'Lviv.Ukraine', 'account.png', 22, 'qwerty', 1, 31000),
+(11, 'test1', 'test11', 'test1@gmail.com', 'Вулиця Пулюя', 'account.png', 19, 'test1pass', 0, 0),
+(17, 'test2', 'test12', 'test12@meta.ua', NULL, 'account.png', 0, 'krolik', 0, 0),
+(18, 'test3', 'test13', 'test13@meta.ua', NULL, 'account.png', 0, 'krol', 0, 0),
+(20, 'test1_ad', 'test11_ad', 'test11@gmail.com', NULL, 'account.png', 0, 'test1_ad_pass', 1, 0),
+(23, 'test2_ad', 'test12_ad', 'test12_ad@gmail.com', NULL, 'account.png', 0, 'test2_ad_pass', 1, 0);
 
 --
 -- Індекси збережених таблиць
@@ -272,7 +291,8 @@ ALTER TABLE `order`
 -- Індекси таблиці `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`ID`),
+  ADD UNIQUE KEY `login` (`login`);
 
 --
 -- AUTO_INCREMENT для збережених таблиць
@@ -282,43 +302,43 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT для таблиці `car`
 --
 ALTER TABLE `car`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT для таблиці `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT для таблиці `gallery`
 --
 ALTER TABLE `gallery`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT для таблиці `manufacturer`
 --
 ALTER TABLE `manufacturer`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT для таблиці `options`
 --
 ALTER TABLE `options`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT для таблиці `order`
 --
 ALTER TABLE `order`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT для таблиці `user`
 --
 ALTER TABLE `user`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- Обмеження зовнішнього ключа збережених таблиць

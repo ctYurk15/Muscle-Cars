@@ -1,6 +1,7 @@
 <?php
     include '../dbdata.php';
     include 'generalScripts.php';
+    include 'DBmanager.php';
     include 'Truck.php';
     include 'User.php';
     include 'Car.php';

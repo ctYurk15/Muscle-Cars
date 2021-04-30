@@ -4,6 +4,7 @@
     {
         include '../dbdata.php';
         include 'generalScripts.php';
+        include 'DBmanager.php';
         include 'Car.php';
         include 'User.php';
         include 'Comments.php';

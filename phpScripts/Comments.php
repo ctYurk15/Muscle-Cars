@@ -1,12 +1,11 @@
 <?php
 
-    class Comments
+    class Comments extends DBmanager
     {
-        public $conn;
         
         public function __construct($conn)
         {
-            $this->conn = $conn;
+            parent::__construct($conn);
         }
         
         public function addComment($positive, $comment, $user_id, $car_id)

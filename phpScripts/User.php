@@ -30,6 +30,11 @@
             $this->conn->query("UPDATE `user` SET orders = orders+{$value} WHERE login='{$this->login}'");
         }
         
+        public function increaseUserWasted($value)
+        {
+            $this->conn->query("UPDATE `user` SET totalWasted = totalWasted+{$value} WHERE login='{$this->login}'");
+        }
+        
         public function addUser($login, $name, $email, $pass)
         {
             $this->conn->query("INSERT INTO `user`(login, name, email, pass) VALUES('{$login}', '{$name}', '{$email}', '{$pass}')");

@@ -1,7 +1,9 @@
 <?php
     include 'dbdata.php';
+    include 'phpScripts/DBmanager.php';
     include 'phpScripts/Car.php';
     include 'phpScripts/Comments.php';
+
 ?>
 
 <!DOCTYPE html>
@@ -39,15 +41,28 @@
                                 <td width='50%' rowspan='2'>
                                     <img src='images/{$car->getCarColumn('img')}' class='mainImg'>
                                 </td>
-                                <td width='50%' rowspan='2'>
+                                <td width='50%' rowspan='1'>
                                     <div class='descriptionDiv'>
                                         {$car->getCarColumn("Description")}
                                     </div>
-                                    <button id='buyButton' class='buyButton'>Обрати опції</button>
                                 </td>
                             </tr>
                             <tr>
-                                
+                                <td width='50%'>
+                                    <div class='descriptionDiv'>
+                                        <h2>Виробник: {$car->getManufacturer()}</h2><br><br>
+                                        <h2>Рік виходу: {$car->getCarColumn('year')}</h2><br><br>
+                                        <h2>"; 
+                    
+                        //what score car get
+                        $score = $car->getAVGScore();
+                        if($score > 0) echo "{$score}% позитивних відгуків";
+                        else echo "Наразі відгуків немає";
+                    
+                        echo "</h2><br>
+                                        <button id='buyButton' class='buyButton'>Обрати опції</button>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
                                 <td colspan='2' align='center'>

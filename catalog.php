@@ -1,5 +1,6 @@
 <?php
     include 'dbdata.php';
+    include 'phpScripts/DBmanager.php';
     include 'phpScripts/Car.php';
 ?>
 <!DOCTYPE html>

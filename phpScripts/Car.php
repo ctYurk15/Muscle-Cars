@@ -1,20 +1,18 @@
 <?php
-
-    class Car
+    class Car extends DBmanager
     {
-        public $conn;
         public $name;
         
         public function __construct($conn, $name)
         {
-            $this->conn = $conn; 
-            $this->name = $name;
+            $this->name = $name; 
+            parent::__construct($conn);
         }
         
         public function getCarInfo()
         {
             $car = []; 
-            $car = $this->conn->query("SELECT * FROM car WHERE name='{$this->login}'")->fetch_array();
+            $car = $this->conn->query("SELECT * FROM car WHERE name='{$this->name}'")->fetch_array();
             return $car;
         }
         
@@ -56,26 +54,37 @@
             return $column;
         }
         
-        /*public function increaseUserOrders($value)
+        public function getManufacturer()
         {
-            $this->conn->query("UPDATE `user` SET orders = orders+{$value} WHERE login='{$this->login}'");
+            $manufacturer = "";
+            $manufacturer = $this->conn->query("SELECT manufacturer.name AS mn  
+                                                FROM manufacturer
+                                                JOIN car ON car.ManufacturerID = manufacturer.ID
+                                                WHERE car.name = '{$this->name}'")->fetch_array()['mn'];
+            return $manufacturer;
         }
         
-        public function addUser($login, $name, $email, $pass)
+        public function getAVGScore()
         {
-            $this->conn->query("INSERT INTO `user`(login, name, email, pass) VALUES('{$login}', '{$name}', '{$email}', '{$pass}')");
+            //getting positive comments count
+            $positiveComments = $this->conn->query("SELECT COUNT(*) AS c
+                                                    FROM comment
+                                                    JOIN car ON comment.CarID = car.ID
+                                                    WHERE positive=1 AND car.name='{$this->name}'
+                                                    ")->fetch_array()['c'];
+            //getting all comments count
+            $allComments = $this->conn->query("SELECT COUNT(*) AS c
+                                                    FROM comment
+                                                    JOIN car ON comment.CarID = car.ID
+                                                    WHERE  car.name='{$this->name}'
+                                                    ")->fetch_array()['c'];
+            
+            if($allComments > 0) //if there is comments
+            {
+                return round(($positiveComments/$allComments), 2)*100;
+            }
+            else return -1;
         }
-        
-        public function fullUserUpdate($login, $name, $email, $address, $pass)
-        {
-            $this->conn->query("UPDATE `user` 
-                    SET login = '{$login}', 
-                        name = '{$name}', 
-                        address = '{$address}',
-                        email = '{$email}',
-                        pass = '{$pass}'
-                    WHERE login='{$this->login}'");
-        }*/
         
     }
 

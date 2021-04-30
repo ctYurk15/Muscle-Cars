@@ -150,6 +150,7 @@
             {
                 //adding to user stats
                 $user->increaseUserOrders($orders[$i]["orderCount"]);
+                $user->increaseUserWasted($totalPrice);
                 //reducing optins quantity  
                 $this->conn->query("UPDATE options SET Quantity = Quantity - {$orders[$i]["orderCount"]} WHERE ID = {$orders[$i]["optionsID"]}");  
                 //deleting order
