@@ -377,7 +377,7 @@
                     <?php
                         //getting main info about shop
                         $usersCount = $conn->query("SELECT COUNT(*) AS count FROM `user`")->fetch_array()['count'];
-                        $carsCount = $conn->query("SELECT COUNT(*) AS count FROM car")->fetch_array()['count'];
+                        $carsCount = $conn->query("SELECT SUM(Quantity) AS count FROM options")->fetch_array()['count'];
                         $totalPrice = $conn->query("SELECT SUM(Quantity*price) AS total FROM options")->fetch_array()['total'];
                         $totalSales = $conn->query("SELECT SUM(orders) AS count FROM `user`")->fetch_array()['count'];
                         $totalEarned = $conn->query("SELECT SUM(totalWasted) AS count FROM `user`")->fetch_array()['count'];

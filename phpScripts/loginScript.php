@@ -2,6 +2,7 @@
     
     include '../dbdata.php';
     include 'generalScripts.php';
+    include 'DBmanager.php';
     include 'User.php';
     
     //getting login values

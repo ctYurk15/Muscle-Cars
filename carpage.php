@@ -52,7 +52,7 @@
                                     <div class='descriptionDiv'>
                                         <h2>Виробник: {$car->getManufacturer()}</h2><br><br>
                                         <h2>Рік виходу: {$car->getCarColumn('year')}</h2><br><br>
-                                        <h2>"; 
+                                        <h2 id='scoreText'>"; 
                     
                         //what score car get
                         $score = $car->getAVGScore();
@@ -102,55 +102,18 @@
             <tr>
                 <td colspan="7" align="center">
                     <h1>Відгуки про даний автомобіль</h1><br>
-                    
-                    <?php
-                    
-                        $comments = new Comments($conn);
-                        $carComments = $comments->getCommentsForCar($_GET['carName']);
-
-                        for($i = 0 ; $i < count($carComments); $i++)
-                        {
-                            $commentImage = $carComments[$i]['positive'] == 1 ? "like.png" : "dislike.png"; //is it positive or negative comment?
-                            
-                            echo "
-                                <div class='commentDiv'>
-                                    <table>
-                                        <tr>
-                                            <td width='10%' rowspan='2'>
-                                                <h4 style='text-align: center; margin-top: 10px;'>".$carComments[$i]["login"]."</h4>
-                                                <img src='images/".$carComments[$i]['avatar']."'>
-                                            </td>
-                                            <td width='85%'>
-                                                <b>Коментар було залишено ".$carComments[$i]['date']."</b>
-                                            </td>
-                                            <td width='5%' rowspan='2' align='center'>
-                                                
-                                                <img src='images/".$commentImage."'>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                ".$carComments[$i]['commentText']."
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
-                            ";
-                        }
-                        if(empty($carComments)) echo "Наразі комментарів немає";
-                    
-                        $conn->close(); //closing connection
-                    ?>
-                    
+                    <div id='commentsDiv'>
+                        Please wait...
+                    </div>
                     
                     <div id="leaveCommentDiv">
-                        <form method="post" action = "phpScripts/addCommentScript.php">
+                        <form method="post" action = "phpScripts/addCommentScript.php" id='leaveCommentForm'>
                             <h2 style="margin: 20px;"><i>Залишіть свій відгук</i></h2>
-                            <textarea id="" cols="30" rows="10" name="commentText"></textarea><br>
+                            <textarea id="comment" cols="30" rows="10" name="commentText"></textarea><br>
                             <input type="radio" name="positiveComment" id="goodOption" checked value="1"><label for="goodOption">Добре</label>
                             <input type="radio" name="positiveComment" id="badOption" value="0"><label for="badOption">Погано</label><br>
                             <button>Залишити відгук</button>
-                            <input type="text" name="carname" class="formCarName" style="display: none" value="1">
+                            <input type="text" id="carname" name="carname" class="formCarName" style="display: none" value="1">
                         </form>
                     </div>
                 </td>

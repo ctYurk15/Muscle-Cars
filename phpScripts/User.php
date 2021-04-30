@@ -1,13 +1,12 @@
 <?php
 
-    class User
+    class User extends DBmanager
     {
-        public $conn;
         public $login;
         
         public function __construct($conn, $login)
         {
-            $this->conn = $conn; 
+            parent::__construct($conn);
             $this->login = $login;
         }
         

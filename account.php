@@ -5,6 +5,7 @@
     }
 
     include 'dbdata.php';
+    include 'phpScripts/DBmanager.php';
     include 'phpScripts/User.php';
 ?>
 
@@ -38,7 +39,7 @@
                     <br><h1>Мій аккаунт</h1><br>
                     <div id="profileDiv">
                         <table class="myTable"> 
-                           <form method="post" action="phpScripts/accountScript.php"  enctype="multipart/form-data">
+                           <form method="post" action="phpScripts/accountScript.php">
                             <?php
                                 //getting all info about user with login we currently have in cookies
                                 $user = new User($conn, $_COOKIE['login']);
@@ -96,7 +97,7 @@
                                             <td width='33%'>{$user->getUserColumn('orders')}</td>
                                             <td width='33%' align='center'><input type='button' href='catalog.php' class='changeButtonStyle' value='Змінити'></td>
                                         </tr>
-                                        "
+                                        ";
                             ?>
                             </form>
                         </table><br>

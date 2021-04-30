@@ -1,13 +1,12 @@
 <?php
-    class Truck
+    class Truck extends DBmanager
     {
         public $currentUser;
-        public $conn;
         
         public function __construct($currentUser, $conn)
         {
             $this->currentUser = $currentUser;
-            $this->conn = $conn;
+            parent::__construct($conn);
         }
         
         public function addOrder($carname, $color, $engine, $disk)

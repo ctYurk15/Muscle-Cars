@@ -18,6 +18,7 @@ $(document).ready(function(){
         slide(-1);
     });
     
+    
     $("#buyButton").on("click", function(){
         $("#optionsDiv").removeClass("hidden");
         $("#transparentDiv").removeClass("hidden");
@@ -61,9 +62,28 @@ $(document).ready(function(){
         }
         
     }
-    getPriceOfOption();
     
-    //$(".optionRadio").on(click)
+    
+    $("#leaveCommentForm").submit(function(event){
+        event.preventDefault();
+        
+        //getting values
+        var comment = $("#comment").val();
+        var positive = $("input[name='positiveComment']:checked").val();
+        var carname = $("#carname").val();
+        
+        $('#commentsDiv').load('phpScripts/addCommentScript.php', {
+            positiveComment: positive,
+            commentText: comment,
+            carname: carname
+        }, function(){
+            document.getElementById('leaveCommentForm').reset();
+        });
+        //alert(carname);
+    });
+    
+    getPriceOfOption();
+    $('#commentsDiv').load('phpScripts/addCommentScript.php', {carname: $("#carname").val()});
     
     function slide(i)
     {

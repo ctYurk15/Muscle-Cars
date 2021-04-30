@@ -1,16 +1,30 @@
-function updateSumPrice()
-{
-    //calculating total price in truck
-    var totalSum = 0;
+$(document).ready(function(){
     
-    for(var i = 0; i < document.getElementsByName("priceText").length; i++)
+    //for price text
+    function updateSumPrice()
     {
-        totalSum += parseInt(document.getElementById("priceText"+i).innerHTML) * parseInt(document.getElementById("count"+i).innerHTML);
+        //calculating total price in truck
+        var totalSum = 0;
+
+        for(var i = 0; i < document.getElementsByName("priceText").length; i++)
+        {
+            totalSum += parseInt(document.getElementById("priceText"+i).innerHTML) * parseInt(document.getElementById("count"+i).innerHTML);
+        }
+
+        //writing it
+        document.getElementById("sumPrice").innerHTML = "Загалом: $"+totalSum;
+
     }
     
-    //writing it
-    document.getElementById("sumPrice").innerHTML = "Загалом: $"+totalSum;
+    $("#truckForm").submit(function(event){
+        event.preventDefault();
+        
+        var button = event.originalEvent.submitter;
+        var action = $(button).val();
+        
+        $(this).load("phpScripts/truckScript.php", {action: action}, updateSumPrice);
+    });
     
-}
-
-updateSumPrice();
+    $("#truckForm").load("phpScripts/truckScript.php", {action: ""}, updateSumPrice);
+    //updateSumPrice();
+});
