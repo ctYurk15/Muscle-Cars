@@ -1,12 +1,24 @@
 <?php
+    
+    include 'dbdata.php';
+    include 'phpScripts/generalScripts.php';
+    include 'phpScripts/DBmanager.php';
+    include 'phpScripts/User.php';
+
     if(!isset($_COOKIE["login"])) //if we`re not logged redirecting to login page
     {
         header('location: login.html');
     }
+    else
+    {
+        //updating cookie
+        $login = $_COOKIE['login'];
+        
+        setcookie("login", "", time()-100, '/'); //discontinue old cookie
+        setcookie("login", $login, time()+(60*60*24), '/'); //creating new one
+    }
 
-    include 'dbdata.php';
-    include 'phpScripts/DBmanager.php';
-    include 'phpScripts/User.php';
+    
 ?>
 
 
@@ -39,7 +51,7 @@
                     <br><h1>Мій аккаунт</h1><br>
                     <div id="profileDiv">
                         <table class="myTable"> 
-                           <form method="post" action="phpScripts/accountScript.php">
+                           <form method="post" action="phpScripts/accountScript.php" enctype="multipart/form-data">
                             <?php
                                 //getting all info about user with login we currently have in cookies
                                 $user = new User($conn, $_COOKIE['login']);
@@ -88,7 +100,7 @@
                                             <td width='33%'>Аватарка</td>
                                             <td width='33%'><img src='images/{$user->getUserColumn('avatar')}'></td>
                                             <td width='33%' align='center'><input type='button' class='changeButtonStyle changeButton' value='Змінити'></td>
-                                            <td width='33%' class='hidden'><input type='file' name='avatar' size=''></td>
+                                            <td width='33%' class='hidden'><input name='filename' type='file' /></td>
                                             <td width='33%' align='center' class='hidden'><input type='submit' class='changeButtonStyle changeButton' value='Змінити'></td>
                                         </tr>
                                         <tr><td colspan='3'><hr></td></tr>

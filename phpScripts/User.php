@@ -39,14 +39,15 @@
             $this->conn->query("INSERT INTO `user`(login, name, email, pass) VALUES('{$login}', '{$name}', '{$email}', '{$pass}')");
         }
         
-        public function fullUserUpdate($login, $name, $email, $address, $pass)
+        public function fullUserUpdate($login, $name, $email, $address, $pass, $avatar)
         {
             $this->conn->query("UPDATE `user` 
                     SET login = '{$login}', 
                         name = '{$name}', 
                         address = '{$address}',
                         email = '{$email}',
-                        pass = '{$pass}'
+                        pass = '{$pass}',
+                        avatar = '{$avatar}'
                     WHERE login='{$this->login}'");
         }
         
