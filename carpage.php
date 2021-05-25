@@ -1,11 +1,3 @@
-<?php
-    include 'dbdata.php';
-    include 'phpScripts/DBmanager.php';
-    include 'phpScripts/Car.php';
-    include 'phpScripts/Comments.php';
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
    
@@ -29,74 +21,51 @@
             </tr>
             <tr>
                 <td colspan="7">
-                    <?php
-                    
-                        $car = new Car($conn, $_GET["carName"]);
-                        $gallery = $car->getGallery();
-                    
-                        echo "
-                        <h1 id='labelText'></h1>
-                        <table width='100%' border='0px'>
-                            <tr>
-                                <td width='50%' rowspan='2'>
-                                    <img src='images/{$car->getCarColumn('img')}' class='mainImg'>
-                                </td>
-                                <td width='50%' rowspan='1'>
-                                    <div class='descriptionDiv'>
-                                        {$car->getCarColumn("Description")}
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td width='50%'>
-                                    <div class='descriptionDiv'>
-                                        <h2>Виробник: {$car->getManufacturer()}</h2><br><br>
-                                        <h2>Рік виходу: {$car->getCarColumn('year')}</h2><br><br>
-                                        <h2 id='scoreText'>"; 
-                    
-                        //what score car get
-                        $score = $car->getAVGScore();
-                        if($score > 0) echo "{$score}% позитивних відгуків";
-                        else echo "Наразі відгуків немає";
-                    
-                        echo "</h2><br>
-                                        <button id='buyButton' class='buyButton'>Обрати опції</button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan='2' align='center'>
-
-
-
-                                    <table>
-                                        <tr>
-                                            <td>
-                                                <button id='leftBSlider' align='left'>&#60;</button>
-                                            </td>
-                                            <td>
-                                                <div id='slider'>
-                                                    <div id='line'>
-                                                        <img src='images/{$gallery["img1"]}' alt=''>
-                                                        <img src='images/{$gallery["img2"]}' alt=''>
-                                                        <img src='images/{$gallery["img3"]}' alt=''>
-                                                        <img src='images/{$gallery["img4"]}' alt=''>
-                                                        <img src='images/{$gallery["img5"]}' alt=''>
-                                                        <img src='images/{$gallery["img6"]}' alt=''>
-                                                        <img src='images/{$gallery["img7"]}' alt=''>
-                                                    </div>
+                     
+                    <h1 id='labelText'></h1>
+                    <table width='100%' border='0px'>
+                        <tr>
+                            <td width='50%' rowspan='2'>
+                                <img src='images/camaross1969.jpg' class='mainImg'>
+                            </td>
+                            <td width='50%' rowspan='1'>
+                                <div class='descriptionDiv' id='description'>
+                                    
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width='50%'>
+                                <div class='descriptionDiv'>
+                                    <h2 id="manufacturer"></h2><br><br>
+                                    <h2 id="year"></h2><br><br>
+                                    <h2 id="score">100%</h2><br>
+                                    <button id='buyButton' class='buyButton'>Обрати опції</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan='2' align='center'>
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <button id='leftBSlider' align='left'>&#60;</button>
+                                        </td>
+                                        <td>
+                                            <div id='slider'>
+                                                <div id='line'>
+                                                    
                                                 </div>
-                                            </td>
-                                            <td>
-                                                <button id='rightBSlider'>&#62;</button>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
-                        </table>
-                        ";
-                    ?>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <button id='rightBSlider'>&#62;</button>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
                 </td>
             </tr> 
             <tr>
@@ -115,6 +84,7 @@
                             <button>Залишити відгук</button>
                             <input type="text" id="carname" name="carname" class="formCarName" style="display: none" value="1">
                         </form>
+                        <h3 id="errorText" style="color: red"></h3>
                     </div>
                 </td>
             </tr>

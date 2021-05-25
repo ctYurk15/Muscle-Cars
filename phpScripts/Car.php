@@ -19,7 +19,7 @@
         public function getGallery()
         {
             $gallery = []; 
-            $gallery = $this->conn->query(" SELECT * 
+            $gallery = $this->conn->query(" SELECT img1, img2, img3,  img4,  img5,  img6,  img7
                                         FROM gallery 
                                         JOIN car ON car.ID = gallery.CarID
                                         WHERE car.name='{$this->name}'")->fetch_array();
