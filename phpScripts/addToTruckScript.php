@@ -22,7 +22,7 @@
             $truck = new Truck($login, $conn);
             if($truck->addOrder($carname, $color, $engine, $disk))
             {
-                gotoURL('../truck.php');
+                gotoURL('../truck.html');
             }
             else
             {

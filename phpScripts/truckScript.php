@@ -49,7 +49,7 @@
                 <table width='100%'>
                     <tr>
                         <td width='25%' rowspan='2'>
-                            <a href='carpage.php?carName={$orders[$i]["carName"]}'><img src='images/{$orders[$i]["img"]}' style='width: 100%' class='carIcon'></a>
+                            <a href='carpage.html?carName={$orders[$i]["carName"]}'><img src='images/{$orders[$i]["img"]}' style='width: 100%' class='carIcon'></a>
                         </td>
                         <td width='50%' colspan='3'>
                             <h3>{$orders[$i]["manufacturerName"]} {$orders[$i]["carName"]} {$orders[$i]["year"]}</h3>

@@ -27,7 +27,7 @@ $(document).ready(function(){
     
     $("#carInfoBlock button").on("click", function(){
         var carName = $(this).siblings("h1").text();
-        window.location = "carpage.php?carName="+carName;
+        window.location = "carpage.html?carName="+carName;
     })
     
     var carBlocksDisplayed = 5; //how much cars we want to see

@@ -26,5 +26,22 @@ $(document).ready(function(){
     });
     
     $("#truckForm").load("phpScripts/truckScript.php", {action: ""}, updateSumPrice);
-    //updateSumPrice();
+    
+    
+    //checking about login status
+    $.ajax({
+        url: "../phpScripts/generalAPI.php",
+        type: "POST",
+        data: {
+            action: "is_loggined"
+        },
+        success: function(data){
+            var result = JSON.parse(data);
+            
+            if(!result) //if we`re not loggined
+            {
+                location.replace("../login.html");
+            }
+        }
+    });
 });
