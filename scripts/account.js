@@ -1,4 +1,22 @@
 $(document).ready(function(){
+    
+    //checking about login status
+    $.ajax({
+        url: "../phpScripts/generalAPI.php",
+        type: "POST",
+        data: {
+            action: "is_loggined"
+        },
+        success: function(data){
+            var result = JSON.parse(data);
+            
+            if(!result) //if we`re not loggined
+            {
+                location.replace("../login.html");
+            }
+        }
+    });
+    
     //hiding or showing pass
     $("#hiddenPassText").on('click', switchPass);
     $("#passText").on('click', switchPass);
@@ -25,4 +43,41 @@ $(document).ready(function(){
             
         });
     }
+    
+    //getting info about account
+    $.ajax({
+        url: "../phpScripts/generalAPI.php",
+        type: "POST",
+        data: {
+            action: "account_info"
+        },
+        success: function(data){
+            var receivedData = JSON.parse(data);
+            
+            console.log(receivedData);
+            
+            //filling table with data received
+            $(".login_text").text(receivedData.login);
+            $(".login").val(receivedData.login);
+            
+            $(".name_text").text(receivedData.name);
+            $(".name").val(receivedData.name);
+
+            $(".email_text").text(receivedData.email);
+            $(".email").val(receivedData.email);
+            
+            $(".address_text").text(receivedData.address);
+            $(".address").val(receivedData.address);
+            
+            $("#passText").text(receivedData.pass);
+            $(".pass").val(receivedData.pass);
+            
+            $(".avatar_display").attr('src', 'images/'+receivedData.avatar);
+            
+            $(".orders_text").text(receivedData.orders);
+        },
+        error: function(data){
+            console.log(data);
+        }
+    });
 });

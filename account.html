@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+   
+    <head>
+        <meta charset="UTF-8">
+        <title>Muscle cars shop - аккаунт</title>
+        <link href="styles/main.css" rel="stylesheet">
+        <link href="styles/account.css" rel="stylesheet">
+    </head>
+    
+    <body>
+        <table border="0px" width="100%" class="header-table">
+            <tr id="headerTR">
+                <hr>
+            </tr>
+            <tr>
+                <td colspan="7">
+                    <hr>
+                    
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <img src="images/profileImg1.png" class="profileImg">
+                </td>
+                <td colspan="3" valign="top">
+                    <br><h1>Мій аккаунт</h1><br>
+                    <div id="profileDiv">
+                        <table class="myTable"> 
+                           <form method="post" action="phpScripts/accountScript.php" enctype="multipart/form-data">
+                            <tr>
+                                <td width='33%'>Логін </td>
+                                <td width='33%' class='login_text'></td>
+                                <td width='33%' align='center'><input type='button' class='changeButtonStyle changeButton' value='Змінити'></td>
+                                <td width='33%' class='hidden'><input type='text' value='' name='login' class='login'></td>
+                                <td width='33%' align='center' class='hidden'><input type='submit' class='changeButtonStyle changeButton' value='Змінити'></td>
+                            </tr>
+                            <tr><td colspan='3'><hr></td></tr>
+                            <tr>
+                                <td width='33%'>Повне ім'я</td>
+                                <td width='33%' class='name_text'></td>
+                                <td width='33%' align='center'><input type='button' class='changeButtonStyle changeButton' value='Змінити'</td>
+                                <td width='33%' class='hidden'><input type='text' value='' name='name' class='name'></td>
+                                <td width='33%' align='center' class='hidden'><input type='submit' class='changeButtonStyle changeButton' value='Змінити'></td>
+                            </tr>
+                            <tr><td colspan='3'><hr></td></tr>
+                            <tr>
+                                <td width='33%'>Email</td>
+                                <td width='33%' class='email_text'></td>
+                                <td width='33%' align='center'><input type='button' class='changeButtonStyle changeButton' value='Змінити'></td>
+                                <td width='33%' class='hidden'><input type='text' value='' name='email' class='email'></td>
+                                <td width='33%' align='center' class='hidden'><input type='submit' class='changeButtonStyle changeButton' value='Змінити'></td>
+                            </tr>
+                            <tr><td colspan='3'><hr></td></tr>
+                            <tr>
+                                <td width='33%'>Адреса</td>
+                                <td width='33%' class='address_text'></td>
+                                <td width='33%' align='center'><input type='button' class='changeButtonStyle changeButton' value='Змінити'></td>
+                                <td width='33%' class='hidden'><input type='text' value='' name='address' class='address'></td>
+                                <td width='33%' align='center' class='hidden'><input type='submit' class='changeButtonStyle changeButton' value='Змінити'></td>
+                            </tr>
+                            <tr><td colspan='3'><hr></td></tr>
+                            <tr>
+                                <td width='33%'>Пароль</td>
+                                <td width='33%'>
+                                    <span class='hidden' id='passText'></span>
+                                    <span id='hiddenPassText'>*********</span>
+                                </td>
+                                <td width='33%' align='center'><input type='button' class='changeButtonStyle changeButton' value='Змінити'></td>
+                                <td width='33%' class='hidden'><input type='text' value='' name='pass' class='pass'></td>
+                                <td width='33%' align='center' class='hidden'><input type='submit' class='changeButtonStyle changeButton' value='Змінити'></td>
+                            </tr>
+                            <tr><td colspan='3'><hr></td></tr>
+                            <tr>
+                                <td width='33%'>Аватарка</td>
+                                <td width='33%'><img  class='avatar_display'></td>
+                                <td width='33%' align='center'><input type='button' class='changeButtonStyle changeButton' value='Змінити'></td>
+                                <td width='33%' class='hidden'><input name='filename' type='file' /></td>
+                                <td width='33%' align='center' class='hidden'><input type='submit' class='changeButtonStyle changeButton' value='Змінити'></td>
+                            </tr>
+                            <tr><td colspan='3'><hr></td></tr>
+                            <tr>
+                                <td width='33%'>Замовлень</td>
+                                <td width='33%' class='orders_text'></td>
+                                <td width='33%' align='center'><input type='button' href='catalog.php' class='changeButtonStyle' value='Змінити'></td>
+                            </tr>
+                                        
+                            </form>
+                        </table><br>
+                    </div><br>
+                </td>
+                <td colspan="2">
+                    <img src="images/profileImg2.png" class="profileImg">
+                </td>
+            </tr> 
+            <tr>
+                <td colspan="7">
+                    <hr>
+                </td>
+            </tr>
+            <tr id="footerTR">
+                
+            </tr>
+            <tr>
+                <td colspan="7">
+                    <hr>
+                </td>
+            </tr>       
+        </table>
+        <script src="scripts/jquery.min.js"></script>
+        <script src="scripts/main.js"></script>
+        <script src="scripts/account.js"></script>
+    </body>
+ 
+</html>

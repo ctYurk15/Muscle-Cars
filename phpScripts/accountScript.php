@@ -41,5 +41,5 @@
     setcookie('login', '0', time()-10, "/"); //unsetting previous cookie
     setcookie('login', $newlogin, time()+(60*60*24), "/"); //setting cookie with new login
 
-    gotoURL('../account.php'); //redirecting
+    gotoURL('../account.html'); //redirecting
 ?>
