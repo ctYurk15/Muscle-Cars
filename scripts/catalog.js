@@ -49,8 +49,30 @@ $(document).ready(function(){
         updateCarBlocks(6);
     })
     
-    /*var manufacturerCheckBoxes = document.getElementsByName('manufacturer[]');
-    console.log(manufacturerCheckBoxes[0].checked);*/
+    //getting all manufacturers
+    $.ajax({
+        url: "../phpScripts/catalogApi.php",
+        type: "POST",
+        data: {
+            action: "get_manufacturers"
+        },
+        success: function(data)
+        {
+            var receivedData = JSON.parse(data);
+            var div = $("#manufacturerDiv");
+            
+            //deleting loading text
+            $("#manufacturerDiv").text("");
+
+            receivedData.forEach(function(manufacturer)  {
+                div.append("<input type='checkbox' id='"+manufacturer.Name+"' name='manufacturer[]' value='$manufacturerName'><lable for='"+manufacturer.Name+"'>"+manufacturer.Name+"</lable><br>");
+            });
+        },
+        error: function(data)
+        {
+            console.log(data);
+        }
+    });
 });
 
 

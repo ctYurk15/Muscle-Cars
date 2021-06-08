@@ -43,14 +43,9 @@
                                 <label for="maxHP">До: </label><input type="text" value="" id="maxHP" name="maxHP" size="7">
                                 <br><br>
                                 <h3>Виробник: </h3>
-                                <?php
-                                    $result = $conn->query("SELECT Name FROM manufacturer"); //making request
-                                    while($row = $result->fetch_array())
-                                    {
-                                        $manufacturerName = $row['Name']; //getting manufacturer name
-                                        echo "<input type='checkbox' id='$manufacturerName' name='manufacturer[]' value='$manufacturerName'><lable for='$manufacturerName'>$manufacturerName</lable><br>";
-                                    }
-                                ?>
+                                <div id="manufacturerDiv">
+                                    Loading...
+                                </div>
                                 <br>
                                 <h3>Сортувати за: </h3>
                                 <select name="sorting" id="sortingSelect">
