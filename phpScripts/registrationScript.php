@@ -59,6 +59,6 @@
         $user = new User($conn, "");
         $user->addUser($login, $name, $email, $pass);
         
-        createCookie("login", $login, (60*60*24), '../account.php');  //setting cookie for next 1 day
+        createCookie("login", $login, (60*60*24), '../account.html');  //setting cookie for next 1 day
     }
 ?>

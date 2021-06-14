@@ -24,5 +24,5 @@
         exit();
     }
 
-    createCookie("login", $login, (60*60*24), '../account.php');
+    createCookie("login", $login, (60*60*24), '../account.html');
 ?>

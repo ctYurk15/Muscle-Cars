@@ -54,7 +54,7 @@ $(document).ready(function(){
         success: function(data){
             var receivedData = JSON.parse(data);
             
-            console.log(receivedData);
+            //console.log(receivedData);
             
             //filling table with data received
             $(".login_text").text(receivedData.login);
