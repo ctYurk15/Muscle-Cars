@@ -53,6 +53,14 @@ document.getElementById("headerTR").innerHTML += header;
 document.getElementById("footerTR").innerHTML += footer;
 
 $(document).ready(function(){
+
+    function numberWithSpaces(x) 
+    {
+        var parts = x.toString().split(".");
+        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+        return parts.join(".");
+    }
+
     //showing account div
    $("#accountImg").on("click", function(){
        $("#accountDiv").toggleClass("slideHide");
@@ -93,12 +101,22 @@ $(document).ready(function(){
             }
         }
     });
-    
-    function numberWithSpaces(x) 
-    {
-        var parts = x.toString().split(".");
-        parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-        return parts.join(".");
-    }
+
+    //getting user avatar if loggined
+    $.ajax({
+        url: "../phpScripts/generalAPI.php",
+        type: "POST",
+        data: {
+            action: "get_user_avatar"
+        },
+        success: function(data){
+            var result = JSON.parse(data);
+            
+            if(result.loggined)
+            {
+                $("#accountImg").attr("src", "images/"+result.avatar);
+            }
+        }
+    });
 
 });

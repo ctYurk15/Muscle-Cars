@@ -14,7 +14,16 @@ $(document).ready(function(){
         }
 
         var carBlocks = document.getElementsByClassName("car-block"); //getting all car blocks
-        if(carBlocksDisplayed > carBlocks.length) carBlocksDisplayed = carBlocks.length;
+
+        if(carBlocksDisplayed >= carBlocks.length) 
+        {
+            carBlocksDisplayed = carBlocks.length;
+            $('#moreButton').addClass('hidden');
+        }
+        else 
+        {
+            $('#moreButton').removeClass('hidden');
+        }
 
         for(var i = 0; i < carBlocksDisplayed; i++)
         {
@@ -113,7 +122,7 @@ $(document).ready(function(){
         }
     });
 
-    updateCarBlocks(0);
+    //updateCarBlocks(0);
 
     //getting filtration parameters
     var queryString = window.location.search;

@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3307
--- Час створення: Квт 30 2021 р., 14:33
+-- Час створення: Чрв 19 2021 р., 14:20
 -- Версія сервера: 10.1.44-MariaDB
--- Версія PHP: 7.1.33
+-- Версія PHP: 7.3.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -76,8 +76,10 @@ CREATE TABLE `comment` (
 INSERT INTO `comment` (`ID`, `positive`, `commentText`, `UserID`, `CarID`, `date`) VALUES
 (1, 1, 'First comment. I hope it would be successful.', 10, 1, '2021-04-12 11:25:17'),
 (6, 1, 'Rewrited comment', 11, 2, '2021-04-13 08:57:03'),
-(11, 0, 'Well, I hope it would work', 11, 1, '2021-04-29 10:23:37'),
-(13, 0, 'Nah, it`s not so good', 10, 2, '2021-04-30 11:16:49');
+(13, 0, 'Nah, it`s not so good', 10, 2, '2021-04-30 11:16:49'),
+(25, 1, 'AJAX rewriting\n', 11, 1, '2021-04-30 18:36:59'),
+(35, 1, 'Realy cool car', 10, 4, '2021-05-25 16:18:26'),
+(36, 1, 'Wow!', 10, 9, '2021-06-02 14:31:06');
 
 -- --------------------------------------------------------
 
@@ -160,7 +162,7 @@ CREATE TABLE `options` (
 --
 
 INSERT INTO `options` (`ID`, `Color`, `Engine`, `HP`, `Disk`, `Quantity`, `Price`, `CarID`) VALUES
-(1, 'black', 'V8B', 426, 15, 10, 45000, 1),
+(1, 'black', 'V8B', 426, 15, 60, 45000, 1),
 (3, 'blue', 'V8B', 426, 15, 10, 45000, 1),
 (4, 'blue', 'V8B', 426, 17, 10, 46000, 1),
 (5, 'red', 'V8', 396, 15, 10, 40000, 1),
@@ -170,7 +172,7 @@ INSERT INTO `options` (`ID`, `Color`, `Engine`, `HP`, `Disk`, `Quantity`, `Price
 (9, 'red', 'V8', 335, 16, 10, 35500, 2),
 (10, 'green', 'V6', 145, 15, 10, 28000, 3),
 (11, 'red', 'V8', 290, 15, 8, 35000, 3),
-(12, 'black', 'V8B', 425, 15, 9, 46500, 3),
+(12, 'black', 'V8B', 425, 15, 7, 46500, 3),
 (13, 'red', 'V6', 125, 15, 10, 29500, 4),
 (14, 'red', 'V8', 300, 16, 10, 36000, 4),
 (15, 'green', 'V8B', 390, 16, 5, 48000, 4),
@@ -184,9 +186,9 @@ INSERT INTO `options` (`ID`, `Color`, `Engine`, `HP`, `Disk`, `Quantity`, `Price
 (23, 'green', 'V8', 146, 16, 10, 19000, 8),
 (24, 'blue', 'V8', 284, 15, 9, 31000, 8),
 (25, 'blue', 'V8', 319, 15, 10, 33700, 8),
-(26, 'green', 'V8B', 425, 15, 1, 46500, 9),
+(26, 'green', 'V8B', 425, 15, 0, 46500, 9),
 (27, 'red', 'V8', 335, 15, 10, 32000, 10),
-(33, 'black', 'V8B', 390, 16, 23, 54000, 13);
+(33, 'black', 'V8B', 390, 16, 15, 54000, 13);
 
 -- --------------------------------------------------------
 
@@ -200,13 +202,6 @@ CREATE TABLE `order` (
   `UserID` int(11) NOT NULL,
   `Count` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Дамп даних таблиці `order`
---
-
-INSERT INTO `order` (`ID`, `OptionID`, `UserID`, `Count`) VALUES
-(21, 1, 10, 1);
 
 -- --------------------------------------------------------
 
@@ -233,8 +228,8 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`ID`, `login`, `name`, `email`, `address`, `avatar`, `orders`, `pass`, `admin`, `totalWasted`) VALUES
 (5, 'johndoe', 'John Doe', 'emaple@ex.com', NULL, 'account.png', 0, 'password', 0, 0),
-(10, 'ctyurk15', 'Lev Zykol', 'levgenetic@gmail.com', 'Lviv.Ukraine', 'account.png', 22, 'qwerty', 1, 31000),
-(11, 'test1', 'test11', 'test1@gmail.com', 'Вулиця Пулюя', 'account.png', 19, 'test1pass', 0, 0),
+(10, 'ctyurk15', 'Lev Zykol', 'levgenetic@gmail.com', 'Address 12', 'profile.jpg', 25, '1234567', 1, 310000),
+(11, 'test1', 'test123', 'test1@gmail.com', 'Вулиця Пулюя', 'account.png', 23, 'test1pass', 1, 360000),
 (17, 'test2', 'test12', 'test12@meta.ua', NULL, 'account.png', 0, 'krolik', 0, 0),
 (18, 'test3', 'test13', 'test13@meta.ua', NULL, 'account.png', 0, 'krol', 0, 0),
 (20, 'test1_ad', 'test11_ad', 'test11@gmail.com', NULL, 'account.png', 0, 'test1_ad_pass', 1, 0),
@@ -308,7 +303,7 @@ ALTER TABLE `car`
 -- AUTO_INCREMENT для таблиці `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT для таблиці `gallery`
@@ -332,13 +327,13 @@ ALTER TABLE `options`
 -- AUTO_INCREMENT для таблиці `order`
 --
 ALTER TABLE `order`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT для таблиці `user`
 --
 ALTER TABLE `user`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- Обмеження зовнішнього ключа збережених таблиць

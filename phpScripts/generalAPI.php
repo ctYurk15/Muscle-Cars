@@ -35,5 +35,23 @@
         
         echo json_encode($result);
     }
+    else if($command == "get_user_avatar")
+    {
+        $result = [];
+
+        if(isset($_COOKIE['login']))
+        {
+            $user = new User($conn, $_COOKIE['login']);
+            $avatar = $user->getUserColumn("avatar");
+
+            $result = ['loggined' => true, "avatar" => $avatar];
+        }
+        else 
+        {
+            $result = ['loggined' => false];
+        }
+
+        echo json_encode($result);
+    }
     
 ?>
