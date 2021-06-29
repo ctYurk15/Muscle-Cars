@@ -27,8 +27,18 @@
             }
             else
             {
-                $truck->purchaseOrders();
-                gotoURL('../thanks.html');
+                $email = "";
+
+                //getting user email
+                if(isset($_COOKIE['login']))
+                {
+                    $email = User::getUserEmail($conn, $_COOKIE['login']);
+                }
+                
+                if($truck->purchaseOrders($email))
+                {
+                    gotoURL('../thanks.html');
+                }
             }
 
 

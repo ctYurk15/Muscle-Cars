@@ -50,6 +50,12 @@
                         avatar = '{$avatar}'
                     WHERE login='{$this->login}'");
         }
+
+        public static function getUserEmail($conn, $login)
+        {
+            $email = $conn->query("SELECT email FROM user WHERE login='{$login}'")->fetch_array()['email'];
+            return $email;
+        }
         
     }
 

@@ -116,45 +116,80 @@
             return $orders;
         }
         
-        public function purchaseOrders()
+        public function purchaseOrders($email)
         {
-            //making request
-            $request = "SELECT `order`.ID AS orderID, options.ID AS optionsID, `order`.Count AS orderCount, options.price AS optionsPrice
-                        FROM `order`
-                        JOIN options on `order`.OptionID = options.ID";
-            $result = $this->conn->query($request);
-
-            $orders = [];
-            $totalCount = 0; 
-            $totalPrice = 0;
-
-            while($row = $result->fetch_array())
+            if($email != "")
             {
-                 //filling array with main info
-                $orders[count($orders)] = [ 
-                    "optionsID" => $row["optionsID"], 
-                    "orderCount" => $row["orderCount"],
-                    "orderID" => $row["orderID"]
-                ];
-                
-                //total price and count for statistics
-                $totalCount += $row["orderCount"];
-                $totalPrice += $row["orderCount"] * $row['optionsPrice'];
+                //for email
+                $to = $email;
+                $subject = 'Покупка у салоні Muscle Cars';
+                $message = "Дякуємо вам за покупку!<br>";
+
+                // Set content-type header for sending HTML email 
+                $headers = "MIME-Version: 1.0" . "\r\n"; 
+                $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n"; 
+
+                $totalCount = 0; 
+                $totalPrice = 0;
+
+                //making request
+                $request = "SELECT `order`.ID AS orderID, options.ID AS optionsID, `order`.Count AS orderCount, options.price AS optionsPrice, car.name AS carName,
+                            options.Color AS carColor
+                            FROM `order`
+                            JOIN options on `order`.OptionID = options.ID
+                            JOIN car ON options.CarID = car.id";
+                $result = $this->conn->query($request);
+
+                $orders = [];
+
+                //how much user bought
+                while($row = $result->fetch_array())
+                {
+                    //filling array with main info
+                    $orders[count($orders)] = [ 
+                        "optionsID" => $row["optionsID"], 
+                        "orderCount" => $row["orderCount"],
+                        "orderID" => $row["orderID"],
+                        "carName" => $row["carName"],
+                        "carColor" => $row["carColor"],
+                        "totalPrice" => $row["orderCount"] * $row['optionsPrice']
+                    ];
+                    
+                    //total price and count for statistics
+                    $totalCount += $row["orderCount"];
+                    $totalPrice += $row["orderCount"] * $row['optionsPrice'];
+                }
+                    
+                $user = new User($this->conn, $this->currentUser); //for stats
+
+                //changing database
+                for($i = 0; $i < count($orders); $i++)
+                {
+                    //adding to user stats
+                    $user->increaseUserOrders($orders[$i]["orderCount"]);
+                    $user->increaseUserWasted($totalPrice);
+
+                    //reducing optins quantity  
+                    $this->conn->query("UPDATE options SET Quantity = Quantity - {$orders[$i]["orderCount"]} WHERE ID = {$orders[$i]["optionsID"]}"); 
+                    $message .= "<br>{$orders[$i]['carName']} ({$orders[$i]['carColor']}) - {$orders[$i]['orderCount']}шт - {$orders[$i]['totalPrice']}$";
+
+                    //deleting order
+                    $this->deleteOrder($orders[$i]["orderID"]); 
+
+                }
+
+                $message .= "<br>
+                             <br>Загальна кількість - ".$totalCount."
+                             <br>Загальна сума - ".$totalPrice."$
+                             <br>Очікуйте поставок найближчим часом!";
+
+                //sending email
+                mail($to, $subject, $message, $headers);
+
+                return true;
             }
-                   
-            $user = new User($this->conn, $this->currentUser); //for stats
-            
-            //changing database
-            for($i = 0; $i < count($orders); $i++)
-            {
-                //adding to user stats
-                $user->increaseUserOrders($orders[$i]["orderCount"]);
-                $user->increaseUserWasted($totalPrice);
-                //reducing optins quantity  
-                $this->conn->query("UPDATE options SET Quantity = Quantity - {$orders[$i]["orderCount"]} WHERE ID = {$orders[$i]["optionsID"]}");  
-                //deleting order
-                $this->deleteOrder($orders[$i]["orderID"]);  
-            }
+
+            return false;
         }
     }
 
