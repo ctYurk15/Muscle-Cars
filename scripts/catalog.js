@@ -1,4 +1,6 @@
 $(document).ready(function(){
+
+    var cars = [];
     
     var carBlocksDisplayed = 5; //how much cars we want to see
     
@@ -39,10 +41,14 @@ $(document).ready(function(){
         })
 
         $(".car-block button").on("click", function(){
-            //getting info about car 
-            var carName = $(this).parent().find("h1").text();
-            var carImg = $(this).parent().find("img").attr("src");
-            var carDescription = $(this).parent().find(".description").text();
+            //getting local id of a car
+            var carID = $(this).parent().attr("id");
+
+            //getting info about the car 
+            var carName = cars[carID].carName;
+            var carImg = "images/"+cars[carID].carImg;
+            var carDescription = cars[carID].carDesription;
+            var minPrice = cars[carID].minPrice;
             
             $("#carInfoBlock").removeClass("hidden");
             
@@ -50,6 +56,7 @@ $(document).ready(function(){
             $("#carInfoBlock button").attr("data-carName", carName);
             $("#carInfoBlock img").attr("src", carImg);
             $("#carInfoBlock h1").text(carName);
+            $("#priceText").text(minPrice);
             $("#descriptionDiv").text(carDescription);
             $("#transparentDiv").removeClass("hidden");
         });
@@ -86,12 +93,14 @@ $(document).ready(function(){
                     var carDiv = $("#carsDiv");
                     carDiv.html("");
 
-                    receivedData.cars.forEach(function(car) {
-                        carDiv.append("<div class='car-container car-block hidden'>"+
+                    //storing cars to get addition info after
+                    cars = receivedData.cars;
+
+                    receivedData.cars.forEach(function(car, id) {
+                        carDiv.append("<div class='car-container car-block hidden' id='"+id+"'>"+
                                             "<br><h1>"+car.carName+"</h1>"+
                                             "<img src='images/"+car.carImg+"' value='1'><br>"+
                                             "<button>Детальніше</button>"+
-                                            "<i style='display: none' class='description'>"+car.carDesription+"</i>"+
                                         "</div>");
                     });
 

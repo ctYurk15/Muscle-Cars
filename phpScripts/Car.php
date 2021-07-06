@@ -30,11 +30,13 @@
         {
             $cars = [];
             
-            $request = "SELECT DISTINCT car.name as carName, car.img AS carImg, car.ShortDescription AS carDesription
+            $request = "SELECT car.name as carName, car.img AS carImg, car.ShortDescription AS carDesription, MIN(options.price) as minPrice
                         FROM car 
                         JOIN manufacturer ON car.ManufacturerID = manufacturer.ID 
                         JOIN options ON options.CarID = car.ID
-                        {$filters} {$sorting}";
+                        {$filters}
+                        GROUP BY options.CarID
+                        {$sorting}";
             $result = $conn->query($request);
             
             //echo $request;

@@ -26,7 +26,7 @@
         $manufacturers = $_POST['manufacturers'];
         $orderBy = $_POST['orderBy'];
 
-        $filter = "";
+        $filters = "WHERE car.id > 0 ";
         $sorting = "";
 
         //data validation
