@@ -3,6 +3,7 @@
     include 'generalScripts.php';    
     include 'DBmanager.php';
     include 'User.php';
+    include 'mailer.php';
 
     //getting registration values
     $login = $_POST['login'];
@@ -58,6 +59,9 @@
     {
         $user = new User($conn, "");
         $user->addUser($login, $name, $email, $pass);
+
+        //sending email about registration
+        Mailer::RegistrationMail($email);
         
         createCookie("login", $login, (60*60*24), '../account.html');  //setting cookie for next 1 day
     }

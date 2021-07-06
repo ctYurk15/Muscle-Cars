@@ -4,6 +4,7 @@
     include 'DBmanager.php';
     include 'User.php';
     include 'Truck.php';
+    include 'Mailer.php';
 
     $truck = new Truck($_COOKIE['login'], $conn);
 
@@ -35,8 +36,11 @@
                     $email = User::getUserEmail($conn, $_COOKIE['login']);
                 }
                 
-                if($truck->purchaseOrders($email))
+                $result = $truck->purchaseOrders($email);
+
+                if($result["success"])
                 {
+                    Mailer::PurchaseEmail($email, $result["totalCount"], $result["totalPrice"], $result["cars"]);
                     gotoURL('../thanks.html');
                 }
             }

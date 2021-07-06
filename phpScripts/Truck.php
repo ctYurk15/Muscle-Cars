@@ -120,15 +120,6 @@
         {
             if($email != "")
             {
-                //for email
-                $to = $email;
-                $subject = 'Покупка у салоні Muscle Cars';
-                $message = "Дякуємо вам за покупку!<br>";
-
-                // Set content-type header for sending HTML email 
-                $headers = "MIME-Version: 1.0" . "\r\n"; 
-                $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n"; 
-
                 $totalCount = 0; 
                 $totalPrice = 0;
 
@@ -162,6 +153,9 @@
                     
                 $user = new User($this->conn, $this->currentUser); //for stats
 
+                //cars message for email
+                $cars = "";
+
                 //changing database
                 for($i = 0; $i < count($orders); $i++)
                 {
@@ -171,22 +165,19 @@
 
                     //reducing optins quantity  
                     $this->conn->query("UPDATE options SET Quantity = Quantity - {$orders[$i]["orderCount"]} WHERE ID = {$orders[$i]["optionsID"]}"); 
-                    $message .= "<br>{$orders[$i]['carName']} ({$orders[$i]['carColor']}) - {$orders[$i]['orderCount']}шт - {$orders[$i]['totalPrice']}$";
+                    $cars .= "<br>{$orders[$i]['carName']} ({$orders[$i]['carColor']}) - {$orders[$i]['orderCount']}шт - {$orders[$i]['totalPrice']}$";
 
                     //deleting order
                     $this->deleteOrder($orders[$i]["orderID"]); 
 
                 }
 
-                $message .= "<br>
-                             <br>Загальна кількість - ".$totalCount."
-                             <br>Загальна сума - ".$totalPrice."$
-                             <br>Очікуйте поставок найближчим часом!";
-
-                //sending email
-                mail($to, $subject, $message, $headers);
-
-                return true;
+                return [
+                    "success" => true,
+                    "totalCount" => $totalCount,
+                    "totalPrice" => $totalPrice,
+                    "cars" => $cars
+                ];
             }
 
             return false;
