@@ -1,4 +1,7 @@
 <?php
+
+    namespace Models;
+
     class Truck extends DBmanager
     {
         public $currentUser;

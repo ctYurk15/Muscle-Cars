@@ -2,8 +2,10 @@
     
     include '../dbdata.php';
     include 'generalScripts.php';
-    include 'DBmanager.php';
-    include 'User.php';
+    include "../vendor/autoload.php";
+
+    use Models\DBmanager as DBmanager;
+    use Models\User as User;
     
     //getting login values
     $login = $_POST['login'];

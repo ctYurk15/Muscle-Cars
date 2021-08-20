@@ -1,10 +1,12 @@
 <?php
     include '../dbdata.php';
     include 'generalScripts.php';
-    include 'DBmanager.php';
-    include 'User.php';
-    include 'Truck.php';
-    include 'Mailer.php';
+    include "../vendor/autoload.php";
+
+    use Models\DBmanager as DBmanager;
+    use Models\User as User;
+    use Models\Mailer as Mailer;
+    use Models\Truck as Truck;
 
     $truck = new Truck($_COOKIE['login'], $conn);
 
@@ -24,7 +26,7 @@
             if($user->getUserColumn("address") == "") 
             {
                 alert('Вкажіть будь-ласка свою адресу у аккаунті');
-                gotoURL('../account.php');  
+                gotoURL('../account.html');  
             }
             else
             {

@@ -1,10 +1,12 @@
 <?php
 
     include '../dbdata.php';
-    include 'DBmanager.php';
-    include 'User.php';
-    include 'Car.php';
-    include 'Manufacturer.php';
+    include "../vendor/autoload.php";
+
+    use Models\Manufacturer as Manufacturer;
+    use Models\DBmanager as DBmanager;
+    use Models\User as User;
+    use Models\Car as Car;
 
     $command = $_POST['action'];
 

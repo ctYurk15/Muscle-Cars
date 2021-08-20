@@ -1,9 +1,11 @@
 <?php
     include '../dbdata.php';
     include 'generalScripts.php';    
-    include 'DBmanager.php';
-    include 'User.php';
-    include 'mailer.php';
+    include "../vendor/autoload.php";
+
+    use Models\DBmanager as DBmanager;
+    use Models\User as User;
+    use Models\Mailer as Mailer;
 
     //getting registration values
     $login = $_POST['login'];

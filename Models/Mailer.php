@@ -1,5 +1,7 @@
 <?php
 
+    namespace Models;
+
     class Mailer
     {
         public static function RegistrationMail($email)

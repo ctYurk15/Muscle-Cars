@@ -1,5 +1,7 @@
 <?php
 
+    namespace Models;
+
     class Manufacturer extends DBmanager
     {
         public function __construct($conn)

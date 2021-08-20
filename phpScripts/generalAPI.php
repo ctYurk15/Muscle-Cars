@@ -1,8 +1,10 @@
 <?php
 
     include '../dbdata.php';
-    include 'DBmanager.php';
-    include 'User.php';
+    include "../vendor/autoload.php";
+
+    use Models\DBmanager as DBmanager;
+    use Models\User as User;
 
     $command = $_POST['action'];
 

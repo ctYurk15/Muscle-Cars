@@ -1,10 +1,12 @@
 <?php
     include '../dbdata.php';
     include 'generalScripts.php';
-    include 'DBmanager.php';
-    include 'Truck.php';
-    include 'User.php';
-    include 'Car.php';
+    include "../vendor/autoload.php";
+
+    use Models\DBmanager as DBmanager;
+    use Models\Truck as Truck;
+    use Models\User as User;
+    use Models\Car as Car;
 
     //getting order values
     $carname = $_POST['carname'];

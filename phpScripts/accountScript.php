@@ -1,9 +1,11 @@
 <?php
 
     include '../dbdata.php';
-    include 'DBmanager.php';
-    include 'User.php';
     include 'generalScripts.php';
+    include "../vendor/autoload.php";
+
+    use Models\DBmanager as DBmanager;
+    use Models\User as User;
     
     //getting new text data
     $newlogin = htmlspecialchars($_POST['login']);

@@ -1,4 +1,7 @@
 <?php
+
+    namespace Models;
+
     class Car extends DBmanager
     {
         public $name;

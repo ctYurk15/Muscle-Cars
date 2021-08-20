@@ -1,4 +1,7 @@
 <?php
+
+    namespace Models;
+
     class DBmanager
     {
         public $conn;
