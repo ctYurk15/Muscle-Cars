@@ -20,7 +20,7 @@
         exit();
     }
 
-    if($info['pass'] != $pass) //if password wasn`t correct
+    if($info['pass'] != hash('sha256', $pass)) //if password wasn`t correct
     {
         echo "Неправильний пароль!";
         exit();

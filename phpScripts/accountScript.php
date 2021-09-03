@@ -12,7 +12,7 @@
     $newname = htmlspecialchars($_POST['name']);
     $newemail = htmlspecialchars($_POST['email']);
     $newaddress = htmlspecialchars($_POST['address']);
-    $newpass = htmlspecialchars($_POST['pass']);
+    $newpass = hash('sha256', htmlspecialchars($_POST['pass']));
     
 
     //getting new avatar

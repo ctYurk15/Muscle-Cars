@@ -33,7 +33,7 @@
         $result['address'] = $user->getUserColumn('address');
         $result['avatar'] = $user->getUserColumn('avatar');
         $result['orders'] = $user->getUserColumn('orders');
-        $result['pass'] = $user->getUserColumn('pass');
+        //$result['pass'] = $user->getUserColumn('pass');
         
         echo json_encode($result);
     }

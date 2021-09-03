@@ -60,7 +60,7 @@
     if(!$error) //if all were correct
     {
         $user = new User($conn, "");
-        $user->addUser($login, $name, $email, $pass);
+        $user->addUser($login, $name, $email, hash('sha256', $pass));
 
         //sending email about registration
         Mailer::RegistrationMail($email);

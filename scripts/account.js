@@ -17,10 +17,6 @@ $(document).ready(function(){
         }
     });
     
-    //hiding or showing pass
-    $("#hiddenPassText").on('click', switchPass);
-    $("#passText").on('click', switchPass);
-    
     function switchPass()
     {
         $("#hiddenPassText").toggleClass('hidden');
@@ -68,9 +64,6 @@ $(document).ready(function(){
             
             $(".address_text").text(receivedData.address);
             $(".address").val(receivedData.address);
-            
-            $("#passText").text(receivedData.pass);
-            $(".pass").val(receivedData.pass);
             
             $(".avatar_display").attr('src', 'images/'+receivedData.avatar);
             
