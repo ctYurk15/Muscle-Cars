@@ -9,11 +9,16 @@ class ComposerStaticInita08baccc363ce6dbb957f61d618c2c76
     public static $prefixLengthsPsr4 = array (
         'M' => 
         array (
+            'MolotRouter\\' => 12,
             'Models\\' => 7,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'MolotRouter\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/ctyurk15/molot-router/src',
+        ),
         'Models\\' => 
         array (
             0 => __DIR__ . '/../..' . '/Models',

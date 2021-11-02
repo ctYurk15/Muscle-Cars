@@ -4,12 +4,58 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d751713988987e9331980363e24189ce",
-    "packages": [],
+    "content-hash": "9ae4a2241c3d7fa568b72db79dc1fbb1",
+    "packages": [
+        {
+            "name": "ctyurk15/molot-router",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ctYurk15/molot-router.git",
+                "reference": "1dc9c5bafbf00ce351ac491d758497ea5d4b6e0d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ctYurk15/molot-router/zipball/1dc9c5bafbf00ce351ac491d758497ea5d4b6e0d",
+                "reference": "1dc9c5bafbf00ce351ac491d758497ea5d4b6e0d",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^7.2"
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "MolotRouter\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Yurii Hrytsak"
+                }
+            ],
+            "description": "Simple & light router for PHP",
+            "support": {
+                "issues": "https://github.com/ctYurk15/molot-router/issues",
+                "source": "https://github.com/ctYurk15/molot-router/tree/master"
+            },
+            "time": "2021-11-02T17:35:32+00:00"
+        }
+    ],
     "packages-dev": [],
     "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": [],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "ctyurk15/molot-router": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

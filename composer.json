@@ -1,7 +1,11 @@
 {
+    "minimum-stability": "dev",
     "autoload": {
         "psr-4": {
             "Models\\": "Models"
         }
+    },
+    "require": {
+        "ctyurk15/molot-router": "dev-master"
     }
 }
