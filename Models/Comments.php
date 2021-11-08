@@ -43,6 +43,19 @@
             
             return $comments;
         }
+
+        public static function all($conn)
+        {
+            $comments = [];
+            $result = $conn->query("SELECT * FROM `comment`");
+
+            while($row = $result->fetch_array()) //fetching request to array
+            {
+                $comments[count($comments)] = $row;
+            }
+            
+            return $comments;
+        }
         
         private function deleteComment($user_id, $car_id)
         {
