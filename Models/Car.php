@@ -5,6 +5,7 @@
     class Car extends DBmanager
     {
         public $name;
+        public static $table = 'car';
         
         public function __construct($conn, $name)
         {
@@ -89,6 +90,11 @@
                 return round(($positiveComments/$allComments), 2)*100;
             }
             else return -1;
+        }
+
+        public static function all($conn, $rule = null)
+        {
+            return self::allRecords($conn, self::$table, $rule);
         }
         
     }

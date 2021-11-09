@@ -4,24 +4,16 @@
 
     class Manufacturer extends DBmanager
     {
+        public static $table = 'manufacturer';
+
         public function __construct($conn)
         {
             parent::__construct($conn);
         }
 
-        public static function all($conn)
+        public static function all($conn, $rule = null)
         {
-            $manufacturers = [];
-            
-            $request = "SELECT * FROM manufacturer";
-            $result = $conn->query($request);
-            
-            while($row = $result->fetch_array()) //fetching request to array
-            {
-                array_push($manufacturers, $row);
-            }
-            
-            return $manufacturers;
+            return self::allRecords($conn, self::$table, $rule);
         }
     }
 ?>

@@ -4,7 +4,8 @@
 
     class Comments extends DBmanager
     {
-        
+        public static $table = 'comment';
+
         public function __construct($conn)
         {
             parent::__construct($conn);
@@ -44,10 +45,18 @@
             return $comments;
         }
 
-        public static function all($conn)
+        public static function all($conn, $rule = null)
+        {
+            return self::allRecords($conn, self::$table, $rule);
+        }
+
+        public static function allRecords($conn, $table, $rule)
         {
             $comments = [];
-            $result = $conn->query("SELECT * FROM `comment`");
+            $query = "SELECT * FROM `".$table."`";
+            $query .= ($rule == null) ? $rule : 'WHERE '.$rule;
+
+            $result = $conn->query($query);
 
             while($row = $result->fetch_array()) //fetching request to array
             {

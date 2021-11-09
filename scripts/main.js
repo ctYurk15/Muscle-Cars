@@ -1,5 +1,5 @@
 var header = "<td width='14.28%'>"+
-        "<img src='images/logo.png' width='35%'>"+
+        "<a href='/'><img src='images/logo.png' width='35%'></a>"+
     "</td>"+
     "<td width='14.28%'>"+
         "<a href='index.html'>Головна</a>"+
